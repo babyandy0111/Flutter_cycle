@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'cycledemo.dart';
 import 'box.dart';
 import 'lessbox.dart';
+import 'keybox.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,16 +22,14 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-
               LessBox(Colors.red),
               LessBox(Colors.yellow),
               LessBox(Colors.blue),
-
-
               Box(Colors.red),
               Box(Colors.yellow),
               Box(Colors.blue),
-              Cycle()
+              Cycle(),
+              KeyBox(),
             ],
           ),
         ),

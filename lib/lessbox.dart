@@ -9,15 +9,15 @@ class LessBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
+      width: 200,
+      height: 40,
       color: color,
       child: Center(
         child: RaisedButton(
           onPressed: () => {
             print("onPressed")
           },
-          child: Text("HI", style: TextStyle(fontSize: 60),
+          child: Text("HI", style: TextStyle(fontSize: 20),
           ),
         ),
       ),

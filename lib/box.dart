@@ -16,13 +16,13 @@ class _BoxState extends State<Box> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
+      width: 200,
+      height: 40,
       color: widget.color,
       child: Center(
         child: RaisedButton(
           onPressed: () => setState(() => _count++),
-          child: Text("$_count", style: TextStyle(fontSize: 60),),
+          child: Text("$_count", style: TextStyle(fontSize: 20),),
         ) ,
       ),
     );
