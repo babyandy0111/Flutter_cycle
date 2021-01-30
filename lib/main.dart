@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'andy.dart';
+import 'cycledemo.dart';
+import 'box.dart';
+import 'lessbox.dart';
+
 void main() => runApp(MyApp());
 
 // StatelessWidget
@@ -15,7 +18,22 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Andy Flutter 教室'),
         ),
-        body: Cycle(),
+        body: Center(
+          child: Column(
+            children: [
+
+              LessBox(Colors.red),
+              LessBox(Colors.yellow),
+              LessBox(Colors.blue),
+
+
+              Box(Colors.red),
+              Box(Colors.yellow),
+              Box(Colors.blue),
+              Cycle()
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -32,18 +32,21 @@ class _NewPageState extends State<NewPage> with WidgetsBindingObserver {
     print('didChangeDependencies+++');
   }
 
+  // 熱過載的時候，didUpdateWidget被呼叫前，
+  // 其實 reassemble 也會被呼叫，
+  // reassemble 是一個 debug 方法，在熱過載的時候呼叫
+  @override
+  void reassemble() {
+    super.reassemble();
+    print('reassemble+++');
+  }
+
   // widget 的配置發生變化時，會調用此函式。
   // 這個生命週期我們一般不會用到，只有在使用 key 對 Widget 進行復用的時候才會調用
   @override
   void didUpdateWidget(NewPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('didUpdateWidget+++');
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    print('reassemble+++');
   }
 
   // view 消失前會先經過此func, 接著才有可能經過dispose
@@ -75,6 +78,7 @@ class _NewPageState extends State<NewPage> with WidgetsBindingObserver {
   // 千萬不要在 build 裡做除了創建 Widget 之外的操作，因為這個會影響 UI 的渲染效率。
   @override
   Widget build(BuildContext context) {
+    print('build+++');
     return Scaffold(
       appBar: AppBar(
         title: Text('我是 B 頁'),
