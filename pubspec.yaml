@@ -31,7 +31,7 @@ dependencies:
 
   # A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is
   # very similar with flutter widget code.
-  dynamic_widget: ^2.0.1
+  dynamic_widget: ^3.0.3
 
   # A powerful Http client for Dart, which supports Interceptors, Global configuration,
   # FormData, Request Cancellation, File Downloadint, Timeout etc

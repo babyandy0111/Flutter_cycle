@@ -59,14 +59,14 @@ class MyApp extends StatelessWidget {
   }
 
   Future<Widget> _buildWidgetFromApi(BuildContext context) async {
-    /*var response = await rootBundle.loadString('assets/hello-world.json');
+    var response = await rootBundle.loadString('assets/hello-world.json');
     await Future.delayed(Duration(seconds: 2));
-    return DynamicWidgetBuilder.build(response, context, DefaultClickListener());*/
+    return DynamicWidgetBuilder.build(response, context, DefaultClickListener());
 
     // Get JSON from endpoint
-    var response = await Dio().get('https://www.shihjie.com/api/profile-page.json');
+    /*var response = await Dio().get('https://www.shihjie.com/api/profile-page.json');
     var responseJson = json.encode(response.data);
-    return DynamicWidgetBuilder.build(responseJson, context, DefaultClickListener());
+    return DynamicWidgetBuilder.build(responseJson, context, DefaultClickListener());*/
   }
 }
 
@@ -74,5 +74,6 @@ class DefaultClickListener extends ClickListener {
   @override
   void onClicked(String event) {
     // TODO: do something in here when receive clicked
+    print("Receive click event: " + event);
   }
 }
