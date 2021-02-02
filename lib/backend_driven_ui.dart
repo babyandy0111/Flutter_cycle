@@ -1,9 +1,13 @@
 import 'dart:convert';
-
+// import 'dart:html';
 import 'package:dio/dio.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cycle/qtcomm_listview_widget_parser.dart';
+import 'qtcomm_listtitle_widget_parser.dart';
+import 'box.dart';
+import 'new_page.dart';
 
 void main() => runApp(App());
 
@@ -13,6 +17,11 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyApp(),
+      routes: <String, WidgetBuilder> {
+        '/cycle_page': (BuildContext context) => NewPage(),
+        '/myapp' : (BuildContext context) => MyApp(),
+        '/keybox' : (BuildContext context) => Box(Colors.blue),
+      },
     );
   }
 }
@@ -59,9 +68,12 @@ class MyApp extends StatelessWidget {
   }
 
   Future<Widget> _buildWidgetFromApi(BuildContext context) async {
+
     var response = await rootBundle.loadString('assets/hello-world.json');
     await Future.delayed(Duration(seconds: 2));
-    return DynamicWidgetBuilder.build(response, context, DefaultClickListener());
+    DynamicWidgetBuilder.addParser(QTListViewWidgetParser());
+    DynamicWidgetBuilder.addParser(QTListTileWidgetParser());
+    return DynamicWidgetBuilder.build(response, context, DefaultClickListener(context));
 
     // Get JSON from endpoint
     /*var response = await Dio().get('https://www.shihjie.com/api/profile-page.json');
@@ -71,9 +83,14 @@ class MyApp extends StatelessWidget {
 }
 
 class DefaultClickListener extends ClickListener {
+
+  BuildContext context;
+  DefaultClickListener(this.context);
+
   @override
   void onClicked(String event) {
     // TODO: do something in here when receive clicked
     print("Receive click event: " + event);
+    //Navigator.of(context).pushNamed(event);
   }
 }

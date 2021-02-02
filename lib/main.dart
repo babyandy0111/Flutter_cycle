@@ -4,7 +4,7 @@ import 'box.dart';
 import 'lessbox.dart';
 import 'keybox.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
 // StatelessWidget
 // 是一個不需要狀態更改的widget - 它沒有要管理狀態 - 把它想成靜態Html

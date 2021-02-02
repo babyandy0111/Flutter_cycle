@@ -1,0 +1,11 @@
+[
+  {
+    "type": "ListTile",
+    "contentPadding": "8,10,12,8",
+    "isThreeLine": true,
+    "leading": {"type": "NetworkImage","src": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=423535611,1069817491&fm=173&app=25&f=JPG?w=256&h=256&s=A5D537C24E5C22C4540676720300307D"},
+    "title": {"type": "Text","data": "data of Text"},
+    "subtitle": {"type": "Text","data": "data of subtitle"},
+    "tapEvent": "cycle_page"
+  }
+]

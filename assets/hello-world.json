@@ -1,17 +1,152 @@
 {
-  "type": "Container",
-  "alignment": "center",
-  "child": {
-    "type": "RaisedButton",
-    "color": "##FF00FF",
-    "padding": "8,8,8,8",
-    "textColor": "#00FF00",
-    "elevation" : 8.0,
-    "splashColor" : "#00FF00",
-    "click_event" : "route://productDetail?goods_id=123",
-    "child" : {
-      "type": "Text",
-      "data": "I am a button"
+  "type": "ListView",
+  "pageSize": 10,
+  "loadMoreUrl": "http://localhost/list.json",
+  "padding": "10, 10, 10, 10",
+  "children": [
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/cycle_page"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/myapp"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
+    },
+    {
+      "type": "ListTile",
+      "contentPadding": "8,10,12,8",
+      "isThreeLine": true,
+      "leading": {
+        "type": "NetworkImage",
+        "src": "https://i1.kknews.cc/SIG=1megj29/47070000855n1rr596po.jpg"
+      },
+      "title": {
+        "type": "Text",
+        "data": "我是data of Text"
+      },
+      "subtitle": {
+        "type": "Text",
+        "data": "我是data of subtitle"
+      },
+      "tapEvent": "/keybox"
     }
-  }
+  ]
 }
