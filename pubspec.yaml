@@ -33,9 +33,16 @@ dependencies:
   # very similar with flutter widget code.
   dynamic_widget: ^3.0.3
 
-  # A powerful Http client for Dart, which supports Interceptors, Global configuration,
-  # FormData, Request Cancellation, File Downloadint, Timeout etc
-  dio: ^3.0.9
+  # 网络请求 https://pub.dev/packages/dio#-installing-tab-
+  dio: ^3.0.10
+
+  #  # 网络请求 https://pub.dev/packages/dio_http_cache#-installing-tab-
+  #  dio_http_cache: ^0.2.5
+  # 监测网络状态 https://pub.dev/packages/connectivity
+  connectivity: ^0.4.9
+
+  #  # Dart 常用工具类库 https://github.com/Sky24n/common_utils
+  common_utils: ^1.1.3
 
 dev_dependencies:
   flutter_test:
