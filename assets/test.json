@@ -1,0 +1,61 @@
+{
+  "type": "Column",
+  "crossAxisAlignment": "center",
+  "mainAxisAlignment": "center",
+  "mainAxisSize": "max",
+  "textBaseline": "ideographic",
+  "textDirection": null,
+  "verticalDirection": "down",
+  "children": [
+    {
+      "type": "QTContainer",
+      "alignment": "center",
+      "padding": "0,0,0,0",
+      "margin": "2,2,2,2",
+      "constraints": {
+        "minWidth": 150.0,
+        "maxWidth": 150.0,
+        "minHeight": 150.0,
+        "maxHeight": 150.0
+      },
+      "child": {
+        "type": "Icon",
+        "data": "message",
+        "size": 40.0,
+        "color": "##ffffff",
+        "semanticLabel": null,
+        "textDirection": null
+      }
+    },
+    {
+      "type": "Align",
+      "alignment": "center",
+      "widthFactor": null,
+      "heightFactor": null,
+      "child": {
+        "type": "Padding",
+        "padding": "15.0,15.0,15.0,15.0",
+        "child": {
+          "type": "Text",
+          "data": "Start chat with your friends and family,\n on WhatsApp Clone",
+          "textAlign": "center",
+          "overflow": "ellipsis",
+          "maxLines": null,
+          "semanticsLabel": null,
+          "softWrap": null,
+          "textDirection": "ltr",
+          "style": {
+            "color": "66000000",
+            "debugLabel": null,
+            "decoration": "none",
+            "fontSize": 14.0,
+            "fontFamily": null,
+            "fontStyle": "normal",
+            "fontWeight": "normal"
+          },
+          "textScaleFactor": null
+        }
+      }
+    }
+  ]
+}

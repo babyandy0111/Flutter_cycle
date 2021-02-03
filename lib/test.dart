@@ -523,17 +523,38 @@ class _JSONExporterState extends State<JSONExporter> {
               Expanded(
                 child: DynamicWidgetJsonExportor(
                   key: key,
-                  child: Stack(
-                    alignment: Alignment.topLeft,
-                    children: [
-                      Image.asset("assets/vip.png"),
-                      Positioned(
-                        child: Image.asset("assets/vip.png"),
-                        top:50,
-                        left: 50,
-                      )
+                  child:
+                  // -------------------- 這邊可以填寫你的 Widget，轉json ------------------- //
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(76,175,80,1).withOpacity(.5),
+                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                        ),
+                        child: Icon(
+                          Icons.message,
+                          color: Colors.blue,
+                          size: 40,
+                        ),
+                      ),
+                      Align(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Text(
+                            "Start chat with your friends and family,\n on WhatsApp Clone",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(fontSize: 14, color: Colors.black.withOpacity(.4)),
+                          ),
+                        ),
+                      ),
                     ],
-                  ),
+                  )
+                  // -------------------- end ------------------- //
                 ),
               ),
               Container(

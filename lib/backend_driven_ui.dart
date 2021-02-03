@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cycle/qtcomm_utils/widget_parser/qtcomm_container_widget_parser.dart';
 import 'package:flutter_cycle/qtcomm_utils/widget_parser/qtcomm_listview_widget_parser.dart';
 import 'qtcomm_utils/widget_parser/qtcomm_listtitle_widget_parser.dart';
 import 'box.dart';
@@ -69,10 +70,11 @@ class MyApp extends StatelessWidget {
 
   Future<Widget> _buildWidgetFromApi(BuildContext context) async {
 
-    var response = await rootBundle.loadString('assets/hello-world.json');
+    var response = await rootBundle.loadString('assets/test.json');
     await Future.delayed(Duration(seconds: 2));
     DynamicWidgetBuilder.addParser(QTListViewWidgetParser());
     DynamicWidgetBuilder.addParser(QTListTileWidgetParser());
+    DynamicWidgetBuilder.addParser(QTContainerWidgetParser());
     return DynamicWidgetBuilder.build(response, context, DefaultClickListener(context));
 
     // Get JSON from endpoint
