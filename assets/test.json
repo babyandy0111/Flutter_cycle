@@ -12,6 +12,9 @@
       "alignment": "center",
       "padding": "0,0,0,0",
       "margin": "2,2,2,2",
+      "decoration": {
+        "color": "76,175,80"
+      },
       "constraints": {
         "minWidth": 150.0,
         "maxWidth": 150.0,

@@ -1,5 +1,5 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
-import 'package:dynamic_widget/dynamic_widget/utils.dart';
+import 'package:flutter_cycle/qtcomm_utils//qtcomm_widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,14 +18,10 @@ class QTContainerWidgetParser extends WidgetParser {
     Widget child = childMap == null ? null : DynamicWidgetBuilder.buildFromMap(childMap, buildContext, listener);
 
     String clickEvent = map.containsKey("click_event") ? map['click_event'] : null;
-    BoxDecoration decoration;
-
 
     // 示範增加一些屬性
-    decoration = map.containsKey("color") ? null : BoxDecoration(
-      color: Color.fromRGBO(76,175,80,1).withOpacity(.5),
-      borderRadius: BorderRadius.all(Radius.circular(100)),
-    );
+    BoxDecoration decoration;
+    decoration = map.containsKey('color') ? null : parseBoxDecoration(map['decoration']);
 
     var containerWidget = Container(
       alignment: alignment,
