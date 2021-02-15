@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/http/lib/api_response.dart';
+import 'package:flutter_cycle/http/models/user_entity.dart';
 import 'cycledemo.dart';
 import 'box.dart';
+import 'http/lib/http_utils.dart';
+import 'http/repositorys/user_repository.dart';
 import 'lessbox.dart';
 import 'keybox.dart';
 
-// void main() => runApp(MyApp());
+void main() {
+  HttpUtils.init(
+    baseUrl: "https://api.indochat.net/",
+  );
+  runApp(MyApp());
+}
 
 // StatelessWidget
 // 是一個不需要狀態更改的widget - 它沒有要管理狀態 - 把它想成靜態Html
@@ -30,14 +39,24 @@ class MyApp extends StatelessWidget {
               Box(Colors.blue),
               Cycle(),
               KeyBox(),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () {
+                    getUser();
+                  },
+                  child: Text("get請求")),
             ],
           ),
         ),
       ),
     );
   }
-}
 
+  void getUser() async {
+    ApiResponse<UserEntity> entity = await UserRepository.getUser(501);
+    print(entity.data.phone);
+  }
+}
 
 // 基本上Flutter學習曲線
 // 了解生命週期, 知道哪裡該寫啥, 哪裡不該寫啥
@@ -47,5 +66,3 @@ class MyApp extends StatelessWidget {
 // 瞭解status的使用, 就是session, 搭配UI使用, 就好比Ajax
 // 進階的list, route, widget, 儲存, sqlite, etc...
 // https://www.mdeditor.tw/pl/gmiz/zh-tw
-
-
