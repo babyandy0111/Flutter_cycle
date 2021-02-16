@@ -1,5 +1,5 @@
 
-import 'package:flutter_cycle/http/lib/app_exceptions.dart';
+import '../lib/app_exceptions.dart';
 
 class ApiResponse<T> implements Exception {
   Status status;

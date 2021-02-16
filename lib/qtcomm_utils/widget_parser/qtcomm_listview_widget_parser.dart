@@ -6,8 +6,8 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_cycle/qtcomm_utils/qtcomm_utils.dart';
-import 'package:flutter_cycle/backend_driven_ui.dart';
+import '../../qtcomm_utils/qtcomm_utils.dart';
+import '../../backend_driven_ui.dart';
 
 class QTListViewWidgetParser extends WidgetParser {
   @override

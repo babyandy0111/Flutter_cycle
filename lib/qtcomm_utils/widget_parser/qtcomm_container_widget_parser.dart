@@ -1,5 +1,5 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
-import 'package:flutter_cycle/qtcomm_utils//qtcomm_widget_utils.dart';
+import '../../qtcomm_utils//qtcomm_widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

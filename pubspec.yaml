@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -33,19 +32,24 @@ dependencies:
   # very similar with flutter widget code.
   dynamic_widget: ^3.0.3
 
-  # 网络请求 https://pub.dev/packages/dio#-installing-tab-
+  # http https://pub.dev/packages/dio#-installing-tab-
   dio: ^3.0.10
 
-  #  # 网络请求 https://pub.dev/packages/dio_http_cache#-installing-tab-
+  #  http 快取 https://pub.dev/packages/dio_http_cache#-installing-tab-
   #  dio_http_cache: ^0.2.5
   # 监测网络状态 https://pub.dev/packages/connectivity
   connectivity: ^0.4.9
 
-  #  # Dart 常用工具类库 https://github.com/Sky24n/common_utils
-  common_utils: ^1.1.3
+  #  # Dart 常用工具 https://github.com/Sky24n/common_utils
+  common_utils: ^1.2.4
 
+  # json
   json_annotation: ^2.0.0
-  shared_preferences: ^0.5.7+3
+  build_runner: ^1.3.0
+  json_serializable: ^2.2.0
+
+
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:

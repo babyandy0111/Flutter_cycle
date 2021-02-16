@@ -1,17 +1,15 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_cycle/http/lib/app_exceptions.dart';
-import 'package:flutter_cycle/http/lib/proxy.dart';
-import 'package:flutter_cycle/http/lib/retry_interceptor.dart';
+import '../lib/proxy.dart';
+import '../lib/retry_interceptor.dart';
 import 'cache.dart';
-import 'package:flutter_cycle/http/lib/connectivity_request_retrier.dart';
+import '../lib/connectivity_request_retrier.dart';
 import 'error_interceptor.dart';
-import 'global.dart';
-import 'package:flutter_cycle/http/lib/net_cache.dart';
+import 'config.dart';
+import '../lib/net_cache.dart';
 
 class Http {
   ///超時時間
@@ -24,6 +22,7 @@ class Http {
 
   Dio dio;
   CancelToken _cancelToken = new CancelToken();
+  Config _global = new Config();
 
   Http._internal() {
     if (dio == null) {
@@ -38,24 +37,26 @@ class Http {
 
       // 添加攔截器
       dio.interceptors.add(ErrorInterceptor());
+
       // 添加內存緩存
       dio.interceptors.add(NetCacheInterceptor());
-      if (Global.retryEnable) {
-        dio.interceptors.add(
-          RetryOnConnectionChangeInterceptor(
-            requestRetrier: DioConnectivityRequestRetrier(
-              dio: dio,
-              connectivity: Connectivity(),
-            ),
+
+      // retry機制
+      dio.interceptors.add(
+        RetryOnConnectionChangeInterceptor(
+          requestRetrier: DioConnectivityRequestRetrier(
+            dio: dio,
+            connectivity: Connectivity(),
           ),
-        );
-      }
+        ),
+      );
+
+      // log
       dio.interceptors.add(LogInterceptor());
 
       // 在debug模式下需要測試，可以使用代理，並且禁用https模式
       if (PROXY_ENABLE) {
-        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-            (client) {
+        (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
           client.findProxy = (uri) {
             return "PROXY $PROXY_IP:$PROXY_PORT";
           };
@@ -100,13 +101,12 @@ class Http {
   }
 
   /// 讀取本地配置
-  Map<String, dynamic> getAuthorizationHeader() {
+  Future<Map<String, dynamic>> getAuthorizationHeader() async {
     var headers;
-    String accessToken = Global.accessToken;
-    if (accessToken != null) {
-      // headers = {"Authorization": 'Bearer $accessToken'};
-      headers = {"Bearer": '$accessToken'};
-    }
+    await _global.getToken().then((String token) {
+      headers = {"Bearer": '$token'};
+    });
+    // print("---------"+headers.toString());
     return headers;
   }
 
@@ -128,7 +128,7 @@ class Http {
       "cacheKey": cacheKey,
       "cacheDisk": cacheDisk,
     });
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }
@@ -149,7 +149,7 @@ class Http {
     CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }
@@ -171,7 +171,7 @@ class Http {
   }) async {
     Options requestOptions = options ?? Options();
 
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }
@@ -192,7 +192,7 @@ class Http {
     CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }
@@ -214,7 +214,7 @@ class Http {
   }) async {
     Options requestOptions = options ?? Options();
 
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }
@@ -234,7 +234,7 @@ class Http {
     CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
-    Map<String, dynamic> _authorization = getAuthorizationHeader();
+    Map<String, dynamic> _authorization = await getAuthorizationHeader();
     if (_authorization != null) {
       requestOptions = requestOptions.merge(headers: _authorization);
     }

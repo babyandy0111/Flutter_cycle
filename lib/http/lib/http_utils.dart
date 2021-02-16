@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_cycle/http/lib/http.dart';
-import 'package:flutter_cycle/http/lib/app_exceptions.dart';
+import '../lib/http.dart';
+import '../lib/app_exceptions.dart';
 import 'cache.dart';
 
 class HttpUtils {

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:flutter_cycle/http/lib/connectivity_request_retrier.dart';
+import '../lib/connectivity_request_retrier.dart';
 
 class RetryOnConnectionChangeInterceptor extends Interceptor {
   final DioConnectivityRequestRetrier requestRetrier;

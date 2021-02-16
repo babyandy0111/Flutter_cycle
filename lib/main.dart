@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/http/lib/api_response.dart';
-import 'package:flutter_cycle/http/models/user_entity.dart';
 import 'cycledemo.dart';
 import 'box.dart';
+import 'http/api/user.dart';
 import 'http/lib/http_utils.dart';
-import 'http/repositorys/user_repository.dart';
+import 'http/lib/config.dart';
 import 'lessbox.dart';
 import 'keybox.dart';
 
@@ -44,17 +43,35 @@ class MyApp extends StatelessWidget {
                   onPressed: () {
                     getUser();
                   },
-                  child: Text("get請求")),
+                  child: Text("get user api 請求")),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () async {
+                    await Config().setDeviceUid("123456");
+                    await Config().setPinCode("123456");
+                    await Config().setUserId(501);
+                    await Config().refreshToken();
+                    new Config().getToken().then((token) => print(token));
+                  },
+                  child: Text("refreshToken poet請求")),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () {
+                    String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE0ODUxNTAxLCJpYXQiOjE2MTIyNTk1MDEsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.GHyMb1_5YYNtCzcFLOIYJNNO_TXh2ZBZnEpYs80H14c';
+                    new Config().setToken(token).then((value) => print(value));
+                  },
+                  child: Text("set local token")),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () {
+                    new Config().getToken().then((token) => print(token));
+                  },
+                  child: Text("get local token ")),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void getUser() async {
-    ApiResponse<UserEntity> entity = await UserRepository.getUser(501);
-    print(entity.data.phone);
   }
 }
 

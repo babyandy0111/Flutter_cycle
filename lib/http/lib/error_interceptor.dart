@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_cycle/http/lib/app_exceptions.dart';
+import '../lib/app_exceptions.dart';
 
 /// 錯誤處理攔截
 class ErrorInterceptor extends Interceptor {
