@@ -14,6 +14,8 @@ const PROXY_PORT = 8888;
 
 const HTTP_DEBUG_LOG = true;
 
+const IM_BASE_URL = 'https://api.indochat.net/';
+
 /// 全局配置
 class Config {
 

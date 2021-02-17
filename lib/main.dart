@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'demo/cycledemo.dart';
-import 'demo/box.dart';
 import 'http/lib/sp.dart';
 import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
 import 'http/lib/config.dart';
-import 'demo/lessbox.dart';
-import 'demo/keybox.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpUtils.init(
-    baseUrl: "https://api.indochat.net/",
+    baseUrl: IM_BASE_URL,
   );
-  SpUtil.init();
+  await SpUtil.init();
   runApp(MyApp());
 }
 
@@ -33,14 +29,14 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
-              LessBox(Colors.red),
-              LessBox(Colors.yellow),
-              LessBox(Colors.blue),
-              Box(Colors.red),
-              Box(Colors.yellow),
-              Box(Colors.blue),
-              Cycle(),
-              KeyBox(),
+              // LessBox(Colors.red),
+              // LessBox(Colors.yellow),
+              // LessBox(Colors.blue),
+              // Box(Colors.red),
+              // Box(Colors.yellow),
+              // Box(Colors.blue),
+              // Cycle(),
+              // KeyBox(),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
                     SpUtil().setPinCode("123456");
                     SpUtil().setUserId(501);
                     SpUtil().refreshToken();
-                    // SpUtil().getToken().then((token) => print(token));
+                    SpUtil().getToken().then((token) => print(token));
                   },
                   child: Text("refreshToken poet請求")),
               FlatButton(
