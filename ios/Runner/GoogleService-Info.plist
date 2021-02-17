@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>588464200836-autf1jlf89k4sa689oufds988nqg694r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.588464200836-autf1jlf89k4sa689oufds988nqg694r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyADnv5qmxFdMzVpi_bELFKS68GhfH5S870</string>
+	<key>GCM_SENDER_ID</key>
+	<string>588464200836</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>www.shihjie.com.tw.flutterCycle</string>
+	<key>PROJECT_ID</key>
+	<string>andytest-6225d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>andytest-6225d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:588464200836:ios:f3316c390e3245911176d1</string>
+	<key>DATABASE_URL</key>
+	<string>https://andytest-6225d.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "588464200836",
+    "firebase_url": "https://andytest-6225d.firebaseio.com",
+    "project_id": "andytest-6225d",
+    "storage_bucket": "andytest-6225d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588464200836:android:29395f44b61f3fc31176d1",
+        "android_client_info": {
+          "package_name": "www.shihjie.com.tw.flutterCycle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588464200836-bjt2uj3cis54jgk8ufmtq3fh2e0i33mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiBv1v9NhUUm2o5PDCFZpoBx2EI33UTHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588464200836-bjt2uj3cis54jgk8ufmtq3fh2e0i33mh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "588464200836-autf1jlf89k4sa689oufds988nqg694r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "www.shihjie.com.tw.flutterCycle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

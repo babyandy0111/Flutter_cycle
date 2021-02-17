@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/pn2.dart';
 import 'http/lib/sp.dart';
 import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
@@ -10,6 +11,7 @@ void main() async {
     baseUrl: IM_BASE_URL,
   );
   await SpUtil.init();
+  PushNotificationsManager().init();
   runApp(MyApp());
 }
 
