@@ -3,12 +3,11 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import '../lib/proxy.dart';
+import '../lib/sp.dart';
 import '../lib/retry_interceptor.dart';
-import 'cache.dart';
+import 'config.dart';
 import '../lib/connectivity_request_retrier.dart';
 import 'error_interceptor.dart';
-import 'config.dart';
 import '../lib/net_cache.dart';
 
 class Http {
@@ -22,7 +21,7 @@ class Http {
 
   Dio dio;
   CancelToken _cancelToken = new CancelToken();
-  Config _global = new Config();
+  // Config _global = new Config();
 
   Http._internal() {
     if (dio == null) {
@@ -52,7 +51,14 @@ class Http {
       );
 
       // log
-      dio.interceptors.add(LogInterceptor());
+      dio.interceptors.add(LogInterceptor(
+        request: HTTP_DEBUG_LOG,
+        requestHeader: HTTP_DEBUG_LOG,
+        requestBody: HTTP_DEBUG_LOG,
+        responseHeader: HTTP_DEBUG_LOG,
+        responseBody: HTTP_DEBUG_LOG,
+        error: HTTP_DEBUG_LOG,
+      ));
 
       // 在debug模式下需要測試，可以使用代理，並且禁用https模式
       if (PROXY_ENABLE) {
@@ -103,10 +109,9 @@ class Http {
   /// 讀取本地配置
   Future<Map<String, dynamic>> getAuthorizationHeader() async {
     var headers;
-    await _global.getToken().then((String token) {
+    await SpUtil().getToken().then((String token) {
       headers = {"Bearer": '$token'};
     });
-    // print("---------"+headers.toString());
     return headers;
   }
 

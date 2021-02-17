@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../lib/http.dart';
 import '../lib/app_exceptions.dart';
-import 'cache.dart';
+import 'config.dart';
 
 class HttpUtils {
   static void init(

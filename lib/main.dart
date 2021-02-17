@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'demo/cycledemo.dart';
 import 'demo/box.dart';
+import 'http/lib/sp.dart';
 import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
 import 'http/lib/config.dart';
@@ -8,9 +9,11 @@ import 'demo/lessbox.dart';
 import 'demo/keybox.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   HttpUtils.init(
     baseUrl: "https://api.indochat.net/",
   );
+  SpUtil.init();
   runApp(MyApp());
 }
 
@@ -47,24 +50,25 @@ class MyApp extends StatelessWidget {
               FlatButton(
                   color: Colors.amber,
                   onPressed: () async {
-                    await Config().setDeviceUid("123456");
-                    await Config().setPinCode("123456");
-                    await Config().setUserId(501);
-                    await Config().refreshToken();
-                    new Config().getToken().then((token) => print(token));
+                    SpUtil().setDeviceUid("123456");
+                    SpUtil().setPinCode("123456");
+                    SpUtil().setUserId(501);
+                    SpUtil().refreshToken();
+                    // SpUtil().getToken().then((token) => print(token));
                   },
                   child: Text("refreshToken poet請求")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
-                    String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE0ODUxNTAxLCJpYXQiOjE2MTIyNTk1MDEsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.GHyMb1_5YYNtCzcFLOIYJNNO_TXh2ZBZnEpYs80H14c';
-                    new Config().setToken(token).then((value) => print(value));
+                    String token =
+                        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE0ODUxNTAxLCJpYXQiOjE2MTIyNTk1MDEsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.GHyMb1_5YYNtCzcFLOIYJNNO_TXh2ZBZnEpYs80H14c';
+                    SpUtil().setToken(token).then((value) => print(value));
                   },
                   child: Text("set local token")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
-                    new Config().getToken().then((token) => print(token));
+                    SpUtil().getToken().then((token) => print(token));
                   },
                   child: Text("get local token ")),
             ],

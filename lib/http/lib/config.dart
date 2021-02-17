@@ -1,43 +1,20 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import '../services/token.dart' as tokenApi;
+// 是否取用緩存
+const CACHE_ENABLE = true;
+
+// 緩存時間(秒)
+const CACHE_MAXAGE = 1000;
+
+// 最大緩存數
+const CACHE_MAXCOUNT = 100;
+
+// 是否啟用代理
+const PROXY_ENABLE = false;
+const PROXY_IP = '192.168.2.237';
+const PROXY_PORT = 8888;
+
+const HTTP_DEBUG_LOG = true;
 
 /// 全局配置
 class Config {
-  Future<String> getToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.get('token') == null) {
-      return await refreshToken();
-    } else {
-      return prefs.get('token');
-    }
-  }
 
-  Future<bool> setToken(token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString('token', token);
-  }
-
-  Future<bool> setUserId(user_id) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setInt('user_id', user_id);
-  }
-
-  Future<bool> setPinCode(pincode) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString('pincode', pincode);
-  }
-
-  Future<bool> setDeviceUid(device_uid) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString('device_uid', device_uid);
-  }
-
-  Future<String> refreshToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String device_uid = prefs.getString("device_uid");
-    String pincode = prefs.getString("pincode");
-    int user_id = prefs.getInt("user_id");
-    var p = {"device_uid": device_uid, "pincode": pincode, "user_id": user_id};
-    return tokenApi.refreshToken(p);
-  }
 }
