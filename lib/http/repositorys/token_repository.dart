@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../lib/api_response.dart';
 import '../lib/http_utils.dart';
-import '../models/token_entity.dart';
+import '../entitys/token_entity.dart';
 
 class TokenRepository {
   static Future<ApiResponse<TokenEntity>> refreshToken(p) async {

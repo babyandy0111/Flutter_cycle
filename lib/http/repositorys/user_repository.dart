@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../lib/api_response.dart';
 import '../lib/http_utils.dart';
-import '../models/user_entity.dart';
+import '../entitys/user_entity.dart';
 
 class UserRepository {
   static Future<ApiResponse<UserEntity>> getUser(int UserId) async {

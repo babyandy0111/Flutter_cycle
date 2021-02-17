@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../api/token.dart' as tokenApi;
+import '../services/token.dart' as tokenApi;
 
 /// 全局配置
 class Config {

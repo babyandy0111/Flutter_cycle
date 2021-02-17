@@ -1,5 +1,5 @@
 import '../lib/api_response.dart';
-import '../models/user_entity.dart';
+import '../entitys/user_entity.dart';
 import '../repositorys/user_repository.dart';
 
 void getUser() async {

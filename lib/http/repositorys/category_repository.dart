@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../lib/api_response.dart';
 import '../lib/http_utils.dart';
-import '../models/category_entity.dart';
+import '../entitys/category_entity.dart';
 
 class GanRepository {
   static final String categories = "api/v2/categories/GanHuo";

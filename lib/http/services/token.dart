@@ -1,5 +1,5 @@
 import '../lib/api_response.dart';
-import '../models/token_entity.dart';
+import '../entitys/token_entity.dart';
 import '../repositorys/token_repository.dart';
 
 Future<String> refreshToken(Map<String, Object> p) async {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'cycledemo.dart';
-import 'box.dart';
-import 'http/api/user.dart';
+import 'demo/cycledemo.dart';
+import 'demo/box.dart';
+import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
 import 'http/lib/config.dart';
-import 'lessbox.dart';
-import 'keybox.dart';
+import 'demo/lessbox.dart';
+import 'demo/keybox.dart';
 
 void main() {
   HttpUtils.init(
