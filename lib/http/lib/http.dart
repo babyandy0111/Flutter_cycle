@@ -56,10 +56,10 @@ class Http {
       dio.interceptors.add(RefreshTokenInterceptor(
         dio: dio,
         connectivity: Connectivity(),
-          options: const RetryOptions(
+          options: RetryOptions(
             retries: RETRY_API_NUM, // Number of retries before a failure
             retryInterval: const Duration(seconds: RETRY_S), // Interval between each retry
-            // retryEvaluator: (error) => error.type != DioErrorType.CANCEL && error.type != DioErrorType.RESPONSE,
+            retryEvaluator: (error) => error.type != DioErrorType.CANCEL && error.type != DioErrorType.RESPONSE,
           )
       ));
 
