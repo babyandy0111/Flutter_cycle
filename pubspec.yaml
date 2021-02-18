@@ -37,6 +37,9 @@ dependencies:
 
   #  http 快取 https://pub.dev/packages/dio_http_cache#-installing-tab-
   #  dio_http_cache: ^0.2.5
+
+  dio_retry_fixed: ^0.1.11-beta
+
   # 监测网络状态 https://pub.dev/packages/connectivity
   connectivity: ^0.4.9
 
@@ -52,7 +55,7 @@ dependencies:
   firebase_core:
   firebase_messaging: ^7.0.3
 
-  flutter_local_notifications: ^3.0.1+7
+  # flutter_local_notifications: ^3.0.1+7
 
   shared_preferences: ^0.5.12+4
 

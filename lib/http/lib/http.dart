@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_retry_fixed/dio_retry_fixed.dart';
+import 'package:flutter_cycle/http/lib/refresh_token_interceptor.dart';
 import '../lib/sp.dart';
 import '../lib/retry_interceptor.dart';
 import 'config.dart';
@@ -49,6 +51,17 @@ class Http {
           ),
         ),
       );
+
+      // refreshtoken & retry
+      dio.interceptors.add(RefreshTokenInterceptor(
+        dio: dio,
+        connectivity: Connectivity(),
+          options: const RetryOptions(
+            retries: RETRY_API_NUM, // Number of retries before a failure
+            retryInterval: const Duration(seconds: RETRY_S), // Interval between each retry
+            // retryEvaluator: (error) => error.type != DioErrorType.CANCEL && error.type != DioErrorType.RESPONSE,
+          )
+      ));
 
       // log
       dio.interceptors.add(LogInterceptor(

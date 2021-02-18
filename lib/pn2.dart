@@ -26,9 +26,6 @@ class PushNotificationsManager {
         onResume: (Map<String, dynamic> message) async {
           print("onResume: $message");
         },
-        /*onBackgroundMessage: (Map<String, dynamic> message) async {
-          print("onBackgroundMessage: $message");
-        },*/
       );
 
       _firebaseMessaging.requestNotificationPermissions(const IosNotificationSettings(sound: true, badge: true, alert: true));

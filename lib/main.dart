@@ -1,17 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/pn2.dart';
+import 'http/entitys/receive.dart';
 import 'http/lib/sp.dart';
 import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
 import 'http/lib/config.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpUtils.init(
     baseUrl: IM_BASE_URL,
   );
   await SpUtil.init();
-  PushNotificationsManager().init();
+  // PushNotificationsManager().init();
   runApp(MyApp());
 }
 
@@ -20,7 +23,17 @@ void main() async {
 // 這個Widget一但創建後, 就無法改變裡面的內容, 要改變就要再創建一個
 // 這裡可以討論一下 StatelessWidget 使用時機, 崇先new一個StatelessWidget 替換, 真的比較好嗎？
 // StatelessWidget 生命週期就只會有 build
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  String _homeScreenText = "Waiting for token...";
+  String _messageText = "Waiting for message...";
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,22 +71,74 @@ class MyApp extends StatelessWidget {
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
-                    String token =
-                        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE0ODUxNTAxLCJpYXQiOjE2MTIyNTk1MDEsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.GHyMb1_5YYNtCzcFLOIYJNNO_TXh2ZBZnEpYs80H14c';
+                    String token = 'jjjjj';
                     SpUtil().setToken(token).then((value) => print(value));
                   },
-                  child: Text("set local token")),
+                  child: Text("set local of error token")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
                     SpUtil().getToken().then((token) => print(token));
                   },
                   child: Text("get local token ")),
+              Text(_homeScreenText),
+              Text(_messageText),
             ],
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+
+        _serialiseAndNavigate(message);
+
+        setState(() {
+          _messageText = "Push Messaging message: $message";
+        });
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        setState(() {
+          _messageText = "Push Messaging message: $message";
+        });
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        setState(() {
+          _messageText = "Push Messaging message: $message";
+        });
+        print("onResume: $message");
+      },
+      /*onBackgroundMessage: (Map<String, dynamic> message) async {
+        setState(() {
+          _messageText = "Push Messaging message: $message";
+        });
+        print("onBackgroundMessage: $message");
+      },*/
+    );
+    _firebaseMessaging.requestNotificationPermissions(const IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      setState(() {
+        _homeScreenText = "Push Messaging token: $token";
+      });
+      print(_homeScreenText);
+    });
+  }
+
+  void _serialiseAndNavigate(Map<String, dynamic> message) {
+    var notificationData = message['data'];
+    var view = notificationData['view'];
+    print(notificationData);
   }
 }
 
