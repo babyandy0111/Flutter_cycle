@@ -48,6 +48,10 @@ class SpUtil {
     }
   }
 
+  Future<String> getDeviceToken() async {
+    return _prefs.getString('device_token');
+  }
+
   Future<bool> setToken(token) async {
     return _prefs.setString('token', token);
   }
@@ -62,6 +66,10 @@ class SpUtil {
 
   Future<bool> setDeviceUid(device_uid) async {
     return _prefs.setString('device_uid', device_uid);
+  }
+
+  Future<bool> setDeviceToken(device_token) async {
+    return _prefs.setString('device_token', device_token);
   }
 
   Future<String> refreshToken() async {

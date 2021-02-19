@@ -42,7 +42,7 @@ class Http {
       // 添加內存緩存
       dio.interceptors.add(NetCacheInterceptor());
 
-      // retry機制
+      // 沒網路retry機制
       dio.interceptors.add(
         RetryOnConnectionChangeInterceptor(
           requestRetrier: DioConnectivityRequestRetrier(
@@ -58,19 +58,19 @@ class Http {
         connectivity: Connectivity(),
           options: RetryOptions(
             retries: RETRY_API_NUM, // Number of retries before a failure
-            retryInterval: const Duration(seconds: RETRY_S), // Interval between each retry
-            retryEvaluator: (error) => error.type != DioErrorType.CANCEL && error.type != DioErrorType.RESPONSE,
+            retryInterval: Duration(seconds: RETRY_S), // Interval between each retry
+            retryEvaluator: (error) => error.response.statusCode == 401,
           )
       ));
 
       // log
       dio.interceptors.add(LogInterceptor(
-        request: HTTP_DEBUG_LOG,
-        requestHeader: HTTP_DEBUG_LOG,
-        requestBody: HTTP_DEBUG_LOG,
-        responseHeader: HTTP_DEBUG_LOG,
-        responseBody: HTTP_DEBUG_LOG,
-        error: HTTP_DEBUG_LOG,
+        request: HTTP_REQUEST_LOG,
+        requestHeader: HTTP_REQUEST_HEADER_LOG,
+        requestBody: HTTP_REQUEST_BODY_LOG,
+        responseHeader: HTTP_RESPONSE_HEADER_LOG,
+        responseBody: HTTP_RESPONSE_BODY_LOG,
+        error: HTTP_ERROR_LOG,
       ));
 
       // 在debug模式下需要測試，可以使用代理，並且禁用https模式

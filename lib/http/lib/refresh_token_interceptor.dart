@@ -3,6 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_retry_fixed/dio_retry_fixed.dart';
 import 'package:flutter/material.dart';
+import '../../http/lib/sp.dart';
 
 class RefreshTokenInterceptor extends Interceptor {
   final Dio dio;
@@ -18,6 +19,7 @@ class RefreshTokenInterceptor extends Interceptor {
     var extra = RetryOptions.fromExtra(err.request) ?? this.options;
     var shouldRetry = extra.retries > 0 && await options.retryEvaluator(err);
 
+    shouldRetry = true;
     if (shouldRetry) {
       if (extra.retryInterval.inMilliseconds > 0) {
         await Future.delayed(extra.retryInterval);
@@ -28,29 +30,34 @@ class RefreshTokenInterceptor extends Interceptor {
       err.request.extra = err.request.extra..addAll(extra.toExtra());
 
       if (err.response?.statusCode == 401) {
-        try {
-          dio.interceptors.requestLock.lock();
-          dio.interceptors.responseLock.lock();
-          RequestOptions options = err.response.request;
+        await SpUtil().refreshToken();
+        print("這邊要換token");
 
-          print("這邊要換token");
+        print("鎖");
+        dio.lock();
+        dio.interceptors.responseLock.lock();
+        dio.interceptors.errorLock.lock();
 
-          dio.interceptors.requestLock.unlock();
-          dio.interceptors.responseLock.unlock();
-          // We retry with the updated options
-          return await this.dio.request(
-                err.request.path,
-                cancelToken: err.request.cancelToken,
-                data: err.request.data,
-                onReceiveProgress: err.request.onReceiveProgress,
-                onSendProgress: err.request.onSendProgress,
-                queryParameters: err.request.queryParameters,
-                options: err.request,
-              );
-        } catch (e) {
-          return e;
-        }
+        RequestOptions ops = err.response.request;
+        String new_token = await SpUtil().getToken();
+        print("換好 token: ${new_token}");
+        ops.headers["Bearer"] = new_token;
+
+        print("解鎖");
+        dio.unlock();
+        dio.interceptors.responseLock.unlock();
+        dio.interceptors.errorLock.unlock();
       }
+
+      return dio.request(
+        err.request.path,
+        cancelToken: err.request.cancelToken,
+        data: err.request.data,
+        onReceiveProgress: err.request.onReceiveProgress,
+        onSendProgress: err.request.onSendProgress,
+        queryParameters: err.request.queryParameters,
+        options: err.request,
+      );
     } else {
       return super.onError(err);
     }

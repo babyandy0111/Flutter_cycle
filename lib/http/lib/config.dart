@@ -12,12 +12,19 @@ const PROXY_ENABLE = false;
 const PROXY_IP = '192.168.2.237';
 const PROXY_PORT = 8888;
 
-const HTTP_DEBUG_LOG = false;
+const HTTP_REQUEST_LOG = true;
+const HTTP_REQUEST_HEADER_LOG = true;
+const HTTP_REQUEST_BODY_LOG = true;
+
+const HTTP_RESPONSE_HEADER_LOG = true;
+const HTTP_RESPONSE_BODY_LOG = true;
+const HTTP_ERROR_LOG = true;
+
 
 const IM_BASE_URL = 'https://api.indochat.net/';
 
 const RETRY_API_NUM = 2;
-const RETRY_S = 3;
+const RETRY_S = 5;
 
 /// 全局配置
 class Config {

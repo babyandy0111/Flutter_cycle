@@ -64,10 +64,10 @@ class _MyAppState extends State<MyApp> {
                     SpUtil().setDeviceUid("123456");
                     SpUtil().setPinCode("123456");
                     SpUtil().setUserId(501);
-                    SpUtil().refreshToken();
-                    SpUtil().getToken().then((token) => print(token));
+                    // SpUtil().refreshToken();
+                    // SpUtil().getToken().then((token) => print(token));
                   },
-                  child: Text("refreshToken poet請求")),
+                  child: Text("set refreshToken poet請求")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
@@ -91,43 +91,42 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  void initState() {
+  Future<void> initState() {
     super.initState();
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
-
         _serialiseAndNavigate(message);
-
         setState(() {
           _messageText = "Push Messaging message: $message";
         });
         print("onMessage: $message");
       },
       onLaunch: (Map<String, dynamic> message) async {
+        _serialiseAndNavigate(message);
         setState(() {
           _messageText = "Push Messaging message: $message";
         });
         print("onLaunch: $message");
       },
       onResume: (Map<String, dynamic> message) async {
+        _serialiseAndNavigate(message);
         setState(() {
           _messageText = "Push Messaging message: $message";
         });
         print("onResume: $message");
       },
-      /*onBackgroundMessage: (Map<String, dynamic> message) async {
-        setState(() {
-          _messageText = "Push Messaging message: $message";
-        });
-        print("onBackgroundMessage: $message");
-      },*/
     );
     _firebaseMessaging.requestNotificationPermissions(const IosNotificationSettings(sound: true, badge: true, alert: true));
     _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
     });
-    _firebaseMessaging.getToken().then((String token) {
+
+    _firebaseMessaging.getToken().then((String token) async {
       assert(token != null);
+      String device_token = await SpUtil().getDeviceToken();
+      if (device_token != token){
+        await SpUtil().setDeviceToken(token);
+      }
       setState(() {
         _homeScreenText = "Push Messaging token: $token";
       });
