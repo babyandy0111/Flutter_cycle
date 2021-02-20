@@ -1,4 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:device_info/device_info.dart';
+
+import '../../http/entitys/Token_post_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/token.dart' as tokenService;
 
@@ -57,7 +61,7 @@ class SpUtil {
   }
 
   Future<bool> setUserId(user_id) async {
-    return _prefs.setInt('user_id', user_id);
+    return _prefs.setString('user_id', user_id);
   }
 
   Future<bool> setPinCode(pincode) async {
@@ -72,12 +76,53 @@ class SpUtil {
     return _prefs.setString('device_token', device_token);
   }
 
+  Future<String> getUserId() async {
+    return _prefs.getString('user_id');
+  }
+
+  Future<String> getPlatform() async {
+    return _prefs.getString('platform');
+  }
+
+  Future<String> getSDKVersion() async {
+    return _prefs.getString('sdk_version');
+  }
+
+  Future<void> setPlatform() async {
+
+    if (Platform.isAndroid) {
+      var androidInfo = await DeviceInfoPlugin().androidInfo;
+      var release = androidInfo.version.release;
+      var sdkInt = androidInfo.version.sdkInt;
+      var manufacturer = androidInfo.manufacturer;
+      var model = androidInfo.model;
+      print('Android $release (SDK $sdkInt), $manufacturer $model');
+      // Android 9 (SDK 28), Xiaomi Redmi Note 7
+      _prefs.setString('sdk_version', release);
+      return _prefs.setString('platform', 'A');
+    }
+
+    if (Platform.isIOS) {
+      var iosInfo = await DeviceInfoPlugin().iosInfo;
+      var systemName = iosInfo.systemName;
+      var version = iosInfo.systemVersion;
+      var name = iosInfo.name;
+      var model = iosInfo.model;
+      print('$systemName $version, $name $model');
+      // iOS 13.1, iPhone 11 Pro Max iPhone
+      _prefs.setString('sdk_version', version);
+      return _prefs.setString('platform', 'I');
+    }
+
+    return _prefs.setString('platform', '');
+  }
+
   Future<String> refreshToken() async {
-    String device_uid = _prefs.getString("device_uid");
-    String pincode = _prefs.getString("pincode");
-    int user_id = _prefs.getInt("user_id");
-    var p = {"device_uid": device_uid, "pincode": pincode, "user_id": user_id};
-    await tokenService.refreshToken(p).then((value) {
+    TokenPostEntity p = TokenPostEntity();
+    p.pincode =  _prefs.getString("pincode");
+    p.deviceUid = _prefs.getString("device_uid");
+    p.userId = _prefs.getInt("user_id");
+    await tokenService.refreshToken(p.toJson()).then((value) {
       setToken(value);
     });
   }

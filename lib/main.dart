@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/http/services/config.dart';
 import 'package:flutter_cycle/pn2.dart';
 import 'http/entitys/receive.dart';
 import 'http/lib/sp.dart';
@@ -13,7 +14,13 @@ void main() async {
   HttpUtils.init(
     baseUrl: IM_BASE_URL,
   );
+
   await SpUtil.init();
+  SpUtil().setPlatform();
+  SpUtil().setDeviceUid("123456");
+  SpUtil().setPinCode("123456");
+  SpUtil().setUserId("501");
+
   // PushNotificationsManager().init();
   runApp(MyApp());
 }
@@ -56,19 +63,15 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.amber,
                   onPressed: () {
                     getUser();
-                    getUser();
+                    // getUser();
                   },
                   child: Text("get user api 請求")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () async {
-                    SpUtil().setDeviceUid("123456");
-                    SpUtil().setPinCode("123456");
-                    SpUtil().setUserId(501);
-                    // SpUtil().refreshToken();
-                    // SpUtil().getToken().then((token) => print(token));
+                    getConfig();
                   },
-                  child: Text("set refreshToken poet請求")),
+                  child: Text("get config get請求")),
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
