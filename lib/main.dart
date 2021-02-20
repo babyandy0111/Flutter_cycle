@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/http/services/config.dart';
-import 'package:flutter_cycle/pn2.dart';
-import 'http/entitys/receive.dart';
+import 'http/entitys/user_entity.dart';
 import 'http/lib/sp.dart';
 import 'http/services/user.dart';
 import 'http/lib/http_utils.dart';
@@ -52,18 +49,16 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               // LessBox(Colors.red),
-              // LessBox(Colors.yellow),
-              // LessBox(Colors.blue),
               // Box(Colors.red),
-              // Box(Colors.yellow),
-              // Box(Colors.blue),
               // Cycle(),
               // KeyBox(),
               FlatButton(
                   color: Colors.amber,
-                  onPressed: () {
-                    getUser();
-                    // getUser();
+                  onPressed: () async {
+                    UserEntity data = await getUser();
+                    setState(() {
+                      _messageText = data.nickname;
+                    });
                   },
                   child: Text("get user api 請求")),
               FlatButton(

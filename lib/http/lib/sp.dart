@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:device_info/device_info.dart';
 
-import '../../http/entitys/Token_post_entity.dart';
+import '../../http/entitys/token_post_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/token.dart' as tokenService;
 
 /// local cache
+/// https://zhuanlan.zhihu.com/p/133924017
 class SpUtil {
   static SpUtil _instance = new SpUtil._();
 

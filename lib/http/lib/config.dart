@@ -12,13 +12,13 @@ const PROXY_ENABLE = false;
 const PROXY_IP = '192.168.2.237';
 const PROXY_PORT = 8888;
 
-const HTTP_REQUEST_LOG = true;
-const HTTP_REQUEST_HEADER_LOG = true;
-const HTTP_REQUEST_BODY_LOG = true;
+const HTTP_REQUEST_LOG = false;
+const HTTP_REQUEST_HEADER_LOG = false;
+const HTTP_REQUEST_BODY_LOG = false;
 
-const HTTP_RESPONSE_HEADER_LOG = true;
-const HTTP_RESPONSE_BODY_LOG = true;
-const HTTP_ERROR_LOG = true;
+const HTTP_RESPONSE_HEADER_LOG = false;
+const HTTP_RESPONSE_BODY_LOG = false;
+const HTTP_ERROR_LOG = false;
 
 const int CONNECT_TIMEOUT = 30000;
 const int RECEIVE_TIMEOUT = 30000;
