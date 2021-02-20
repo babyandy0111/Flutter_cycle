@@ -36,7 +36,7 @@ dependencies:
   dio: ^3.0.10
 
   #  http 快取 https://pub.dev/packages/dio_http_cache#-installing-tab-
-  #  dio_http_cache: ^0.2.5
+  # dio_http_cache: ^0.2.11
 
   dio_retry_fixed: ^0.1.11-beta
 
