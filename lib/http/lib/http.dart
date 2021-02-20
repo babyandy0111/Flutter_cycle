@@ -13,17 +13,12 @@ import 'error_interceptor.dart';
 import '../lib/net_cache.dart';
 
 class Http {
-  ///超時時間
-  static const int CONNECT_TIMEOUT = 30000;
-  static const int RECEIVE_TIMEOUT = 30000;
-
   static Http _instance = Http._internal();
 
   factory Http() => _instance;
 
   Dio dio;
   CancelToken _cancelToken = new CancelToken();
-  // Config _global = new Config();
 
   Http._internal() {
     if (dio == null) {

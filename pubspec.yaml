@@ -30,7 +30,7 @@ dependencies:
 
   # A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is
   # very similar with flutter widget code.
-  dynamic_widget: ^3.0.3
+  dynamic_widget: ^3.0.5
 
   # http https://pub.dev/packages/dio#-installing-tab-
   dio: ^3.0.10

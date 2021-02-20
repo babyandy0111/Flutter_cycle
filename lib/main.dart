@@ -56,6 +56,7 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.amber,
                   onPressed: () {
                     getUser();
+                    getUser();
                   },
                   child: Text("get user api 請求")),
               FlatButton(

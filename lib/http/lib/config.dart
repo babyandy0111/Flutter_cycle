@@ -20,6 +20,8 @@ const HTTP_RESPONSE_HEADER_LOG = true;
 const HTTP_RESPONSE_BODY_LOG = true;
 const HTTP_ERROR_LOG = true;
 
+const int CONNECT_TIMEOUT = 30000;
+const int RECEIVE_TIMEOUT = 30000;
 
 const IM_BASE_URL = 'https://api.indochat.net/';
 
