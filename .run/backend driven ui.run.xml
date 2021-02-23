@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="backend driven ui" type="FlutterRunConfigurationType" factoryName="Flutter">
-    <option name="filePath" value="$PROJECT_DIR$/lib/demo/backend_driven_ui.dart" />
-    <method v="2" />
-  </configuration>
-</component>

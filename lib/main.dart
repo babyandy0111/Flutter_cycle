@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/http/services/config.dart';
-import 'http/entitys/user_entity.dart';
-import 'http/lib/sp.dart';
-import 'http/services/user.dart';
-import 'http/lib/http_utils.dart';
-import 'http/lib/config.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'pages/default_demo/default_demo.dart';
+import 'routes.dart';
+import 'core/http/sp.dart';
+import 'core/http/http_utils.dart';
+import 'core/http/config.dart';
+import 'theme/theme.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpUtils.init(
@@ -33,110 +33,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  String _homeScreenText = "Waiting for token...";
-  String _messageText = "Waiting for message...";
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Andy Flutter 教室'),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              // LessBox(Colors.red),
-              // Box(Colors.red),
-              // Cycle(),
-              // KeyBox(),
-              FlatButton(
-                  color: Colors.amber,
-                  onPressed: () async {
-                    UserEntity data = await getUser();
-                    setState(() {
-                      _messageText = data.nickname;
-                    });
-                  },
-                  child: Text("get user api 請求")),
-              FlatButton(
-                  color: Colors.amber,
-                  onPressed: () async {
-                    getConfig();
-                  },
-                  child: Text("get config get請求")),
-              FlatButton(
-                  color: Colors.amber,
-                  onPressed: () {
-                    String token = 'jjjjj';
-                    SpUtil().setToken(token).then((value) => print(value));
-                  },
-                  child: Text("set local of error token")),
-              FlatButton(
-                  color: Colors.amber,
-                  onPressed: () {
-                    SpUtil().getToken().then((token) => print(token));
-                  },
-                  child: Text("get local token ")),
-              Text(_homeScreenText),
-              Text(_messageText),
-            ],
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: theme(),
+      initialRoute: DefaultDemo.routeName,
+      routes: routes,
     );
-  }
-
-  @override
-  Future<void> initState() {
-    super.initState();
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        _serialiseAndNavigate(message);
-        setState(() {
-          _messageText = "Push Messaging message: $message";
-        });
-        print("onMessage: $message");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        _serialiseAndNavigate(message);
-        setState(() {
-          _messageText = "Push Messaging message: $message";
-        });
-        print("onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        _serialiseAndNavigate(message);
-        setState(() {
-          _messageText = "Push Messaging message: $message";
-        });
-        print("onResume: $message");
-      },
-    );
-    _firebaseMessaging.requestNotificationPermissions(const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
-      print("Settings registered: $settings");
-    });
-
-    _firebaseMessaging.getToken().then((String token) async {
-      assert(token != null);
-      String device_token = await SpUtil().getDeviceToken();
-      if (device_token != token){
-        await SpUtil().setDeviceToken(token);
-      }
-      setState(() {
-        _homeScreenText = "Push Messaging token: $token";
-      });
-      print(_homeScreenText);
-    });
-  }
-
-  void _serialiseAndNavigate(Map<String, dynamic> message) {
-    var notificationData = message['data'];
-    var view = notificationData['view'];
-    print(notificationData);
   }
 }
 

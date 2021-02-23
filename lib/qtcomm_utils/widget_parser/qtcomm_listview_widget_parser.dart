@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_cycle/pages/backend_drive_ui_demo/components/body.dart';
 import 'package:http/http.dart' as http;
 import '../../qtcomm_utils/qtcomm_utils.dart';
-import '../../demo/backend_driven_ui.dart';
 
 class QTListViewWidgetParser extends WidgetParser {
   @override
