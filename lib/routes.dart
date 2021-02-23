@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
+import 'package:flutter_cycle/pages/login_success/login_success.dart';
+import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
+import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
 import 'pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'pages/default_demo/default_demo.dart';
 import 'pages/http_demo/http_demo.dart';
@@ -16,4 +20,9 @@ final Map<String, WidgetBuilder> routes = {
   BackendDriveUIDemo.routeName:(context) => BackendDriveUIDemo(),
   CreateWtoJson.routeName:(context) => CreateWtoJson(),
   DefaultDemo.routeName:(context) => DefaultDemo(),
+
+  SignUp.routeName: (context) => SignUp(),
+  SignIn.routeName: (context) => SignIn(),
+  LoginSuccess.routeName: (context) => LoginSuccess(),
+  ForgotPassword.routeName: (context) => ForgotPassword(),
 };

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cycle/pages/backend_drive_ui_demo/backend_driven_ui.dart';
 import 'package:flutter_cycle/pages/box_demo/box_demo.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
+import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
+import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
+import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -46,6 +49,24 @@ class _BodyState extends State<Body> {
                 Navigator.pushNamed(context, CreateWtoJson.routeName);
               },
               child: Text("create widget demo")),
+          FlatButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.pushNamed(context, SignIn.routeName);
+              },
+              child: Text("sign in")),
+          FlatButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.pushNamed(context, SignUp.routeName);
+              },
+              child: Text("sign up")),
+          FlatButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.pushNamed(context, ForgotPassword.routeName);
+              },
+              child: Text("forget password")),
         ],
       ),
     );
