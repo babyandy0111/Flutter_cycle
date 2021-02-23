@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_cycle/pages/backend_drive_ui_demo/components/body.dart';
 import 'package:http/http.dart' as http;
-import '../../qtcomm_utils/qtcomm_utils.dart';
+import '../qtcomm_utils.dart';
 
 class QTListViewWidgetParser extends WidgetParser {
   @override

@@ -1,9 +1,9 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../qtcomm_utils/widget_parser/qtcomm_container_widget_parser.dart';
-import '../../../qtcomm_utils/widget_parser/qtcomm_listview_widget_parser.dart';
-import '../../../qtcomm_utils/widget_parser/qtcomm_listtitle_widget_parser.dart';
+import '../../../core/qtcomm_utils/widget_parser/qtcomm_container_widget_parser.dart';
+import '../../../core/qtcomm_utils/widget_parser/qtcomm_listview_widget_parser.dart';
+import '../../../core/qtcomm_utils/widget_parser/qtcomm_listtitle_widget_parser.dart';
 
 class Body extends StatelessWidget {
   @override
