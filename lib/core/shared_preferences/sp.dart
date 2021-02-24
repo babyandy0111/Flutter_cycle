@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:device_info/device_info.dart';
 
-import '../../data/entitys/request/token_post_entity.dart';
+import '../../data/models/request/token_post_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/services/token.dart' as tokenService;
 

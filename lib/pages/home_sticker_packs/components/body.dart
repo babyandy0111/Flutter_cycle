@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/bloc/sticker.dart';
-import 'package:flutter_cycle/data/entitys/response/home_sticker_packs_entity.dart';
+import 'package:flutter_cycle/data/models/response/home_sticker_packs_entity.dart';
 
 class Body extends StatefulWidget {
   @override

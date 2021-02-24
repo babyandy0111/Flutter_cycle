@@ -1,12 +1,8 @@
-import 'package:flutter_cycle/data/entitys/response/home_sticker_packs_entity.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_cycle/data/models/response/home_sticker_packs_entity.dart';
 import 'package:flutter_cycle/data/repositorys/sticker_repository.dart';
 import '../core/http/api_response.dart';
 import 'package:rxdart/rxdart.dart';
-
-// Future<HomeStickerPacksEntity> getHomeStickerPacks() async {
-//   ApiResponse<HomeStickerPacksEntity> entity = await StickerRepository.getHomeStickerPacks();
-//   return entity.data;
-// }
 
 class HomeStickerPacksBloc {
 
@@ -17,6 +13,8 @@ class HomeStickerPacksBloc {
     _subject.sink.add(entity.data);
   }
 
+  void drainStream(){ _subject.value = null; }
+  @mustCallSuper
   dispose() {
     _subject.close();
   }

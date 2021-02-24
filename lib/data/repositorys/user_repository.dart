@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_cycle/core/config.dart';
 import '../../core/http/api_response.dart';
 import '../../core/http/http_utils.dart';
-import '../entitys/response/user_entity.dart';
+import '../models/response/user_entity.dart';
 
 class UserRepository {
   static String domain = IM_BASE_URL;

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_cycle/core/config.dart';
-import '../entitys/response/config_entity.dart';
+import '../models/response/config_entity.dart';
 import '../../core/shared_preferences/sp.dart';
-import '../entitys/request/config_get_entity.dart';
+import '../models/request/config_get_entity.dart';
 import '../../core/http/http_utils.dart';
 import '../../core/http/api_response.dart';
 
