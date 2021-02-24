@@ -77,6 +77,18 @@ class SpUtil {
     return _prefs.setString('device_token', device_token);
   }
 
+  Future<bool> setAPPVersion(app_version) async {
+    return _prefs.setString('app_version', app_version);
+  }
+
+  Future<bool> setAPPLang(lang) async {
+    return _prefs.setString('lang', lang);
+  }
+
+  Future<String> getAPPLang() async {
+    return _prefs.getString('lang');
+  }
+
   Future<String> getUserId() async {
     return _prefs.getString('user_id');
   }
@@ -87,6 +99,10 @@ class SpUtil {
 
   Future<String> getSDKVersion() async {
     return _prefs.getString('sdk_version');
+  }
+
+  Future<String> getAPPVersion() async {
+    return _prefs.getString('app_version');
   }
 
   Future<void> setPlatform() async {

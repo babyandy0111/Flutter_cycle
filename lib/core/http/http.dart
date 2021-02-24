@@ -5,9 +5,9 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_retry_fixed/dio_retry_fixed.dart';
 import 'package:flutter_cycle/core/http/refresh_token_interceptor.dart';
-import '../http/sp.dart';
+import '../shared_preferences/sp.dart';
 import '../http/retry_interceptor.dart';
-import '../../core/http/config.dart';
+import '../config.dart';
 import '../../core/http/connectivity_request_retrier.dart';
 import '../../core/http/error_interceptor.dart';
 import '../http/net_cache.dart';
@@ -118,8 +118,8 @@ class Http {
   Future<Map<String, dynamic>> getAuthorizationHeader() async {
     // todo 這邊應該要改成動態, 改天在加
     Map<String, dynamic> headers = {
-      "App-Version": "2.10.0",
-      "Accept-Language": "en",
+      "App-Version": await SpUtil().getAPPVersion(),
+      "Accept-Language": await SpUtil().getAPPLang(),
       "Bearer":"",
     };
     await SpUtil().getToken().then((String token) {

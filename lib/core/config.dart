@@ -29,6 +29,9 @@ const STICKER_BASE_URL = 'https://sticker.indochat.net';
 const RETRY_API_NUM = 2;
 const RETRY_S = 5;
 
+const APP_VERSION = '2.10.0';
+const APP_LANG = 'en';
+
 /// 全局配置
 class Config {
 

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'config.dart';
+import '../config.dart';
 import 'http.dart';
 
 class HttpUtils {

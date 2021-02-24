@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/default_demo/default_demo.dart';
 import 'routes.dart';
-import 'core/http/sp.dart';
+import 'core/shared_preferences/sp.dart';
 import 'core/http/http_utils.dart';
-import 'core/http/config.dart';
+import 'core/config.dart';
 import 'theme/theme.dart';
 
 void main() async {
@@ -15,6 +15,8 @@ void main() async {
   SpUtil().setDeviceUid("123456");
   SpUtil().setPinCode("123456");
   SpUtil().setUserId("501");
+  SpUtil().setAPPVersion(APP_VERSION);
+  SpUtil().setAPPLang(APP_LANG);
 
   // PushNotificationsManager().init();
   runApp(MyApp());

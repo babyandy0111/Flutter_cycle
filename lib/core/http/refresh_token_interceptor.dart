@@ -3,7 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_retry_fixed/dio_retry_fixed.dart';
 import 'package:flutter/material.dart';
-import 'sp.dart';
+import '../shared_preferences/sp.dart';
 
 class RefreshTokenInterceptor extends Interceptor {
   final Dio dio;
