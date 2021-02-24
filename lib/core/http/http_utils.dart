@@ -23,6 +23,10 @@ class HttpUtils {
     Http().cancelRequests(token: token);
   }
 
+  static void setBaseURL(String baseUrl) {
+    Http().init(baseUrl: baseUrl,);
+  }
+
   static Future get(
     String path, {
     Map<String, dynamic> params,

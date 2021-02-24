@@ -35,6 +35,8 @@ dependencies:
   # http https://pub.dev/packages/dio#-installing-tab-
   dio: ^3.0.10
 
+  rxdart: ^0.23.1
+
   #  http 快取 https://pub.dev/packages/dio_http_cache#-installing-tab-
   # dio_http_cache: ^0.2.11
 
@@ -88,7 +90,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/images/
     - assets/icons/
 
   #   - images/a_dot_burr.jpeg

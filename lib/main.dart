@@ -8,9 +8,7 @@ import 'theme/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  HttpUtils.init(
-    baseUrl: IM_BASE_URL,
-  );
+  HttpUtils.init();
 
   await SpUtil.init();
   SpUtil().setPlatform();

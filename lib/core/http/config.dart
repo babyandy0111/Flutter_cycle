@@ -1,5 +1,5 @@
 // 是否取用緩存
-const CACHE_ENABLE = true;
+const CACHE_ENABLE = false;
 
 // 緩存時間(秒)
 const CACHE_MAXAGE = 1000;
@@ -12,18 +12,19 @@ const PROXY_ENABLE = false;
 const PROXY_IP = '192.168.2.237';
 const PROXY_PORT = 8888;
 
-const HTTP_REQUEST_LOG = false;
-const HTTP_REQUEST_HEADER_LOG = false;
-const HTTP_REQUEST_BODY_LOG = false;
+const HTTP_REQUEST_LOG = true;
+const HTTP_REQUEST_HEADER_LOG = true;
+const HTTP_REQUEST_BODY_LOG = true;
 
-const HTTP_RESPONSE_HEADER_LOG = false;
-const HTTP_RESPONSE_BODY_LOG = false;
-const HTTP_ERROR_LOG = false;
+const HTTP_RESPONSE_HEADER_LOG = true;
+const HTTP_RESPONSE_BODY_LOG = true;
+const HTTP_ERROR_LOG = true;
 
 const int CONNECT_TIMEOUT = 30000;
 const int RECEIVE_TIMEOUT = 30000;
 
-const IM_BASE_URL = 'https://api.indochat.net/';
+const IM_BASE_URL = 'https://api.indochat.net';
+const STICKER_BASE_URL = 'https://sticker.indochat.net';
 
 const RETRY_API_NUM = 2;
 const RETRY_S = 5;

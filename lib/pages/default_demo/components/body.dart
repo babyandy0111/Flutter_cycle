@@ -3,6 +3,7 @@ import 'package:flutter_cycle/pages/backend_drive_ui_demo/backend_driven_ui.dart
 import 'package:flutter_cycle/pages/box_demo/box_demo.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
+import 'package:flutter_cycle/pages/home_sticker_packs/home_sticker_packs.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
 import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
@@ -67,6 +68,12 @@ class _BodyState extends State<Body> {
                 Navigator.pushNamed(context, ForgotPassword.routeName);
               },
               child: Text("forget password")),
+          FlatButton(
+              color: Colors.amber,
+              onPressed: () {
+                Navigator.pushNamed(context, HomeStickerPacks.routeName);
+              },
+              child: Text("sticker home")),
         ],
       ),
     );

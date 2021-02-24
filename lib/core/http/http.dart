@@ -116,9 +116,14 @@ class Http {
 
   /// 讀取本地配置
   Future<Map<String, dynamic>> getAuthorizationHeader() async {
-    var headers;
+    // todo 這邊應該要改成動態, 改天在加
+    Map<String, dynamic> headers = {
+      "App-Version": "2.10.0",
+      "Accept-Language": "en",
+      "Bearer":"",
+    };
     await SpUtil().getToken().then((String token) {
-      headers = {"Bearer": '$token'};
+      headers['Bearer'] = token;
     });
     return headers;
   }
