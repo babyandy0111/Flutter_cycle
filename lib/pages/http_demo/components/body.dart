@@ -45,7 +45,19 @@ class _BodyState extends State<Body> {
               FlatButton(
                   color: Colors.amber,
                   onPressed: () {
-                    SpUtil().getToken().then((token) => showSnackbar("local token: " + token));
+                    String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE2ODI4MjU0LCJpYXQiOjE2MTQyMzYyNTQsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.SvtmZFk4iKLyR-36zSj9PBTCwo3IGzHxgSgOb1BPpMk';
+                    SpUtil().setToken(token).then((value) => showSnackbar("set local ok token: " + value.toString()));
+                  },
+                  child: Text("set local of ok token")),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () async {
+                    String duid = await SpUtil().getDeviceUid();
+                    String pin = await SpUtil().getPinCode();
+                    int uid = await SpUtil().getUserId();
+
+                    String localtoken = await SpUtil().getToken();
+                    showSnackbar("local:${duid}/${pin}/${uid}/${localtoken}");
                   },
                   child: Text("get local token ")),
             ],

@@ -62,7 +62,7 @@ class SpUtil {
   }
 
   Future<bool> setUserId(user_id) async {
-    return _prefs.setString('user_id', user_id);
+    return _prefs.setInt('user_id', user_id);
   }
 
   Future<bool> setPinCode(pincode) async {
@@ -89,8 +89,16 @@ class SpUtil {
     return _prefs.getString('lang');
   }
 
-  Future<String> getUserId() async {
-    return _prefs.getString('user_id');
+  Future<String> getPinCode() async {
+    return _prefs.getString('pincode');
+  }
+
+  Future<String> getDeviceUid() async {
+    return _prefs.getString('device_uid');
+  }
+
+  Future<int> getUserId() async {
+    return _prefs.getInt('user_id');
   }
 
   Future<String> getPlatform() async {

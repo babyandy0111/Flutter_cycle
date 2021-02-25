@@ -1,16 +1,16 @@
 class ConfigGetEntity {
-  String _userId;
+  int _userId;
   String _deviceType;
   String _sdkVersion;
 
-  ConfigGetEntity({String userId, String deviceType, String sdkVersion}) {
+  ConfigGetEntity({int userId, String deviceType, String sdkVersion}) {
     this._userId = userId;
     this._deviceType = deviceType;
     this._sdkVersion = sdkVersion;
   }
 
-  String get userId => _userId;
-  set userId(String userId) => _userId = userId;
+  int get userId => _userId;
+  set userId(int userId) => _userId = userId;
   String get deviceType => _deviceType;
   set deviceType(String deviceType) => _deviceType = deviceType;
   String get sdkVersion => _sdkVersion;

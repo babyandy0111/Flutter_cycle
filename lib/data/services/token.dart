@@ -3,7 +3,7 @@ import '../models/response/token_entity.dart';
 import '../repositorys/token_repository.dart';
 
 Future<String> refreshToken(Map<String, Object> p) async {
-  ApiResponse<TokenEntity> entity = await TokenRepository.refreshToken(p);
+  ApiResponse<TokenEntity> entity = await TokenRepository.refreshToken();
   var token = entity.data.token;
   // print(entity.data.token);
   // print(entity.data.expire_at);

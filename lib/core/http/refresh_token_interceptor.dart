@@ -3,7 +3,11 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_retry_fixed/dio_retry_fixed.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/data/models/request/token_post_entity.dart';
+import 'package:flutter_cycle/data/models/response/token_entity.dart';
+import 'package:flutter_cycle/data/repositorys/token_repository.dart';
 import '../shared_preferences/sp.dart';
+import 'api_response.dart';
 
 class RefreshTokenInterceptor extends Interceptor {
   final Dio dio;
@@ -51,11 +55,12 @@ class RefreshTokenInterceptor extends Interceptor {
         dio.interceptors.responseLock.lock();
         dio.interceptors.errorLock.lock();
 
-        print("換token");
-        await SpUtil().refreshToken();
-        String newToken = await SpUtil().getToken();
-        print("換好 token: ${newToken}");
+        ApiResponse<TokenEntity> entity = await TokenRepository.refreshToken();
+        var newToken = entity.data.token;
+        await SpUtil().setToken(newToken);
         ops.headers["Bearer"] = newToken;
+        print("換好 token: ${newToken}");
+
         print("解鎖");
         dio.unlock();
         dio.interceptors.requestLock.unlock();

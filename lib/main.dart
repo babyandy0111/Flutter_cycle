@@ -13,12 +13,12 @@ void main() async {
   HttpUtils.init();
 
   await SpUtil.init();
-  SpUtil().setPlatform();
-  SpUtil().setDeviceUid("123456");
-  SpUtil().setPinCode("123456");
-  SpUtil().setUserId("501");
-  SpUtil().setAPPVersion(APP_VERSION);
-  SpUtil().setAPPLang(APP_LANG);
+  await SpUtil().setPlatform();
+  await SpUtil().setDeviceUid("123456");
+  await SpUtil().setPinCode("123456");
+  await SpUtil().setUserId(501);
+  await SpUtil().setAPPVersion(APP_VERSION);
+  await SpUtil().setAPPLang(APP_LANG);
 
   await Firebase.initializeApp();
   // PushNotificationsManager().init();

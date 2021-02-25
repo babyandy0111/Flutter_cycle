@@ -1,12 +1,12 @@
 class HomeStickerPacksGetEntity {
-  String _userId;
+  int _userId;
 
-  HomeStickerPacksGetEntity({String userId}) {
+  HomeStickerPacksGetEntity({int userId}) {
     this._userId = userId;
   }
 
-  String get userId => _userId;
-  set userId(String userId) => _userId = userId;
+  int get userId => _userId;
+  set userId(int userId) => _userId = userId;
 
   HomeStickerPacksGetEntity.fromJson(Map<String, dynamic> json) {
     _userId = json['user_id'];

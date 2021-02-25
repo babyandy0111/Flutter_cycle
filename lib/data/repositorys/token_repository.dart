@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_cycle/core/config.dart';
+import 'package:flutter_cycle/core/shared_preferences/sp.dart';
+import 'package:flutter_cycle/data/models/request/token_post_entity.dart';
 import '../../core/http/api_response.dart';
-import '../../core/http/http_utils.dart';
 import '../models/response/token_entity.dart';
 
 class TokenRepository {
-  static Future<ApiResponse<TokenEntity>> refreshToken(p) async {
+  static Future<ApiResponse<TokenEntity>> refreshToken() async {
     String path = IM_BASE_URL + '/v1/api-token';
     try {
       BaseOptions options = new BaseOptions(
-        baseUrl: IM_BASE_URL,
         connectTimeout: CONNECT_TIMEOUT,
         receiveTimeout: RECEIVE_TIMEOUT,
         headers: {},
@@ -25,7 +25,12 @@ class TokenRepository {
         error: HTTP_ERROR_LOG,
       ));
 
-      final response = await tokenDio.post(path, data: p);
+      TokenPostEntity p = TokenPostEntity();
+      p.pincode = await SpUtil().getPinCode();
+      p.deviceUid = await SpUtil().getDeviceUid();
+      p.userId = await SpUtil().getUserId();
+
+      var response = await tokenDio.post(path, data: p);
       var data = TokenEntity.fromJson(response.data);
       return ApiResponse.completed(data);
     } on DioError catch (e) {
