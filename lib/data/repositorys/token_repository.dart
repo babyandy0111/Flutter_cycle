@@ -7,7 +7,7 @@ import '../models/response/token_entity.dart';
 
 class TokenRepository {
   static Future<ApiResponse<TokenEntity>> refreshToken() async {
-    String path = IM_BASE_URL + '/v1/api-token';
+    String path = TOKEN_BASE_URL + '/v1/api-token';
     try {
       BaseOptions options = new BaseOptions(
         connectTimeout: CONNECT_TIMEOUT,
