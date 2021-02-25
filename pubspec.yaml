@@ -66,15 +66,15 @@ dependencies:
   device_info: ^1.0.0
   flutter_svg: ^0.18.0 # help us to use SVG in our app
 
-  aws_s3: ^0.1.1+hotfix.5
-  file_picker: ^1.4.3+1
+  #aws_s3: ^0.1.1+hotfix.5
+  #file_picker: ^1.4.3+1
 
   pin_entry_text_field: ^0.1.4
 
-  esc_pos_utils: ^1.0.0
-  hex: ^0.1.2
-  gbk_codec: ^0.3.2
-  image: ^2.1.4
+  #esc_pos_utils: ^1.0.0
+  #hex: ^0.1.2
+  #gbk_codec: ^0.3.2
+  #image: ^2.1.4
 
 dev_dependencies:
   flutter_test:

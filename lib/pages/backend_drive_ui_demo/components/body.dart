@@ -48,7 +48,7 @@ class Body extends StatelessWidget {
 
   Future<Widget> _buildWidgetFromApi(BuildContext context) async {
 
-    var response = await rootBundle.loadString('assets/list.json');
+    var response = await rootBundle.loadString('assets/hello-word.json');
     await Future.delayed(Duration(seconds: 2));
     DynamicWidgetBuilder.addParser(QTListViewWidgetParser());
     DynamicWidgetBuilder.addParser(QTListTileWidgetParser());

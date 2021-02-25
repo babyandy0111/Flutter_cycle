@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+// import 'package:sms_autofill/sms_autofill.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class _BodyState extends State<Body> {
                         onPressed: () async => {
                           _phoneNumberController.text = await _autoFill.hint
                         },
-                        color: Colors.greenAccent[700]),
+                        color: Colors.green),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),

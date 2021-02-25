@@ -52,11 +52,11 @@ class _BodyState extends State<Body> {
           child: Column(
             children: <Widget>[
               Center(
-                child: Text(_homeScreenText),
+                child: SelectableText(_homeScreenText),
               ),
               Row(children: <Widget>[
                 Expanded(
-                  child: Text(_messageText),
+                  child: SelectableText(_messageText),
                 ),
               ])
             ],
