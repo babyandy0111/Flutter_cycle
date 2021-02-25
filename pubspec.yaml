@@ -54,9 +54,11 @@ dependencies:
   json_serializable: ^2.2.0
 
   # firebase
-  firebase_core:
+  # firebase_core:
+  firebase_core : ^0.5.0
+  firebase_auth: ^0.18.4+1
   firebase_messaging: ^7.0.3
-
+  sms_autofill: ^1.2.6
   # flutter_local_notifications: ^3.0.1+7
 
   shared_preferences: ^0.5.12+4
@@ -66,6 +68,8 @@ dependencies:
 
   aws_s3: ^0.1.1+hotfix.5
   file_picker: ^1.4.3+1
+
+  pin_entry_text_field: ^0.1.4
 
   esc_pos_utils: ^1.0.0
   hex: ^0.1.2

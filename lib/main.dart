@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 import 'pages/default_demo/default_demo.dart';
 import 'routes.dart';
 import 'core/shared_preferences/sp.dart';
@@ -18,6 +21,7 @@ void main() async {
   SpUtil().setAPPVersion(APP_VERSION);
   SpUtil().setAPPLang(APP_LANG);
 
+  await Firebase.initializeApp();
   // PushNotificationsManager().init();
   runApp(MyApp());
 }
