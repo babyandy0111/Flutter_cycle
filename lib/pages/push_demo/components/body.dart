@@ -6,6 +6,20 @@ class Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
+Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) {
+  if (message.containsKey('data')) {
+    // Handle data message
+    final dynamic data = message['data'];
+  }
+
+  if (message.containsKey('notification')) {
+    // Handle notification message
+    final dynamic notification = message['notification'];
+  }
+
+  // Or do other work.
+}
+
 class _BodyState extends State<Body> {
   String _homeScreenText = "Waiting for token...";
   String _messageText = "Waiting for message...";
@@ -32,6 +46,7 @@ class _BodyState extends State<Body> {
         });
         print("onResume: $message");
       },
+      onBackgroundMessage: myBackgroundMessageHandler,
     );
     _firebaseMessaging.requestNotificationPermissions(const IosNotificationSettings(sound: true, badge: true, alert: true));
     _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
