@@ -187,23 +187,23 @@ class _ListViewWidgetState extends State<ListViewWidget> {
 [
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
 ]          
       """;

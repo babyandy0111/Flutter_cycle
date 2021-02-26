@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/default_demo/default_demo.dart';
@@ -7,6 +6,7 @@ import 'core/shared_preferences/sp.dart';
 import 'core/http/http_utils.dart';
 import 'core/config.dart';
 import 'theme/theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +21,9 @@ void main() async {
   await SpUtil().setAPPLang(APP_LANG);
 
   await Firebase.initializeApp();
+  await DotEnv.load(fileName: ".env");
+
+  print(DotEnv.env['IM_BASE_URL']);
   // PushNotificationsManager().init();
   runApp(MyApp());
 }

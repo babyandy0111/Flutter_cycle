@@ -281,7 +281,7 @@ var assetImageJson = '''
   "alignment": "center",
   "child": {
     "type": "AssetImage",
-    "name": "assets/vip.png"
+    "name": "assets/images/vip.png"
   }
 }
 
@@ -327,83 +327,83 @@ var gridviewJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
     
   ]
@@ -418,83 +418,83 @@ var listviewJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
     
   ]
@@ -508,83 +508,83 @@ var pageviewJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
     
   ]
@@ -646,83 +646,83 @@ var listviewLoadmoreJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
     
   ]
@@ -744,59 +744,59 @@ var gridviewloadmoreJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     }
     
   ]
@@ -811,7 +811,7 @@ var stackJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "Positioned",
@@ -819,7 +819,7 @@ var stackJson = '''
       "left": 50.0,
       "child":{
         "type": "AssetImage",
-        "name": "assets/vip.png"
+        "name": "assets/images/vip.png"
       }
     }
   ]
@@ -835,7 +835,7 @@ var indexedstackJson = '''
   "children":[
     {
       "type": "AssetImage",
-      "name": "assets/vip.png"
+      "name": "assets/images/vip.png"
     },
     {
       "type": "Positioned",
@@ -843,7 +843,7 @@ var indexedstackJson = '''
       "left": 50.0,
       "child":{
         "type": "AssetImage",
-        "name": "assets/vip.png"
+        "name": "assets/images/vip.png"
       }
     }
   ]
