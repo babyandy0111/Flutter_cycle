@@ -1,10 +1,18 @@
+import 'package:flutter_cycle/core/config.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import 'dart:io';
 
 Future<MqttClient> connect() async {
-  MqttServerClient client = MqttServerClient.withPort('mqx.indochat.net', 'flutter_client', 443);
+
+  int user_id = await SpUtil().getUserId();
+  String phone = await SpUtil().getPhone();
+  String token = await SpUtil().getToken();
+
+  print("${user_id}/${phone}/${token}");
+
+  MqttServerClient client = MqttServerClient.withPort(MQTT_URL, "${user_id}", 443);
   client.logging(on: true);
   client.onConnected = onConnected;
   client.onDisconnected = onDisconnected;
@@ -12,13 +20,16 @@ Future<MqttClient> connect() async {
   client.onSubscribed = onSubscribed;
   client.onSubscribeFail = onSubscribeFail;
   client.pongCallback = pong;
+  client.secure = true;
+
+
 
   final connMess = MqttConnectMessage()
-      .withClientIdentifier(await SpUtil().getUserId().toString())
-      .authenticateAs("phone", await SpUtil().getToken())
+      .withClientIdentifier("${user_id}")
+      .authenticateAs(phone, token)
       .keepAliveFor(60)
-      .withWillTopic('willtopic').withWillTopic('willtopic')
-      .withWillMessage('My Will message')
+      // .withWillTopic('willtopic').withWillTopic('willtopic')
+      // .withWillMessage('My Will message')
       .startClean()
       .withWillQos(MqttQos.atLeastOnce);
   client.connectionMessage = connMess;

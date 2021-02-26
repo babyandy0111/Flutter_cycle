@@ -16,6 +16,7 @@ void main() async {
   await SpUtil().setPlatform();
   await SpUtil().setDeviceUid("123456");
   await SpUtil().setPinCode("123456");
+  await SpUtil().setPhone("+886973701001");
   await SpUtil().setUserId(501);
   await SpUtil().setAPPVersion(APP_VERSION);
   await SpUtil().setAPPLang(APP_LANG);
@@ -23,7 +24,7 @@ void main() async {
   await Firebase.initializeApp();
   await DotEnv.load(fileName: ".env");
 
-  print(DotEnv.env['IM_BASE_URL']);
+  print(DotEnv.env['AWS_KEY']);
   // PushNotificationsManager().init();
   runApp(MyApp());
 }

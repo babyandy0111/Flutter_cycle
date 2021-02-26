@@ -69,6 +69,10 @@ class SpUtil {
     return _prefs.setString('pincode', pincode);
   }
 
+  Future<bool> setPhone(phone) async {
+    return _prefs.setString('phone', phone);
+  }
+
   Future<bool> setDeviceUid(device_uid) async {
     return _prefs.setString('device_uid', device_uid);
   }
@@ -99,6 +103,10 @@ class SpUtil {
 
   Future<int> getUserId() async {
     return _prefs.getInt('user_id');
+  }
+
+  Future<String> getPhone() async {
+    return _prefs.getString('phone');
   }
 
   Future<String> getPlatform() async {
