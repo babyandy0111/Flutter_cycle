@@ -7,6 +7,7 @@ import 'core/http/http_utils.dart';
 import 'core/config.dart';
 import 'theme/theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'bottom_navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +47,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      initialRoute: DefaultDemo.routeName,
+      home: BottomNavigation(),
+      initialRoute: '/',
       routes: routes,
     );
   }

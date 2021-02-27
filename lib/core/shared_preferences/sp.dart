@@ -129,7 +129,8 @@ class SpUtil {
       var sdkInt = androidInfo.version.sdkInt;
       var manufacturer = androidInfo.manufacturer;
       var model = androidInfo.model;
-      print('Android $release (SDK $sdkInt), $manufacturer $model');
+      var uuid = androidInfo.androidId;
+      print('Android $release (SDK $sdkInt), $manufacturer $model, (uuid $uuid)');
       // Android 9 (SDK 28), Xiaomi Redmi Note 7
       _prefs.setString('sdk_version', release);
       return _prefs.setString('platform', 'A');
@@ -141,7 +142,8 @@ class SpUtil {
       var version = iosInfo.systemVersion;
       var name = iosInfo.name;
       var model = iosInfo.model;
-      print('$systemName $version, $name $model');
+      var uuid = iosInfo.identifierForVendor;
+      print('$systemName $version, $name $model, uuid $uuid');
       // iOS 13.1, iPhone 11 Pro Max iPhone
       _prefs.setString('sdk_version', version);
       return _prefs.setString('platform', 'I');
