@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: theme(),
       home: BottomNavigation(),
-      initialRoute: '/',
+      // initialRoute: '/',
       routes: routes,
     );
   }

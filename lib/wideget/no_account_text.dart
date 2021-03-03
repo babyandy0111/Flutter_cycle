@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../theme/size_config.dart';
 import '../theme/constants.dart';
 
@@ -18,7 +19,7 @@ class NoAccountText extends StatelessWidget {
           style: TextStyle(fontSize: getProportionateScreenWidth(16)),
         ),
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, SignUp.routeName),
+          onTap: () => pushNewScreen(context, screen: SignUp()),
           child: Text(
             "Sign Up",
             style: TextStyle(

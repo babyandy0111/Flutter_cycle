@@ -6,6 +6,7 @@ import 'package:flutter_cycle/theme/size_config.dart';
 import 'package:flutter_cycle/wideget/custom_surfix_icon.dart';
 import 'package:flutter_cycle/wideget/default_button.dart';
 import 'package:flutter_cycle/wideget/form_error.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -57,8 +58,7 @@ class _SignFormState extends State<SignForm> {
               Text("Remember me"),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPassword.routeName),
+                onTap: () => pushNewScreen(context, screen: ForgotPassword()),
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
@@ -74,7 +74,8 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
-                Navigator.pushNamed(context, LoginSuccess.routeName);
+                // Navigator.pushNamed(context, LoginSuccess.routeName);
+                pushNewScreen(context, screen: LoginSuccess());
               }
             },
           ),

@@ -17,20 +17,8 @@
 		A10C8C9725DD4207008FD067 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A10C8C9625DD4207008FD067 /* GoogleService-Info.plist */; };
 		A116BA0225DD591700DAAE94 /* Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = A116BA0025DD591700DAAE94 /* Info-Release.plist */; };
 		A116BA0325DD591700DAAE94 /* Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = A116BA0125DD591700DAAE94 /* Info-Debug.plist */; };
+		A17777F025EE2F780026EE11 /* SID9 in Resources */ = {isa = PBXBuildFile; fileRef = A17777EF25EE2F780026EE11 /* SID9 */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -53,6 +41,8 @@
 		A116BA0025DD591700DAAE94 /* Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
 		A116BA0125DD591700DAAE94 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		A134D30625DD0EA200D02A90 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		A17777EF25EE2F780026EE11 /* SID9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SID9; sourceTree = "<group>"; };
+		A1CD5E2725EF3A3F009A8628 /* DecodeFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DecodeFramework.framework; path = SID9/DecodeFramework.framework; sourceTree = "<group>"; };
 		AF6D8B72CFF13E3439614DD1 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		C62B1689DCDA8A75DC54C790 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		DB8DA82003A392BDFFDBEE12 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +74,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				A17777EF25EE2F780026EE11 /* SID9 */,
 				A10C8C9625DD4207008FD067 /* GoogleService-Info.plist */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
@@ -134,6 +125,7 @@
 		FB53EE74A2FB4D54EA405286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1CD5E2725EF3A3F009A8628 /* DecodeFramework.framework */,
 				252EB36A8C1BE76A65D366D3 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -151,7 +143,6 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				3B9A24694A6C28FF90E7F4DC /* [CP] Embed Pods Frameworks */,
 			);
@@ -207,6 +198,7 @@
 				A116BA0325DD591700DAAE94 /* Info-Debug.plist in Resources */,
 				A116BA0225DD591700DAAE94 /* Info-Release.plist in Resources */,
 				A10C8C9725DD4207008FD067 /* GoogleService-Info.plist in Resources */,
+				A17777F025EE2F780026EE11 /* SID9 in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
@@ -381,6 +373,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/SID9",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -522,6 +515,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/SID9",
 				);
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,6 +551,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)/SID9",
 				);
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
 				LD_RUNPATH_SEARCH_PATHS = (

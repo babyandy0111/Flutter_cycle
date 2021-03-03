@@ -5,6 +5,7 @@ import 'package:flutter_cycle/pages/home_sticker_packs/home_sticker_packs.dart';
 import 'package:flutter_cycle/pages/login_success/login_success.dart';
 import 'package:flutter_cycle/pages/mqtt_demo/mqtt_demo.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
+import 'package:flutter_cycle/pages/platform_channel_demo/olatform_channel_demo.dart';
 import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
 import 'pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
@@ -32,4 +33,6 @@ final Map<String, WidgetBuilder> routes = {
   HomeStickerPacks.routeName: (context) => HomeStickerPacks(),
   OtpDemo.routeName: (context) => OtpDemo(),
   MqttDemo.routeName: (context) => MqttDemo(),
+
+  PlatformChannelDemo.routeName: (context) => PlatformChannelDemo(),
 };

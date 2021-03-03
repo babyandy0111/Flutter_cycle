@@ -54,7 +54,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [HttpDemo(), DefaultDemo(), OtpDemo(), CreateWtoJson(), PushDemo()];
+    return [DefaultDemo(), HttpDemo(), OtpDemo(), CreateWtoJson(), PushDemo()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
