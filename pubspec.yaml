@@ -74,6 +74,7 @@ dependencies:
 
   pin_entry_text_field: ^0.1.4
 
+  #image_picker: ^0.6.1+4
   #esc_pos_utils: ^1.0.0
   #hex: ^0.1.2
   #gbk_codec: ^0.3.2

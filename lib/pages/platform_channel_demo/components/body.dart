@@ -35,12 +35,6 @@ class _BodyState extends State<Body> {
             onPressed: _getBatteryLevel,
           ),
           Text(_batteryLevel),
-          FlatButton(
-              color: Colors.amber,
-              onPressed: () async {
-                await platform.invokeMethod("start");
-              },
-              child: Text("native")),
         ],
       ),
     );
