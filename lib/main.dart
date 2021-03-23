@@ -1,23 +1,9 @@
 import 'package:flutter/material.dart';
-import 'components/BottomNavigationBar.dart';
+import 'widgets/BottomNavigationBar.dart';
+import 'routes.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  runApp(MyHomePage());
 }
 
 class MyHomePage extends StatefulWidget {
@@ -30,68 +16,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  final books = [
-    Book(
-      imgSrc: 'https://openhome.cc/Gossip/images/ACL059300.jpg',
-      name: 'Java SE 14 技術手冊',
-    ),
-    Book(
-      imgSrc: 'https://openhome.cc/Gossip/images/ACL054400.jpg',
-      name: 'Python 3.7 技術手冊',
-    ),
-    Book(
-      imgSrc: 'https://openhome.cc/Gossip/images/AEL022800.jpg',
-      name: 'JavaScript 技術手冊',
-    )
-  ];
-
-  var bookIdx;
-
-  @override
-  void initState() {
-    bookIdx = 0;
-    super.initState();
-  }
-
-  void page(idx) {
-    setState(() {
-      bookIdx = idx;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: books[bookIdx],
-      bottomNavigationBar: BottomNavBar(
-        items: [
-          BottomNavBarItem(title: Text('Home'), icon: Icon(Icons.home_outlined)),
-          BottomNavBarItem(title: Text('Channel'), icon: Icon(Icons.group)),
-          BottomNavBarItem(title: Text('Message'), icon: Icon(Icons.message)),
-        ],
-        onTap: page,
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-    );
-  }
-}
-
-class Book extends StatelessWidget {
-  final String imgSrc;
-  final String name;
-
-  Book({this.imgSrc, this.name});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Image.network(imgSrc),
+      home: Scaffold(
+        body: MaterialApp(
+          home: Scaffold(),
+          routes: internalRoutes,
         ),
-        Text(name)
-      ],
+        bottomNavigationBar: BottomNavBar(),
+      ),
+      routes: routes,
     );
   }
 }
+

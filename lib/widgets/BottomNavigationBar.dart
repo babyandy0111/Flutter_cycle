@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../pages/Home/index.dart';
+import '../pages/Login/index.dart';
 
 class BottomNavBar extends StatefulWidget {
   final items;
@@ -11,12 +13,17 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBar extends State<BottomNavBar> {
-  int selectedIdx = 0;
+
+  final items = [
+    BottomNavBarItem(title: Text('Home'), icon: Icon(Icons.home_outlined), route: HomePage.routeName),
+    BottomNavBarItem(title: Text('Channel'), icon: Icon(Icons.group), route: LoginPage.routeName),
+    BottomNavBarItem(title: Text('Message'), icon: Icon(Icons.message), route: '/message'),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final barItems = List<Widget>();
-    for(var i = 0; i < widget.items.length; i++) {
+    final List<Widget> barItems = [];
+    for(var i = 0; i < items.length; i++) {
       barItems.add(Column(
         // 依元件決定最小高度
         mainAxisSize: MainAxisSize.min,
@@ -26,12 +33,9 @@ class _BottomNavBar extends State<BottomNavBar> {
           IconButton(
             // 依選中與否，從父裔中取得佈景主題的顏色
             color: Color.fromRGBO(255, 90, 90, 1),
-            icon: widget.items[i].icon,
+            icon: items[i].icon,
             onPressed: () {
-              setState(() {
-                selectedIdx = i;
-                widget.onTap(i);
-              });
+              Navigator.pushNamed(context, items[i].route);
             },
           ),
           DefaultTextStyle(
@@ -39,7 +43,7 @@ class _BottomNavBar extends State<BottomNavBar> {
               // 依選中與否，從父裔中取得佈景主題的顏色
               color: Color.fromRGBO(255, 90, 90, 1),
             ),
-            child: widget.items[i].title,
+            child: items[i].title,
           )
         ],
       ));
@@ -59,5 +63,6 @@ class _BottomNavBar extends State<BottomNavBar> {
 class BottomNavBarItem {
   Widget title;
   Icon icon;
-  BottomNavBarItem({this.title, this.icon});
+  String route;
+  BottomNavBarItem({this.title, this.icon, this.route});
 }
