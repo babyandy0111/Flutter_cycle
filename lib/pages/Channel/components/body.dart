@@ -4,7 +4,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Home Body')
+      child:
+        Text('Channel Body')
     );
   }
 }

@@ -1,68 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../pages/Home/index.dart';
-import '../pages/Login/index.dart';
+import '../pages/Channel/index.dart';
+import '../pages/Message/index.dart';
 
-class BottomNavBar extends StatefulWidget {
-  final items;
-  final Function onTap;
-
-  BottomNavBar({this.items, this.onTap});
+class BottomNavigation extends StatefulWidget {
+  BottomNavigation({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _BottomNavBar();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
-class _BottomNavBar extends State<BottomNavBar> {
-
-  final items = [
-    BottomNavBarItem(title: Text('Home'), icon: Icon(Icons.home_outlined), route: HomePage.routeName),
-    BottomNavBarItem(title: Text('Channel'), icon: Icon(Icons.group), route: LoginPage.routeName),
-    BottomNavBarItem(title: Text('Message'), icon: Icon(Icons.message), route: '/message'),
-  ];
+class _BottomNavigationState extends State<BottomNavigation> {
+  PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> barItems = [];
-    for(var i = 0; i < items.length; i++) {
-      barItems.add(Column(
-        // 依元件決定最小高度
-        mainAxisSize: MainAxisSize.min,
-        // 從底部排列
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          IconButton(
-            // 依選中與否，從父裔中取得佈景主題的顏色
-            color: Color.fromRGBO(255, 90, 90, 1),
-            icon: items[i].icon,
-            onPressed: () {
-              Navigator.pushNamed(context, items[i].route);
-            },
-          ),
-          DefaultTextStyle(
-            style: TextStyle(
-              // 依選中與否，從父裔中取得佈景主題的顏色
-              color: Color.fromRGBO(255, 90, 90, 1),
-            ),
-            child: items[i].title,
-          )
-        ],
-      ));
-    }
-
-    return BottomAppBar(
-        color: Theme.of(context).bottomAppBarColor,
-        child: Row(
-          // 平均分配空間
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: barItems,
-        )
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: Colors.white,
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      // This needs to be true if you want to move up the screen when keyboard appears.
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardShows: true,
+      // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        colorBehindNavBar: Colors.white,
+      ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: ItemAnimationProperties(
+        // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: ScreenTransitionAnimation(
+        // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.style6, // Choose the nav bar style with this property.
     );
   }
-}
 
-class BottomNavBarItem {
-  Widget title;
-  Icon icon;
-  String route;
-  BottomNavBarItem({this.title, this.icon, this.route});
+  List<Widget> _buildScreens() {
+    return [HomePage(), ChannelPage(), MessagePage()];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_outlined),
+        title: ('Home'),
+        activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
+        inactiveColorPrimary: Colors.black,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.group),
+        title: ('Channel'),
+        activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
+        inactiveColorPrimary: Colors.black,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.message),
+        title: ('Message'),
+        activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
+        inactiveColorPrimary: Colors.black,
+      ),
+    ];
+  }
 }

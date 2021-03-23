@@ -25,11 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: MaterialApp(
-          home: Scaffold(),
-          routes: internalRoutes,
-        ),
-        bottomNavigationBar: BottomNavBar(),
+        bottomNavigationBar: BottomNavigation(),
       ),
       routes: routes,
     );
