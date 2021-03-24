@@ -5,7 +5,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child:
-        Text('Channel Body')
+        Text('Channellll Body')
     );
   }
 }

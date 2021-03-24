@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../pages/Home/HomePage.dart';
-import '../pages/Channel/index.dart';
-import '../pages/Message/index.dart';
+import '../pages/Channel/ChannelPage.dart';
+import '../pages/Message/MessagePage.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);

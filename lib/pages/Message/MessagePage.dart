@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 
-class ChannelPage extends StatelessWidget {
-  static String routeName = "/home";
+class MessagePage extends StatelessWidget {
+  static String routeName = "/message";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
