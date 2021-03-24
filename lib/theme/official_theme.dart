@@ -1,13 +1,15 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-final AppBarTheme customAppBarTheme = AppBarTheme(
-  color: Colors.white,
-  textTheme: TextTheme(
-    headline6: TextStyle(color: Colors.white, fontSize: 21.0),
-  ),
-);
+final Color primaryColor = Color.fromRGBO(255, 90, 90, 1);
+final Color primaryAccentColor = Color.fromRGBO(255, 144, 114, 1);
+
+appBarTitle() {
+  return TextStyle(
+    color: Colors.white,
+    fontSize: 21.0,
+    fontWeight: FontWeight.bold,
+  );
+}
 
 final TextButtonThemeData customTextButtonThemeData = TextButtonThemeData(
   style: TextButton.styleFrom(
