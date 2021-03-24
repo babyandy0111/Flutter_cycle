@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'pages/Home/index.dart';
+import 'pages/Home/HomePage.dart';
 import 'pages/Login/index.dart';
 
 // We use name route

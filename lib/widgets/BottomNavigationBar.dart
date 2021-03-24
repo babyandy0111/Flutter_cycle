@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import '../pages/Home/index.dart';
+import '../pages/Home/HomePage.dart';
 import '../pages/Channel/index.dart';
 import '../pages/Message/index.dart';
 

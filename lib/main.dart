@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'widgets/BottomNavigationBar.dart';
 import 'routes.dart';
 
-void main() {
+void main() async {
+  await DotEnv.load(fileName: ".env");
+  print(DotEnv.env['AWS_KEY']);
+
   runApp(MyHomePage());
 }
 
