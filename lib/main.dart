@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'widgets/BottomNavigationBar.dart';
 import 'routes.dart';
+import 'theme/theme.dart';
 
 void main() async {
   await DotEnv.load(fileName: ".env");
@@ -24,10 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: theme(),
       home: Scaffold(
         bottomNavigationBar: BottomNavigation(),
       ),
