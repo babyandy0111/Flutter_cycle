@@ -6,6 +6,9 @@ import 'AppBar.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    SizeConfig().init(context);
+
     return SizedBox.expand(
       child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(241, 246, 249, 1)),
@@ -43,7 +46,7 @@ class Body extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth,
+                        width: SizeConfig.screenWidth / 2,
                         child: Text(
                           'Channel Name',
                           style: TextStyle(
@@ -54,7 +57,7 @@ class Body extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth,
+                        width: SizeConfig.screenWidth / 2,
                         child: Text(
                           'Official',
                           style: TextStyle(
@@ -72,7 +75,7 @@ class Body extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth,
+                        width: SizeConfig.screenWidth / 2,
                         child: Text(
                           'Owner',
                           style: TextStyle(
@@ -83,7 +86,7 @@ class Body extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth,
+                        width: SizeConfig.screenWidth / 2,
                         child: Text(
                           'Boss',
                           style: TextStyle(
