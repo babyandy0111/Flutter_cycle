@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/pages/Settings/SettingsPage.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../pages/Home/HomePage.dart';
 import '../pages/Channel/ChannelPage.dart';
 import '../pages/Message/MessagePage.dart';
+import '../pages/Settings/SettingsPage.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -51,7 +53,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), ChannelPage(), MessagePage()];
+    return [HomePage(), ChannelPage(), MessagePage(), SettingsPage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -71,6 +73,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.message),
         title: ('Message'),
+        activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
+        inactiveColorPrimary: Colors.black,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.settings),
+        title: ('Settings'),
         activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
         inactiveColorPrimary: Colors.black,
       ),
