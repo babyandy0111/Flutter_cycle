@@ -3,9 +3,16 @@ import '../../../theme/size_config.dart';
 import '../../../theme/official_theme.dart';
 import 'AppBar.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
+    bool isSwitched = true;
 
     SizeConfig().init(context);
 
@@ -27,7 +34,7 @@ class Body extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () => {},
-                  child: Text('Change Photo'),
+                  child: Text('Add Photo'),
                   style: TextButton.styleFrom(
                     primary: primaryAccentColor,
                   ),
@@ -42,30 +49,37 @@ class Body extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth / 2,
-                        child: Text(
-                          'Channel Name',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
-                        ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Channel Name',
+                      labelStyle: TextStyle(
+                        color: Colors.black87,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth / 2,
-                        child: Text(
-                          'Official',
-                          style: TextStyle(
-                            color: Colors.black87,
-                          ),
-                        ),
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.all(10.0),
+                    ),
+                  ),
+                  Divider(
+                    height: 1.0,
+                    color: Colors.grey[400],
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Owner',
+                      labelStyle: TextStyle(
+                        color: Colors.black87,
                       ),
-                    ],
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.all(10.0),
+                    ),
                   ),
                   Divider(
                     height: 1.0,
@@ -77,74 +91,27 @@ class Body extends StatelessWidget {
                         padding: EdgeInsets.all(15.0),
                         width: SizeConfig.screenWidth / 2,
                         child: Text(
-                          'Owner',
+                          'Type Public',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                           ),
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth / 2,
-                        child: Text(
-                          'Boss',
-                          style: TextStyle(
-                            color: Colors.black87,
-                          ),
-                        ),
+                      Switch(
+                        value: isSwitched,
+                        activeTrackColor: primaryColor,
+                        activeColor: Colors.white,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched = value;
+                          });
+                        },
                       ),
                     ],
-                  ),
-                  Divider(
-                    height: 1.0,
-                    color: Colors.grey[400],
-                  ),
-                  TextButton(
-                    onPressed: () => {},
-                    child: Row(
-                      children: [
-                        Icon(Icons.qr_code),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10.0),
-                          child: Text('SID9 Code'),
-                        ),
-                      ],
-                    ),
-                    style: TextButton.styleFrom(
-                      primary: primaryAccentColor,
-                    ),
-                  ),
-                  Divider(
-                    height: 1.0,
-                    color: Colors.grey[400],
-                  ),
-                  TextButton(
-                    onPressed: () => {},
-                    child: Row(
-                      children: [
-                        Icon(Icons.share),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10.0),
-                          child: Text('Share URL'),
-                        ),
-                      ],
-                    ),
-                    style: TextButton.styleFrom(
-                      primary: primaryAccentColor,
-                    ),
                   ),
                 ],
               ),
-            ),
-            FlatButton(
-              minWidth: SizeConfig.screenWidth,
-              onPressed: () => {},
-              child: Text('Delete Channel'),
-              textColor: Colors.white,
-              color: primaryAccentColor,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              padding: EdgeInsets.all(15.0),
             ),
           ],
         ),
