@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/official_theme.dart';
+import 'package:indochat_officialaccount/pages/CreateChannel/CreateChannelPage.dart';
 
 class HeaderBar extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class HeaderBar extends StatelessWidget {
             height: 120.0,
             padding: EdgeInsets.only(
                 top: MediaQuery.of(context).padding.top, bottom: 20.0),
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment(0.0, 0.15),
@@ -22,23 +23,28 @@ class HeaderBar extends StatelessWidget {
                     Color.fromRGBO(255, 144, 114, 1),
                   ]),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
               children: [
-                TextButton(
-                  child: Text('Cancel'),
-                  onPressed: () =>
-                      Navigator.pop(context, true)
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'Create Channel',
-                      style: appBarTitle(),
-                    ),
+                Center(
+                  child: Text(
+                    'Channel',
+                    style: appBarTitle(),
                   ),
                 ),
-                TextButton(onPressed: () => {}, child: Text('Save')),
+                Positioned(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                        icon: Icon(Icons.add),
+                        color: Colors.white,
+                        onPressed: () => {
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return CreateChannelPage();
+                              }))
+                            }),
+                  ),
+                ),
               ],
             ),
           ),
@@ -56,7 +62,7 @@ class HeaderBar extends StatelessWidget {
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
-              color: Color.fromRGBO(255, 242, 241, 1),
+              color: Colors.white,
             ),
           ),
         ),
