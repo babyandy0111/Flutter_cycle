@@ -32,7 +32,7 @@ class HeaderBar extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'Settings',
+                      'Create Channel',
                       style: appBarTitle(),
                     ),
                   ),
