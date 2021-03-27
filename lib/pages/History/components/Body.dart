@@ -24,7 +24,7 @@ class MessageBubble extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
                     margin: EdgeInsets.symmetric(vertical: 15.0),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 242, 241, 1),
+                      color: primaryAccentColor.withOpacity(0.15),
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Text(
@@ -191,7 +191,7 @@ class _BodyState extends State<Body> {
 
     return SizedBox.expand(
       child: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(241, 246, 249, 1)),
+        decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
         child: Column(
           children: [
             HeaderBar(),
