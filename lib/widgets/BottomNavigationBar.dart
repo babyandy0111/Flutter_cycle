@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/pages/Login/LoginPage.dart';
 import 'package:indochat_officialaccount/pages/Settings/SettingsPage.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../pages/Home/HomePage.dart';
@@ -53,7 +54,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), ChannelPage(), MessagePage(), SettingsPage()];
+    // return [HomePage(), ChannelPage(), MessagePage(), SettingsPage()];
+    return [LoginPage(), ChannelPage(), MessagePage(), SettingsPage()];
+
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
