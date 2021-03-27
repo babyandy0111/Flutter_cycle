@@ -54,8 +54,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    // return [HomePage(), ChannelPage(), MessagePage(), SettingsPage()];
-    return [LoginPage(), ChannelPage(), MessagePage(), SettingsPage()];
+    return [HomePage(), ChannelPage(), MessagePage(), SettingsPage()];
 
   }
 
