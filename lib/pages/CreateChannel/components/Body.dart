@@ -4,7 +4,6 @@ import '../../../theme/official_theme.dart';
 import 'AppBar.dart';
 
 class Body extends StatefulWidget {
-
   @override
   _BodyState createState() => _BodyState();
 }
@@ -18,7 +17,7 @@ class _BodyState extends State<Body> {
 
     return SizedBox.expand(
       child: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(241, 246, 249, 1)),
+        decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
         child: Column(
           children: [
             HeaderBar(),
