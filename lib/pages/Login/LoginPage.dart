@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/body.dart';
+import 'components/Body.dart';
 
 class LoginPage extends StatelessWidget {
   static String routeName = "/login";

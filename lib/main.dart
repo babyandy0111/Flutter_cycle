@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
-import 'widgets/BottomNavigationBar.dart';
+import 'pages/Login/LoginPage.dart';
 import 'routes.dart';
 import 'theme/theme.dart';
 
@@ -26,9 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme(),
-      home: Scaffold(
-        bottomNavigationBar: BottomNavigation(),
-      ),
+      home: LoginPage(),
       routes: routes,
     );
   }

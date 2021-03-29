@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../theme/official_theme.dart';
-import 'package:indochat_officialaccount/pages/Channel/ChannelPage.dart';
 import 'AppBar.dart';
 
 class ChannelList extends StatelessWidget {
