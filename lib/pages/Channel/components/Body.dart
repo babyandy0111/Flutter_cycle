@@ -61,6 +61,7 @@ class _BodyState extends State<Body> {
 
   @override
   initState() {
+    super.initState();
     searchController.addListener(() {
       setState(() {
         filter = searchController.text;
