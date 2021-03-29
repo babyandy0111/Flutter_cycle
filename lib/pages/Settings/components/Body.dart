@@ -136,14 +136,14 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
-            FlatButton(
-              minWidth: SizeConfig.screenWidth,
+            TextButton(
+              style: TextButton.styleFrom(
+                minimumSize: Size(SizeConfig.screenWidth, 0),
+                padding: EdgeInsets.all(15.0),
+                backgroundColor: primaryAccentColor,
+              ),
               onPressed: () => {},
               child: Text('Delete Channel'),
-              textColor: Colors.white,
-              color: primaryAccentColor,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              padding: EdgeInsets.all(15.0),
             ),
           ],
         ),
