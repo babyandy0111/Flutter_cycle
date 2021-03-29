@@ -180,10 +180,10 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    bool isPending = false;
-    String message;
-    String messageDate;
-    String messageTime;
+    // bool isPending = false;
+    // String message;
+    // String messageDate;
+    // String messageTime;
 
     SizeConfig().init(context);
 
