@@ -27,7 +27,9 @@ class HeaderBar extends StatelessWidget {
               children: [
                 TextButton(
                   child: Text('Cancel'),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pop(context)
+                  },
                 ),
                 Expanded(
                   child: Center(
