@@ -25,7 +25,8 @@ class _BodyState extends State<Body> {
           decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
           child: Column(
             children: [
-              HeaderBar(paddingTop,
+              HeaderBar(
+                paddingTop,
                 radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
                 showLeftButtonWidgets: true,
                 showRightButtonWidgets: true,
