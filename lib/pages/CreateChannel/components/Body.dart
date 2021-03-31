@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../theme/size_config.dart';
-import '../../../theme/official_theme.dart';
-import 'AppBar.dart';
+import 'package:indochat_officialaccount/theme/size_config.dart';
+import 'package:indochat_officialaccount/theme/official_theme.dart';
+import 'package:indochat_officialaccount/widgets/AppBar.dart';
+
+import 'LeftButtonWidgets.dart';
+import 'RightButtonWidgets.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -14,107 +17,116 @@ class _BodyState extends State<Body> {
     bool isSwitched = true;
 
     SizeConfig().init(context);
-
-    return SizedBox.expand(
-      child: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
-        child: Column(
-          children: [
-            HeaderBar(),
-            Column(
-              children: [
-                CircleAvatar(
-                  radius: 66,
-                  backgroundColor: Colors.white,
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: primaryAccentColor,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => {},
-                  child: Text('Add Photo'),
-                  style: TextButton.styleFrom(
-                    primary: primaryAccentColor,
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
+    return LayoutBuilder(builder: (context, constraints) {
+      final double paddingTop =
+          MediaQuery.of(context).size.height - constraints.maxHeight;
+      return SizedBox.expand(
+        child: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
+          child: Column(
+            children: [
+              HeaderBar(paddingTop,
+                radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
+                showLeftButtonWidgets: true,
+                showRightButtonWidgets: true,
+                leftButtonWidgets: LeftButtonWidgets(),
+                rightButtonWidgets: RightButtonWidgets(),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+              Column(
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Channel Name',
-                      labelStyle: TextStyle(
-                        color: Colors.black87,
-                      ),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.all(10.0),
+                  CircleAvatar(
+                    radius: 66,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundColor: primaryAccentColor,
                     ),
                   ),
-                  Divider(
-                    height: 1.0,
-                    color: Colors.grey[400],
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Owner',
-                      labelStyle: TextStyle(
-                        color: Colors.black87,
-                      ),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                      contentPadding: EdgeInsets.all(10.0),
+                  TextButton(
+                    onPressed: () => {},
+                    child: Text('Add Photo'),
+                    style: TextButton.styleFrom(
+                      primary: primaryAccentColor,
                     ),
-                  ),
-                  Divider(
-                    height: 1.0,
-                    color: Colors.grey[400],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(15.0),
-                        width: SizeConfig.screenWidth / 2,
-                        child: Text(
-                          'Type Public',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
-                      Switch(
-                        value: isSwitched,
-                        activeTrackColor: primaryColor,
-                        activeColor: Colors.white,
-                        onChanged: (value) {
-                          setState(() {
-                            isSwitched = value;
-                          });
-                        },
-                      ),
-                    ],
                   ),
                 ],
               ),
-            ),
-          ],
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Channel Name',
+                        labelStyle: TextStyle(
+                          color: Colors.black87,
+                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.all(10.0),
+                      ),
+                    ),
+                    Divider(
+                      height: 1.0,
+                      color: Colors.grey[400],
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Owner',
+                        labelStyle: TextStyle(
+                          color: Colors.black87,
+                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.all(10.0),
+                      ),
+                    ),
+                    Divider(
+                      height: 1.0,
+                      color: Colors.grey[400],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(15.0),
+                          width: SizeConfig.screenWidth / 2,
+                          child: Text(
+                            'Type Public',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                        Switch(
+                          value: isSwitched,
+                          activeTrackColor: primaryColor,
+                          activeColor: Colors.white,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
