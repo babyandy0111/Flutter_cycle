@@ -33,6 +33,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final String title = 'Channel';
         final double paddingTop =
             MediaQuery.of(context).size.height - constraints.maxHeight;
         return SizedBox.expand(
@@ -40,7 +41,7 @@ class _BodyState extends State<Body> {
             decoration: BoxDecoration(color: Colors.white),
             child: Column(
               children: [
-                HeaderBar(paddingTop,
+                HeaderBar(title, paddingTop,
                     showRightButtonWidgets: true,
                     rightButtonWidgets: RightButtonWidgets()),
                 Container(

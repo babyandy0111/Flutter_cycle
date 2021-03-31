@@ -12,6 +12,7 @@ class Body extends StatelessWidget {
     SizeConfig().init(context);
 
     return LayoutBuilder(builder: (context, constraints) {
+      final String title = 'Settings';
       final double paddingTop =
           MediaQuery.of(context).size.height - constraints.maxHeight;
       return SizedBox.expand(
@@ -20,6 +21,7 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               HeaderBar(
+                title,
                 paddingTop,
                 radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
                 showLeftButtonWidgets: true,

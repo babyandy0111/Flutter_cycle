@@ -15,6 +15,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return LayoutBuilder(builder: (context, constraints) {
+      final String title = 'History';
       final double paddingTop =
           MediaQuery.of(context).size.height - constraints.maxHeight;
       return SizedBox.expand(
@@ -23,6 +24,7 @@ class _BodyState extends State<Body> {
           child: Column(
             children: [
               HeaderBar(
+                title,
                 paddingTop,
                 radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
                 showLeftButtonWidgets: true,

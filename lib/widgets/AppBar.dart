@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 
 class HeaderBar extends StatelessWidget {
+  final String title;
   final double paddingTop;
   final Color radiusBarBgColor;
   final bool showLeftButtonWidgets;
@@ -10,6 +11,7 @@ class HeaderBar extends StatelessWidget {
   final Widget rightButtonWidgets;
 
   HeaderBar(
+    this.title,
     this.paddingTop, {
     this.radiusBarBgColor = Colors.white,
     this.showLeftButtonWidgets = false,
@@ -42,7 +44,7 @@ class HeaderBar extends StatelessWidget {
                 showLeftButtonWidgets ? leftButtonWidgets : SizedBox(),
                 Center(
                   child: Text(
-                    'Channel',
+                    title,
                     style: appBarTitle(),
                   ),
                 ),
