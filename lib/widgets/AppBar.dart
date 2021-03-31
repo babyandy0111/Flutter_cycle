@@ -3,12 +3,20 @@ import 'package:indochat_officialaccount/theme/official_theme.dart';
 
 class HeaderBar extends StatelessWidget {
   final double paddingTop;
+  final Color radiusBarBgColor;
+  final bool showLeftButtonWidgets;
   final bool showRightButtonWidgets;
+  final Widget leftButtonWidgets;
   final Widget rightButtonWidgets;
 
-  HeaderBar(this.paddingTop,
-      {this.showRightButtonWidgets = false, this.rightButtonWidgets})
-      : super();
+  HeaderBar(
+    this.paddingTop, {
+    this.radiusBarBgColor = Colors.white,
+    this.showLeftButtonWidgets = false,
+    this.showRightButtonWidgets = false,
+    this.rightButtonWidgets,
+    this.leftButtonWidgets,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +39,7 @@ class HeaderBar extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
+                showLeftButtonWidgets ? leftButtonWidgets : SizedBox(),
                 Center(
                   child: Text(
                     'Channel',
@@ -48,7 +57,7 @@ class HeaderBar extends StatelessWidget {
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
-              color: Colors.white,
+              color: radiusBarBgColor,
             ),
           ),
         ],
