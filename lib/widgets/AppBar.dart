@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../../theme/official_theme.dart';
-import 'package:indochat_officialaccount/pages/CreateChannel/CreateChannelPage.dart';
+import 'package:indochat_officialaccount/theme/official_theme.dart';
 
 class HeaderBar extends StatelessWidget {
   final double paddingTop;
+  final bool showRightButtonWidgets;
+  final Widget rightButtonWidgets;
 
-  HeaderBar(this.paddingTop) : super();
+  HeaderBar(this.paddingTop,
+      {this.showRightButtonWidgets = false, this.rightButtonWidgets})
+      : super();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.only(
-          top: this.paddingTop),
+      padding: EdgeInsets.only(top: paddingTop),
       decoration: BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment(0.0, 0.15),
@@ -35,18 +37,7 @@ class HeaderBar extends StatelessWidget {
                     style: appBarTitle(),
                   ),
                 ),
-                Positioned(
-                  right: 0,
-                  child: IconButton(
-                      icon: Icon(Icons.add),
-                      color: Colors.white,
-                      onPressed: () => {
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (BuildContext context) {
-                              return CreateChannelPage();
-                            }))
-                          }),
-                ),
+                showRightButtonWidgets ? rightButtonWidgets : SizedBox(),
               ],
             ),
           ),

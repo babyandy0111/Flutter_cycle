@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/widgets/AppBar.dart';
 
-import 'AppBar.dart';
+import 'RightButtonWidgets.dart';
 import 'ChannelList.dart';
 
 class Body extends StatefulWidget {
@@ -39,7 +40,9 @@ class _BodyState extends State<Body> {
             decoration: BoxDecoration(color: Colors.white),
             child: Column(
               children: [
-                HeaderBar(paddingTop),
+                HeaderBar(paddingTop,
+                    showRightButtonWidgets: true,
+                    rightButtonWidgets: RightButtonWidgets()),
                 Container(
                   child: Expanded(
                     child: Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import '../../../theme/official_theme.dart';
+
+import 'package:indochat_officialaccount/theme/official_theme.dart';
 import 'package:indochat_officialaccount/pages/Settings/SettingsPage.dart';
 
 class ChannelList extends StatelessWidget {
@@ -57,8 +58,8 @@ class ChannelList extends StatelessWidget {
               onTap: () => {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                      return SettingsPage();
-                    }))
+                  return SettingsPage();
+                }))
               },
             ),
             IconSlideAction(
