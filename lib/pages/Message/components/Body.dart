@@ -35,22 +35,15 @@ class Body extends StatelessWidget {
                               color: Colors.white,
                               width: 4,
                               style: BorderStyle.solid))),
-                  FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: Text(
-                      'Channel Name',
-                      style: TextStyle(
-                        color: Color.fromRGBO(29, 53, 87, 1),
-                        fontSize: 18.0,
-                      ),
-                    ),
-                    onPressed: () => {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (BuildContext context) {
-                      //       return CreateChannelPage();
-                      //     }))
-                    },
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Color.fromRGBO(29, 53, 87, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      textStyle: TextStyle(fontSize: 18),
+                  ),
+                    onPressed: () => {},
+                    child: Text('Channel Name')
                   ),
                 ],
               ),
@@ -242,13 +235,12 @@ class Body extends StatelessWidget {
               widthFactor: 0.4,
               child: Container(
                 margin: EdgeInsets.only(bottom: 30),
-                child: RaisedButton(
-                  color: Color.fromRGBO(255, 90, 90, 1),
-                  highlightColor: Color.fromRGBO(255, 150, 156, 1),
-                  colorBrightness: Brightness.dark,
-                  splashColor: Color.fromRGBO(255, 150, 156, 1),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(255, 90, 90, 1),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                     child: Text("Send",
@@ -257,7 +249,7 @@ class Body extends StatelessWidget {
                         )),
                   ),
                   onPressed: () {},
-                ),
+                )
               ),
             ),
           ],
