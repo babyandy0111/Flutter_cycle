@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/official_theme.dart';
+import 'package:indochat_officialaccount/theme/official_theme.dart';
 
 class PendingMessage extends StatelessWidget {
   @override
