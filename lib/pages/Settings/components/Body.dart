@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 import 'package:indochat_officialaccount/widgets/AppBar.dart';
@@ -6,10 +8,19 @@ import 'package:indochat_officialaccount/widgets/AppBar.dart';
 import 'LeftButtonWidgets.dart';
 import 'RightButtonWidgets.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   bool isSwitched = true;
+
   bool _keyboardVisible = false;
+
   double safeH;
+
+  File imageFile;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +39,19 @@ class Body extends StatelessWidget {
       final String title = 'Settings';
       final double paddingTop = fullH - safeH;
 
+      _getFromGallery() async {
+        PickedFile pickedFile = await ImagePicker().getImage(
+          source: ImageSource.gallery,
+          maxWidth: 1800,
+          maxHeight: 1800,
+        );
+        if (pickedFile != null) {
+          setState(() {
+            imageFile = File(pickedFile.path);
+          });
+        }
+      }
+
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
@@ -42,16 +66,25 @@ class Body extends StatelessWidget {
               ),
               Column(
                 children: [
-                  CircleAvatar(
-                    radius: 66,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundColor: primaryAccentColor,
-                    ),
-                  ),
+                  imageFile == null
+                      ? CircleAvatar(
+                          radius: 66,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 60,
+                            backgroundColor: primaryAccentColor,
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 66,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 60,
+                            backgroundImage: FileImage(imageFile),
+                          ),
+                        ),
                   TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {_getFromGallery()},
                     child: Text('Change Photo'),
                     style: TextButton.styleFrom(
                       primary: primaryAccentColor,
