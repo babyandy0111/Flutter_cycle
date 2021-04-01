@@ -87,7 +87,7 @@ class _BodyState extends State<Body> {
                           ),
                         ),
                   TextButton(
-                    onPressed: () => {},
+                    onPressed: () => {_getFromGallery()},
                     child: Text('Add Photo'),
                     style: TextButton.styleFrom(
                       primary: primaryAccentColor,
