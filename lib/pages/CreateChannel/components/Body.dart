@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 import 'package:indochat_officialaccount/widgets/AppBar.dart';
@@ -15,6 +17,7 @@ class _BodyState extends State<Body> {
   bool isSwitched = true;
   bool _keyboardVisible = false;
   double safeH;
+  File imageFile;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +36,19 @@ class _BodyState extends State<Body> {
       final String title = 'Create Channel';
       final double paddingTop = fullH - safeH;
 
+      _getFromGallery() async {
+        PickedFile pickedFile = await ImagePicker().getImage(
+          source: ImageSource.gallery,
+          maxWidth: 1800,
+          maxHeight: 1800,
+        );
+        if (pickedFile != null) {
+          setState(() {
+            imageFile = File(pickedFile.path);
+          });
+        }
+      }
+
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
@@ -49,14 +65,29 @@ class _BodyState extends State<Body> {
               ),
               Column(
                 children: [
-                  CircleAvatar(
-                    radius: 66,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundColor: primaryAccentColor,
-                    ),
-                  ),
+                  imageFile == null
+                      ? ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                          ),
+                          child: CircleAvatar(
+                            radius: 66,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 60,
+                              backgroundColor: primaryAccentColor,
+                            ),
+                          ),
+                          onPressed: () => {_getFromGallery()},
+                        )
+                      : CircleAvatar(
+                          radius: 66,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 60,
+                            backgroundImage: FileImage(imageFile),
+                          ),
+                        ),
                   TextButton(
                     onPressed: () => {},
                     child: Text('Add Photo'),
