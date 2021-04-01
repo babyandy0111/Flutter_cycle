@@ -41,7 +41,6 @@ class _BodyState extends State<Body> {
                 title,
                 paddingTop,
                 radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
-                showLeftButtonWidgets: true,
                 leftButtonWidgets: LeftButtonWidgets(),
               ),
               MessageBubble(),

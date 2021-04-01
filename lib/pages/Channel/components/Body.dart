@@ -53,7 +53,6 @@ class _BodyState extends State<Body> {
             child: Column(
               children: [
                 HeaderBar(title, paddingTop,
-                    showRightButtonWidgets: true,
                     rightButtonWidgets: RightButtonWidgets()),
                 Container(
                   child: Expanded(
