@@ -12,6 +12,8 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   TextEditingController searchController = TextEditingController();
   String filter;
+  bool _keyboardVisible = false;
+  double safeH;
 
   @override
   initState() {
@@ -31,11 +33,20 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    final double fullH = MediaQuery.of(context).size.height;
+    final double keyboardH = WidgetsBinding.instance.window.viewInsets.bottom;
+
+    _keyboardVisible = keyboardH != 0;
+
     return LayoutBuilder(
       builder: (context, constraints) {
+        if (!_keyboardVisible) {
+          safeH = constraints.maxHeight;
+        }
+
         final String title = 'Channel';
-        final double paddingTop =
-            MediaQuery.of(context).size.height - constraints.maxHeight;
+        final double paddingTop = fullH - safeH;
+
         return SizedBox.expand(
           child: Container(
             decoration: BoxDecoration(color: Colors.white),

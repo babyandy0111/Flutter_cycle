@@ -11,13 +11,27 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool isSwitched = true;
+  bool _keyboardVisible = false;
+  double safeH;
+
   @override
   Widget build(BuildContext context) {
+    final double fullH = MediaQuery.of(context).size.height;
+    final double keyboardH = WidgetsBinding.instance.window.viewInsets.bottom;
+
+    _keyboardVisible = keyboardH != 0;
+
     SizeConfig().init(context);
+
     return LayoutBuilder(builder: (context, constraints) {
+      if (!_keyboardVisible) {
+        safeH = constraints.maxHeight;
+      }
+
       final String title = 'History';
-      final double paddingTop =
-          MediaQuery.of(context).size.height - constraints.maxHeight;
+      final double paddingTop = fullH - safeH;
+
       return SizedBox.expand(
         child: Container(
           decoration: BoxDecoration(color: Color.fromRGBO(255, 242, 241, 1)),
