@@ -5,8 +5,6 @@ class HeaderBar extends StatelessWidget {
   final String title;
   final double paddingTop;
   final Color radiusBarBgColor;
-  final bool showLeftButtonWidgets;
-  final bool showRightButtonWidgets;
   final Widget leftButtonWidgets;
   final Widget rightButtonWidgets;
 
@@ -14,10 +12,8 @@ class HeaderBar extends StatelessWidget {
     this.title,
     this.paddingTop, {
     this.radiusBarBgColor = Colors.white,
-    this.showLeftButtonWidgets = false,
-    this.showRightButtonWidgets = false,
-    this.rightButtonWidgets,
     this.leftButtonWidgets,
+    this.rightButtonWidgets,
   }) : super();
 
   @override
@@ -41,14 +37,14 @@ class HeaderBar extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                showLeftButtonWidgets ? leftButtonWidgets : SizedBox(),
+                leftButtonWidgets ?? SizedBox(),
                 Center(
                   child: Text(
                     title,
                     style: appBarTitle(),
                   ),
                 ),
-                showRightButtonWidgets ? rightButtonWidgets : SizedBox(),
+                rightButtonWidgets ?? SizedBox(),
               ],
             ),
           ),

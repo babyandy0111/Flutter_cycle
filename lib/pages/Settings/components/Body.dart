@@ -37,8 +37,6 @@ class Body extends StatelessWidget {
                 title,
                 paddingTop,
                 radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
-                showLeftButtonWidgets: true,
-                showRightButtonWidgets: true,
                 leftButtonWidgets: LeftButtonWidgets(),
                 rightButtonWidgets: RightButtonWidgets(),
               ),
