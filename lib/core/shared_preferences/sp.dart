@@ -1,6 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:device_info/device_info.dart';
 import 'dart:io';
+import 'package:indochat_officialaccount/data/models/request/token_post_entity.dart';
+import 'package:indochat_officialaccount/data/services/token.dart' as tokenService;
 
 class SpUtil {
   static SpUtil _instance = new SpUtil._();
@@ -28,8 +30,8 @@ class SpUtil {
     return _prefs.getString('device_uid');
   }
 
-  Future<String> getPinCode() async {
-    return _prefs.getString('pin_code');
+  Future<String> getPincode() async {
+    return _prefs.getString('pincode');
   }
 
   Future<String> getPhone() async {
@@ -46,6 +48,14 @@ class SpUtil {
 
   Future<String> getAPPLang() async {
     return _prefs.getString('lang');
+  }
+
+  Future<String> getToken() async {
+    if (_prefs.getString('token') == null) {
+      return await refreshToken();
+    } else {
+      return _prefs.getString('token');
+    }
   }
 
   Future<void> setPlatform() async {
@@ -82,8 +92,8 @@ class SpUtil {
     return _prefs.setString('device_uid', deviceUid);
   }
 
-  Future<bool> setPinCode(pinCode) async {
-    return _prefs.setString('pin_code', pinCode);
+  Future<bool> setPincode(pincode) async {
+    return _prefs.setString('pincode', pincode);
   }
 
   Future<bool> setPhone(phone) async {
@@ -100,5 +110,20 @@ class SpUtil {
 
   Future<bool> setAPPLang(lang) async {
     return _prefs.setString('lang', lang);
+  }
+
+  Future<bool> setToken(token) async {
+    return _prefs.setString('token', token);
+  }
+
+  Future<String> refreshToken() async {
+    TokenPostEntity p = TokenPostEntity();
+    p.pincode =  _prefs.getString("pincode");
+    p.deviceUid = _prefs.getString("device_uid");
+    p.userId = _prefs.getInt("user_id");
+    print("Print: ${p.toJson()}");
+    await tokenService.refreshToken(p.toJson()).then((value) {
+      setToken(value);
+    });
   }
 }

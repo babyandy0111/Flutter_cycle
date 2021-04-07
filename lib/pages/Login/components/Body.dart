@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/core/shared_preferences/sp.dart';
 import '../../../layouts/MainLayout.dart';
 
 class Body extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
@@ -28,8 +31,14 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Text("Sing In"),
               ),
-              onPressed: () => {
-                Navigator.pushNamed(context, MainLayout.routeName)
+              onPressed: () async {
+                String duid = await SpUtil().getDeviceUid();
+                String pin = await SpUtil().getPincode();
+                int uid = await SpUtil().getUserId();
+                String localtoken = await SpUtil().getToken();
+
+                print("local:${duid}/${pin}/${uid}/${localtoken}");
+                Navigator.pushNamed(context, MainLayout.routeName);
               },
             ),
           ],

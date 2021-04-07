@@ -13,7 +13,7 @@ void main() async {
   await SpUtil.init();
   await SpUtil().setPlatform();
   await SpUtil().setDeviceUid("123456");
-  await SpUtil().setPinCode("123456");
+  await SpUtil().setPincode("123456");
   await SpUtil().setPhone("+886973701001");
   await SpUtil().setUserId(501);
   await SpUtil().setAPPVersion(APP_VERSION);
