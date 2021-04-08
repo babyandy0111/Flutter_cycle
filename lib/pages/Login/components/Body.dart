@@ -3,8 +3,6 @@ import 'package:indochat_officialaccount/core/shared_preferences/sp.dart';
 import '../../../layouts/MainLayout.dart';
 
 class Body extends StatelessWidget {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
@@ -37,8 +35,7 @@ class Body extends StatelessWidget {
                 int uid = await SpUtil().getUserId();
                 String localtoken = await SpUtil().getToken();
 
-                // print("local:${duid}/${pin}/${uid}/${localtoken}");
-                SpUtil().setToken(localtoken);
+                print("local:${duid}/${pin}/${uid}/${localtoken}");
 
                 Navigator.pushNamed(context, MainLayout.routeName);
               },
