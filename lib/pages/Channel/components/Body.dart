@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/layouts/BodyLayout.dart';
 import 'package:indochat_officialaccount/widgets/AppBar.dart';
 
 import 'RightButtonWidgets.dart';
 import 'ChannelList.dart';
 
-class Body extends StatefulWidget {
-  final String title;
-  final double paddingTop;
-
-  Body(this.title, this.paddingTop) : super();
-
+class Body extends StatelessWidget {
   @override
-  _BodyState createState() => _BodyState();
+  Widget build(BuildContext context) {
+    final String title = 'Channel';
+    return BodyLayout(BodyWidget(title, paddingTop));
+  }
 }
 
-class _BodyState extends State<Body> {
+class BodyWidget extends StatefulWidget {
+  final String title;
+
+  BodyWidget(this.title, paddingTop) : super();
+
+  @override
+  _BodyWidgetState createState() => _BodyWidgetState();
+}
+
+class _BodyWidgetState extends State<BodyWidget> {
   TextEditingController searchController = TextEditingController();
   String filter;
 
@@ -41,7 +49,7 @@ class _BodyState extends State<Body> {
         decoration: BoxDecoration(color: Colors.white),
         child: Column(
           children: [
-            HeaderBar(widget.title, widget.paddingTop,
+            HeaderBar(widget.title, paddingTop,
                 rightButtonWidgets: RightButtonWidgets()),
             Container(
               child: Expanded(
