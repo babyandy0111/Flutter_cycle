@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../layouts/MainLayout.dart';
+import '../../../core/shared_preferences/oauth2_client.dart';
+import '../../../core/config.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -28,14 +30,18 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Text("Sing In"),
               ),
-              onPressed: () => {
-                Navigator.pushNamed(context, MainLayout.routeName)
-              },
+              onPressed: () => auth(),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> auth() async {
+    var client = new IndoChatOAuth2Client();
+    var tknResp = client.getTokenWithAuthCodeFlow(clientId: INDOCHAT_CLIENT_ID, scopes: ['profile'], codeVerifier: INDOCHAT_CODE_VERIFIER, state: 'asdfasdf');
+    print(client);
   }
 }
 
