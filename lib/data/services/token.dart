@@ -12,3 +12,14 @@ Future<String> refreshToken(Map<String, Object> p) async {
   }
   return null;
 }
+
+Future<String> officialToken(Map<String, Object> p) async {
+  ApiResponse<TokenEntity> entity = await TokenRepository.officialToken();
+  var token = entity.data.token;
+  // print(entity.data.token);
+  // print(entity.data.expire_at);
+  if (token != null) {
+    return token;
+  }
+  return null;
+}

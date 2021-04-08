@@ -58,6 +58,14 @@ class SpUtil {
     }
   }
 
+  Future<String> getOfficialToken() async {
+    if (_prefs.getString('official_token') == null) {
+      return await officialToken();
+    } else {
+      return _prefs.getString('official_token');
+    }
+  }
+
   Future<void> setPlatform() async {
     if (Platform.isAndroid) {
       var androidInfo = await DeviceInfoPlugin().androidInfo;
@@ -116,14 +124,26 @@ class SpUtil {
     return _prefs.setString('token', token);
   }
 
+  Future<bool> setOfficialToken(token) async {
+    return _prefs.setString('official_token', token);
+  }
+
   Future<String> refreshToken() async {
     TokenPostEntity p = TokenPostEntity();
     p.pincode =  _prefs.getString("pincode");
     p.deviceUid = _prefs.getString("device_uid");
     p.userId = _prefs.getInt("user_id");
-    print("Print: ${p.toJson()}");
     await tokenService.refreshToken(p.toJson()).then((value) {
       setToken(value);
+    });
+  }
+
+  Future<String> officialToken() async {
+    OfficialTokenPostEntity p = OfficialTokenPostEntity();
+    p.apiToken = _prefs.getString("token");
+    p.userId = _prefs.getInt("user_id");
+    await tokenService.officialToken(p.toJson()).then((value) {
+      setOfficialToken(value);
     });
   }
 }

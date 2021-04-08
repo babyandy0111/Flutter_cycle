@@ -23,7 +23,9 @@ const HTTP_ERROR_LOG = true;
 const int CONNECT_TIMEOUT = 30000;
 const int RECEIVE_TIMEOUT = 30000;
 
-const IM_BASE_URL = 'https://api.indochat.net';
+// TODO: 先 call dev api
+// const IM_BASE_URL = 'https://api.indochat.net';
+const IM_BASE_URL = 'https://api-development.indochat.net';
 const STICKER_BASE_URL = 'https://sticker.indochat.net';
 const TOKEN_BASE_URL = 'https://auth-api.indochat.net';
 const MQTT_URL = 'mqx.indochat.net';

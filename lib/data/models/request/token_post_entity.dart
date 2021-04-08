@@ -30,3 +30,30 @@ class TokenPostEntity {
     return data;
   }
 }
+
+class OfficialTokenPostEntity {
+  String _apiToken;
+  int _userId;
+
+  OfficialTokenPostEntity({String apiToken , int userId}) {
+    this._apiToken = apiToken;
+    this._userId = userId;
+  }
+  
+  String get apiToken => _apiToken;
+  set apiToken(String apiToken) => _apiToken = apiToken;
+  int get userId => _userId;
+  set userId(int userId) => _userId = userId;
+
+  OfficialTokenPostEntity.fromJson(Map<String, dynamic> json) {
+    _apiToken = json['api_token'];
+    _userId = json['user_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['api_token'] = this._apiToken;
+    data['user_id'] = this._userId;
+    return data;
+  }
+}
