@@ -3,22 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
+import 'package:indochat_officialaccount/layouts/BodyLayout.dart';
 import 'package:indochat_officialaccount/widgets/AppBar.dart';
 
 import 'LeftButtonWidgets.dart';
 import 'RightButtonWidgets.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final String title = 'Create Channel';
+    return BodyLayout(BodyWidget(title, paddingTop));
+  }
+}
+
+class BodyWidget extends StatefulWidget {
   final String title;
   final double paddingTop;
 
-  Body(this.title, this.paddingTop) : super();
+  BodyWidget(this.title, this.paddingTop) : super();
 
   @override
-  _BodyState createState() => _BodyState();
+  _BodyWidgetState createState() => _BodyWidgetState();
 }
 
-class _BodyState extends State<Body> {
+class _BodyWidgetState extends State<BodyWidget> {
   bool isSwitched = true;
   File imageFile;
 
