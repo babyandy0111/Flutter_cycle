@@ -37,7 +37,9 @@ class Body extends StatelessWidget {
                 int uid = await SpUtil().getUserId();
                 String localtoken = await SpUtil().getToken();
 
-                print("local:${duid}/${pin}/${uid}/${localtoken}");
+                // print("local:${duid}/${pin}/${uid}/${localtoken}");
+                SpUtil().setToken(localtoken);
+
                 Navigator.pushNamed(context, MainLayout.routeName);
               },
             ),
