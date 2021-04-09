@@ -40,8 +40,8 @@ const INDOCHAT_CLIENT_ID = 'indonewsdev';
 const INDOCHAT_CLICLIENT_SECRET = '1C6B03B26D1BE5F39BD66D2B43A352827097E05B8080709D2846C3977526D923';
 const INDOCHAT_CODE_VERIFIER = 's256exampleeasdfas';
 const INDOCHAT_CODE_METHOD = 'S256';
-const CUSTOM_URI_SCHEME = 'com.example.indochat_officialaccount';
-const LOCAL_AUTH_URI = '$CUSTOM_URI_SCHEME://auth';
+const CUSTOM_URI_SCHEME = 'customscheme';
+const LOCAL_AUTH_URI = '$CUSTOM_URI_SCHEME://flutterbooksample.com/auth';
 
 /// 全局配置
 class Config {

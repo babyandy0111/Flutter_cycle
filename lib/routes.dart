@@ -10,8 +10,5 @@ import 'pages/CreateChannel/CreateChannelPage.dart';
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
   MainLayout.routeName: (context) => MainLayout(),
-  HomePage.routeName: (context) => HomePage(),
   LoginPage.routeName: (context) => LoginPage(),
-  SettingsPage.routeName: (context) => SettingsPage(),
-  CreateChannelPage.routeName: (context) => CreateChannelPage(),
 };
