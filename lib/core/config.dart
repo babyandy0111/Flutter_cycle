@@ -23,6 +23,7 @@ const HTTP_ERROR_LOG = true;
 const int CONNECT_TIMEOUT = 30000;
 const int RECEIVE_TIMEOUT = 30000;
 
+const BASE_URL = 'https://www.shihjie.com';
 const IM_BASE_URL = 'https://api.indochat.net';
 const STICKER_BASE_URL = 'https://sticker.indochat.net';
 const TOKEN_BASE_URL = 'https://auth-api.indochat.net';

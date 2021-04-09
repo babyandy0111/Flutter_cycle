@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:indochat_officialaccount/data/models/response/ChannelListEntity.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 
-Widget channelList(BuildContext context) {
+Widget channelList(BuildContext context, ChannelListEntity data) {
+
+  print(data.count);
   Widget divider1 = Divider(
     color: Colors.blue,
   );
@@ -17,7 +20,7 @@ Widget channelList(BuildContext context) {
           },
           padding: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
           shrinkWrap: true,
-          itemCount: 20,
+          itemCount: data.count,
           itemBuilder: (context, index) {
             return Column(
               children: [
@@ -44,14 +47,14 @@ Widget channelList(BuildContext context) {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Text(
-                                "Channel Name {$index}",
+                                data.data[index].title,
                                 style: TextStyle(
                                   color: Color.fromRGBO(29, 53, 87, 1),
                                   fontSize: 18.0,
                                 ),
                               ),
                               Text(
-                                "Follow 3",
+                                data.data[index].subtitle,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 150, 156, 1),
                                   fontSize: 16.0,

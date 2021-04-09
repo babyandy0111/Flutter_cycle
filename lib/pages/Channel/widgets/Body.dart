@@ -1,8 +1,13 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/bloc/channel.dart';
+import 'package:indochat_officialaccount/data/models/response/ChannelListEntity.dart';
 import 'package:indochat_officialaccount/layouts/BaseLayoyt.dart';
 import 'package:indochat_officialaccount/pages/Channel/widgets/SearchBar.dart';
-import 'package:indochat_officialaccount/pages/Channel/widgets/ChannelList.dart';
+import 'package:indochat_officialaccount/widgets/BlocComWidget.dart';
+
+import 'ChannelList.dart';
+
 
 ///繼承BaseWidget
 class Body extends BaseLayoyt {
@@ -15,9 +20,10 @@ class BodyState extends BaseLayoytState<Body> {
   final TextEditingController searchController = TextEditingController();
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     super.appBarTitle = "Channel";
+    channelBloc..getList();
   }
 
   Widget CreatePageView() {
@@ -30,7 +36,23 @@ class BodyState extends BaseLayoytState<Body> {
             child: Column(
               children: [
                 searchBar(searchController),
-                channelList(context),
+                StreamBuilder<ChannelListEntity>(
+                  stream: channelBloc.subject.stream,
+                  builder: (context, AsyncSnapshot<ChannelListEntity> snapshot) {
+                    if (snapshot.hasData && snapshot.data.data.length > 0) {
+                      return channelList(context, snapshot.data);
+                    }
+
+                    if (snapshot.hasData && snapshot.data.data.length == 0) {
+                      return noData();
+                    }
+
+                    if (snapshot.hasError) {
+                      return hasError(snapshot.error);
+                    }
+                    return Loading();
+                  },
+                )
               ],
             ),
           ),
@@ -39,11 +61,11 @@ class BodyState extends BaseLayoytState<Body> {
     );
   }
 
-  // //當我把預設layout設定完, CreatePageView就會沒用
-  // @override
-  // setBaseLayout(context) {
-  //   // super.setBaseLayout();
-  //   log("----buildbuild---setBaseLayout---1234567890");
-  //   return Container(color: Colors.red);
-  // }
+// //當我把預設layout設定完, CreatePageView就會沒用
+// @override
+// setBaseLayout(context) {
+//   // super.setBaseLayout();
+//   log("----buildbuild---setBaseLayout---1234567890");
+//   return Container(color: Colors.red);
+// }
 }

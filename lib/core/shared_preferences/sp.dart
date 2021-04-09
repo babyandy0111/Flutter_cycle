@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:device_info/device_info.dart';
 import 'dart:io';
+import 'dart:convert';
 
 class SpUtil {
   static SpUtil _instance = new SpUtil._();
@@ -16,36 +17,95 @@ class SpUtil {
     }
   }
 
+  Future<bool> setJSON(String key, dynamic jsonVal) {
+    String jsonString = jsonEncode(jsonVal);
+    return _prefs.setString(key, jsonString);
+  }
+
+  dynamic getJSON(String key) {
+    String jsonString = _prefs.getString(key);
+    return jsonString == null ? null : jsonDecode(jsonString);
+  }
+
+  Future<bool> setBool(String key, bool val) {
+    return _prefs.setBool(key, val);
+  }
+
+  bool getBool(String key) {
+    bool val = _prefs.getBool(key);
+    return val == null ? false : val;
+  }
+
   Future<bool> remove(String key) {
     return _prefs.remove(key);
   }
 
-  Future<String> getPlatform() async {
-    return _prefs.getString('platform');
+  Future<String> getDeviceToken() async {
+    return _prefs.getString('device_token');
+  }
+
+  Future<bool> setToken(token) async {
+    return _prefs.setString('token', token);
+  }
+
+  Future<bool> setUserId(user_id) async {
+    return _prefs.setInt('user_id', user_id);
+  }
+
+  Future<bool> setPinCode(pincode) async {
+    return _prefs.setString('pincode', pincode);
+  }
+
+  Future<bool> setPhone(phone) async {
+    return _prefs.setString('phone', phone);
+  }
+
+  Future<bool> setDeviceUid(device_uid) async {
+    return _prefs.setString('device_uid', device_uid);
+  }
+
+  Future<bool> setDeviceToken(device_token) async {
+    return _prefs.setString('device_token', device_token);
+  }
+
+  Future<bool> setAPPVersion(app_version) async {
+    return _prefs.setString('app_version', app_version);
+  }
+
+  Future<bool> setAPPLang(lang) async {
+    return _prefs.setString('lang', lang);
+  }
+
+  Future<String> getAPPLang() async {
+    return _prefs.getString('lang');
+  }
+
+  Future<String> getPinCode() async {
+    return _prefs.getString('pincode');
   }
 
   Future<String> getDeviceUid() async {
     return _prefs.getString('device_uid');
   }
 
-  Future<String> getPinCode() async {
-    return _prefs.getString('pin_code');
+  Future<int> getUserId() async {
+    return _prefs.getInt('user_id');
   }
 
   Future<String> getPhone() async {
     return _prefs.getString('phone');
   }
 
-  Future<int> getUserId() async {
-    return _prefs.getInt('user_id');
+  Future<String> getPlatform() async {
+    return _prefs.getString('platform');
+  }
+
+  Future<String> getSDKVersion() async {
+    return _prefs.getString('sdk_version');
   }
 
   Future<String> getAPPVersion() async {
     return _prefs.getString('app_version');
-  }
-
-  Future<String> getAPPLang() async {
-    return _prefs.getString('lang');
   }
 
   Future<void> setPlatform() async {
@@ -56,7 +116,8 @@ class SpUtil {
       var manufacturer = androidInfo.manufacturer;
       var model = androidInfo.model;
       var uuid = androidInfo.androidId;
-      print('Android $release (SDK $sdkInt), $manufacturer $model, (uuid $uuid)');
+      print(
+          'Android $release (SDK $sdkInt), $manufacturer $model, (uuid $uuid)');
       // Android 9 (SDK 28), Xiaomi Redmi Note 7
       _prefs.setString('sdk_version', release);
       return _prefs.setString('platform', 'A');
@@ -78,27 +139,22 @@ class SpUtil {
     return _prefs.setString('platform', '');
   }
 
-  Future<bool> setDeviceUid(deviceUid) async {
-    return _prefs.setString('device_uid', deviceUid);
-  }
-
-  Future<bool> setPinCode(pinCode) async {
-    return _prefs.setString('pin_code', pinCode);
-  }
-
-  Future<bool> setPhone(phone) async {
-    return _prefs.setString('phone', phone);
-  }
-
-  Future<bool> setUserId(userId) async {
-    return _prefs.setInt('user_id', userId);
-  }
-
-  Future<bool> setAPPVersion(appVersion) async {
-    return _prefs.setString('app_version', appVersion);
-  }
-
-  Future<bool> setAPPLang(lang) async {
-    return _prefs.setString('lang', lang);
-  }
+  // 這邊先註解掉
+  // Future<String> getToken() async {
+  //   if (_prefs.getString('token') == null) {
+  //     return await refreshToken();
+  //   } else {
+  //     return _prefs.getString('token');
+  //   }
+  // }
+  //
+  // Future<String> refreshToken() async {
+  //   TokenPostEntity p = TokenPostEntity();
+  //   p.pincode = _prefs.getString("pincode");
+  //   p.deviceUid = _prefs.getString("device_uid");
+  //   p.userId = _prefs.getInt("user_id");
+  //   await tokenService.refreshToken(p.toJson()).then((value) {
+  //     setToken(value);
+  //   });
+  // }
 }
