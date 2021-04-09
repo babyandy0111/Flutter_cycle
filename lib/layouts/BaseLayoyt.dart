@@ -6,7 +6,6 @@ import 'package:indochat_officialaccount/widgets/AppBarWidget.dart';
 
 abstract class BaseLayoyt extends StatefulWidget {
   BaseLayoytState baseWidgetState;
-
   @override
   BaseLayoytState createState() {
     baseWidgetState = getState();
@@ -18,6 +17,8 @@ abstract class BaseLayoyt extends StatefulWidget {
 
 abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T>
     with WidgetsBindingObserver {
+  String appBarTitle = "";
+
   @override
   void initState() {
     log("----buildbuild---initState");
@@ -40,7 +41,7 @@ abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T>
   @override
   Widget build(BuildContext context) {
     log("----buildbuild---build");
-    return setBaseLayout();
+    return setBaseLayout(context);
   }
 
   @override
@@ -56,14 +57,15 @@ abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T>
     super.didChangeAppLifecycleState(state);
   }
 
-  Widget setBaseLayout() {
+  Widget setBaseLayout(context) {
     log("----buildbuild---setBaseLayout");
+
     return Scaffold(
         body: LayoutBuilder(builder: (context, viewportConstraints) {
           return SingleChildScrollView(
             child: Column(
               children: [
-                appBar(context),
+                appBar(context, appBarTitle),
                 CreatePageView(),
               ],
             ),

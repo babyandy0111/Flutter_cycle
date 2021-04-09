@@ -54,8 +54,8 @@ class _BodyWidgetState extends State<BodyWidget> {
         child: Column(
           children: [
             HeaderBar(
-              widget.title,
-              widget.paddingTop,
+              '123',
+              80,
               radiusBarBgColor: Color.fromRGBO(255, 242, 241, 1),
               leftButtonWidgets: LeftButtonWidgets(),
               rightButtonWidgets: RightButtonWidgets(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:indochat_officialaccount/pages/CreateChannel/CreateChannelPage.dart';
 
-Widget appBar(context) {
+Widget appBar(context, title) {
   return Container(
     alignment: Alignment.bottomCenter,
     padding: EdgeInsets.only(top: 80),
@@ -24,7 +24,7 @@ Widget appBar(context) {
               leftButtonWidgets(context),
               Center(
                 child: Text(
-                  "title",
+                  title,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 21.0,
