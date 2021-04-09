@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:indochat_officialaccount/pages/ChannelAndy/ChannelAndyPage.dart';
+import 'package:indochat_officialaccount/pages/ChannelAndy/components/Body.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '../pages/Home/HomePage.dart';
 import '../pages/Channel/ChannelPage.dart';
@@ -51,7 +53,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), ChannelPage(), MessagePage()];
+    return [HomePage(), ChannelPage(), ChannelAndyPage(), MessagePage()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -65,6 +67,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.group),
         title: ('Channel'),
+        activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
+        inactiveColorPrimary: Colors.black,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.group),
+        title: ('Channeltest'),
         activeColorPrimary: Color.fromRGBO(255, 90, 90, 1),
         inactiveColorPrimary: Colors.black,
       ),
