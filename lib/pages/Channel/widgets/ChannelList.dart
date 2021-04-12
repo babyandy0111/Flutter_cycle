@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:indochat_officialaccount/data/models/response/ChannelListEntity.dart';
 import 'package:indochat_officialaccount/pages/Channel/widgets/ChannelTitleList.dart';
+import 'package:indochat_officialaccount/pages/Settings/SettingsPage.dart';
 
 Widget channelList(BuildContext context, ChannelListEntity data) {
   return Container(
@@ -44,7 +45,12 @@ Widget channelList(BuildContext context, ChannelListEntity data) {
                   caption: 'More',
                   color: Colors.black45,
                   icon: Icons.more_horiz,
-                  onTap: () => print("More"),
+                  onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SettingsPage(index)))
+                  },
                 ),
                 IconSlideAction(
                   caption: 'Delete',
