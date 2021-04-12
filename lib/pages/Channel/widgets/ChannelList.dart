@@ -1,83 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:indochat_officialaccount/data/models/response/ChannelListEntity.dart';
-import 'package:indochat_officialaccount/theme/official_theme.dart';
+import 'package:indochat_officialaccount/pages/Channel/widgets/ChannelTitleList.dart';
 
 Widget channelList(BuildContext context, ChannelListEntity data) {
-
-  print(data.count);
-  Widget divider1 = Divider(
-    color: Colors.blue,
-  );
-  Widget divider2 = Divider(color: Colors.green);
   return Container(
       constraints: BoxConstraints(
         maxHeight: 600,
       ),
       child: ListView.separated(
           separatorBuilder: (BuildContext context, int index) {
-            return index % 2 == 0 ? divider1 : divider2;
+            return Divider(
+              color: Colors.blue,
+            );
           },
           padding: EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
           shrinkWrap: true,
           itemCount: data.count,
           itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Slidable(
-                  actionPane: SlidableDrawerActionPane(),
-                  actionExtentRatio: 0.18,
-                  child: Container(
-                    padding: EdgeInsets.all(15.0),
-                    child: IntrinsicHeight(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              width: 60,
-                              height: 60,
-                              margin: EdgeInsets.only(right: 20),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage('assets/images/test.png'),
-                                    fit: BoxFit.contain),
-                              )),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Text(
-                                data.data[index].title,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(29, 53, 87, 1),
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                              Text(
-                                data.data[index].subtitle,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(255, 150, 156, 1),
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  secondaryActions: <Widget>[
-                    IconSlideAction(
-                      color: Color.fromRGBO(128, 128, 128, 1),
-                      icon: Icons.settings,
-                      onTap: () => {},
-                    ),
-                    IconSlideAction(
-                      color: primaryColor,
-                      icon: Icons.link_rounded,
-                      onTap: () => {},
-                    ),
-                  ],
+            return Slidable(
+              actionPane: SlidableDrawerActionPane(),
+              actionExtentRatio: 0.25,
+              child: Container(
+                color: Colors.white,
+                child: getListTitle(index, data),
+              ),
+              actions: <Widget>[
+                IconSlideAction(
+                  caption: 'Archive',
+                  color: Colors.blue,
+                  icon: Icons.archive,
+                  onTap: () => print("Archive"),
+                ),
+                IconSlideAction(
+                  caption: 'Share',
+                  color: Colors.indigo,
+                  icon: Icons.share,
+                  onTap: () => print("Share"),
+                ),
+              ],
+              secondaryActions: <Widget>[
+                IconSlideAction(
+                  caption: 'More',
+                  color: Colors.black45,
+                  icon: Icons.more_horiz,
+                  onTap: () => print("More"),
+                ),
+                IconSlideAction(
+                  caption: 'Delete',
+                  color: Colors.red,
+                  icon: Icons.delete,
+                  onTap: () => print("delete"),
                 ),
               ],
             );
