@@ -122,10 +122,9 @@ class Http {
       "Accept-Language": await SpUtil().getAPPLang(),
       "Bearer":"",
     };
-    // 這邊先註解掉
-    // await SpUtil().getToken().then((String token) {
-    //   headers['Bearer'] = token;
-    // });
+    await SpUtil().getToken().then((String token) {
+      headers['Bearer'] = token;
+    });
     return headers;
   }
 

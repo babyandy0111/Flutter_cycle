@@ -1,4 +1,6 @@
+import 'package:indochat_officialaccount/data/models/requests/TokenPostEntity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../data/services/token.dart' as tokenService;
 import 'package:device_info/device_info.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -139,22 +141,21 @@ class SpUtil {
     return _prefs.setString('platform', '');
   }
 
-  // 這邊先註解掉
-  // Future<String> getToken() async {
-  //   if (_prefs.getString('token') == null) {
-  //     return await refreshToken();
-  //   } else {
-  //     return _prefs.getString('token');
-  //   }
-  // }
-  //
-  // Future<String> refreshToken() async {
-  //   TokenPostEntity p = TokenPostEntity();
-  //   p.pincode = _prefs.getString("pincode");
-  //   p.deviceUid = _prefs.getString("device_uid");
-  //   p.userId = _prefs.getInt("user_id");
-  //   await tokenService.refreshToken(p.toJson()).then((value) {
-  //     setToken(value);
-  //   });
-  // }
+  Future<String> getToken() async {
+    if (_prefs.getString('token') == null) {
+      return await refreshToken();
+    } else {
+      return _prefs.getString('token');
+    }
+  }
+
+  Future<String> refreshToken() async {
+    TokenPostEntity p = TokenPostEntity();
+    p.pincode = _prefs.getString("pincode");
+    p.deviceUid = _prefs.getString("device_uid");
+    p.userId = _prefs.getInt("user_id");
+    await tokenService.refreshToken(p.toJson()).then((value) {
+      setToken(value);
+    });
+  }
 }
