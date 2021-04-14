@@ -6,13 +6,13 @@ class Header extends StatelessWidget{
   Widget build(BuildContext context){
     return Container( // header
       width: double.infinity,
-      height: 160,
+      height: 180, //160
       child: Stack(
         children: <Widget>[
           Positioned(
             child: Container(
               width: double.infinity,
-              height: 120,
+              height: 140,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment(0.0, 0.15),
@@ -25,7 +25,7 @@ class Header extends StatelessWidget{
             ),
           ),
           Positioned(
-            top: 100.0,
+            top: 120.0,
             bottom: 0,
             left: 0,
             right: 0,
@@ -42,14 +42,14 @@ class Header extends StatelessWidget{
             ),
           ),
           Positioned(
-            top: 0.0,
+            top: 20,
             left: 0,
             child: Image(
               image: AssetImage('assets/images/bg.png'),
             ),
           ),
           Positioned(
-            top: 18.0,
+            top:40,
             left: 25,
             child: Text(
               'User Name',
@@ -61,7 +61,7 @@ class Header extends StatelessWidget{
             ),
           ),
           Positioned(
-            top: 60.0,
+            top: 75.0,
             left: 25,
             child: Container(
                 alignment: Alignment(20, 20),
