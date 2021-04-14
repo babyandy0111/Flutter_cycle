@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/size_config.dart';
 
 class SocalCard extends StatelessWidget {
@@ -27,7 +26,6 @@ class SocalCard extends StatelessWidget {
           color: Color(0xFFF5F6F9),
           shape: BoxShape.circle,
         ),
-        child: SvgPicture.asset(icon),
       ),
     );
   }

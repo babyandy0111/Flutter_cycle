@@ -67,11 +67,10 @@ dependencies:
   mqtt_client: ^7.2.1
   
   device_info: ^1.0.0
-  flutter_svg: ^0.18.0 # help us to use SVG in our app
   persistent_bottom_nav_bar: ^3.1.0
   #aws_s3: ^0.1.1+hotfix.5
   #file_picker: ^1.4.3+1
-
+  fluttertoast: ^8.0.3
   pin_entry_text_field: ^0.1.4
 
   #image_picker: ^0.6.1+4

@@ -1,12 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
-import 'package:flutter_cycle/pages/login_success/login_success.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
-import 'package:flutter_cycle/wideget/custom_surfix_icon.dart';
 import 'package:flutter_cycle/wideget/default_button.dart';
 import 'package:flutter_cycle/wideget/form_error.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:sms_autofill/sms_autofill.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -15,9 +14,12 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  bool remember = false;
+  String phone;
+  String pincode;
+  String smscode;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String _verificationId;
+  final SmsAutoFill _autoFill = SmsAutoFill();
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -35,47 +37,49 @@ class _SignFormState extends State<SignForm> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _auth.setLanguageCode("zh-cn");
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          buildEmailFormField(),
+          buildPhoneFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildPasswordFormField(),
+          buildPinCodeFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           Row(
             children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text("Remember me"),
               Spacer(),
-              GestureDetector(
-                onTap: () => pushNewScreen(context, screen: ForgotPassword()),
-                child: Text(
-                  "Forgot Password",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
             ],
           ),
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: "Continue",
+            text: "Get Verify Code",
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // if all are valid then go to success screen
-                // Navigator.pushNamed(context, LoginSuccess.routeName);
-                pushNewScreen(context, screen: LoginSuccess());
+                print("$phone /$pincode");
+                verifyPhoneNumber();
+                // _phoneNumberController.text = await _autoFill.hint
+              }
+            },
+          ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildVerifyCodeFormField(),
+          SizedBox(height: getProportionateScreenHeight(20)),
+          DefaultButton(
+            text: "Verify",
+            press: () {
+              if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+                signInWithPhoneNumber();
+                // _phoneNumberController.text = await _autoFill.hint
               }
             },
           ),
@@ -84,69 +88,210 @@ class _SignFormState extends State<SignForm> {
     );
   }
 
-  TextFormField buildPasswordFormField() {
+  TextFormField buildPinCodeFormField() {
     return TextFormField(
+      keyboardType: TextInputType.phone,
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => pincode = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
         }
         return null;
       },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(error: kPassNullError);
-          return "";
-        } else if (value.length < 8) {
-          addError(error: kShortPassError);
-          return "";
-        }
-        return null;
-      },
+      // validator: (value) {
+      //   if (value.isEmpty) {
+      //     addError(error: kPassNullError);
+      //     return "";
+      //   } else if (value.length < 8) {
+      //     addError(error: kShortPassError);
+      //     return "";
+      //   }
+      //   return null;
+      // },
       decoration: InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your password",
+        labelText: "Pincode",
+        hintText: "Enter your pincode",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: Icon(Icons.lock),
+      ),
+    );
+  }
+  TextFormField buildPhoneFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.phone,
+      onSaved: (newValue) => phone = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        }
+        return null;
+      },
+      // validator: (value) {
+      //   if (value.isEmpty) {
+      //     addError(error: kEmailNullError);
+      //     return "";
+      //   } else if (phoneValidatorRegExp.hasMatch(value)) {
+      //     addError(error: kInvalidEmailError);
+      //     return "";
+      //   }
+      //   return null;
+      // },
+      decoration: InputDecoration(
+        labelText: "Phone number",
+        hintText: "Enter your phone number",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(Icons.phone),
+      ),
+    );
+  }
+  TextFormField buildVerifyCodeFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.number,
+      onSaved: (newValue) => smscode = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        }
+        return null;
+      },
+      // validator: (value) {
+      //   if (value.isEmpty) {
+      //     addError(error: kEmailNullError);
+      //     return "";
+      //   } else if (smsValidatorRegExp.hasMatch(value)) {
+      //     addError(error: kInvalidEmailError);
+      //     return "";
+      //   }
+      //   return null;
+      // },
+      decoration: InputDecoration(
+        labelText: "sms code",
+        hintText: "Enter your sms code",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: Icon(Icons.code),
       ),
     );
   }
 
-  TextFormField buildEmailFormField() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
-        } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(error: kEmailNullError);
-          return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Email",
-        hintText: "Enter your email",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
-      ),
-    );
+  void signInWithPhoneNumber() async {
+    try {
+      final AuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: _verificationId,
+        smsCode: smscode,
+      );
+
+      final User user = (await _auth.signInWithCredential(credential)).user;
+
+      Fluttertoast.showToast(
+          msg: "Successfully signed in UID: ${user.uid}",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      print("Successfully signed in UID: ${user.uid}");
+    } catch (e) {
+      Fluttertoast.showToast(
+          msg: "Failed to sign in: " + e.toString(),
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      print("Failed to sign in: " + e.toString());
+    }
+  }
+
+  void signInAnonymously() {
+    _auth.signInAnonymously().then((result) {
+      setState(() {
+        final User user = result.user;
+      });
+    });
+  }
+
+  void verifyPhoneNumber() async {
+    //Callback for when the user has already previously signed in with this phone number on this device
+    PhoneVerificationCompleted verificationCompleted = (PhoneAuthCredential phoneAuthCredential) async {
+      await _auth.signInWithCredential(phoneAuthCredential);
+      print("Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
+      Fluttertoast.showToast(
+          msg: "Phone number automatically verified and user signed in: ${_auth.currentUser.uid}",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    };
+
+    //Listens for errors with verification, such as too many attempts
+    PhoneVerificationFailed verificationFailed = (FirebaseAuthException authException) {
+      Fluttertoast.showToast(
+          msg: "Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      print('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+    };
+
+    //Callback for when the code is sent
+    PhoneCodeSent codeSent = (String verificationId, [int forceResendingToken]) async {
+      print('Please check your phone for the verification code.');
+      Fluttertoast.showToast(
+          msg: "Please check your phone for the verification code.",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      _verificationId = verificationId;
+    };
+
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
+      print("verification code: " + verificationId);
+      Fluttertoast.showToast(
+          msg: "verification code: " + verificationId,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      _verificationId = verificationId;
+    };
+
+    try {
+      await _auth.verifyPhoneNumber(
+          phoneNumber: phone,
+          timeout: const Duration(seconds: 5),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+    } catch (e) {
+      print("Failed to Verify Phone Number: ${e}");
+      Fluttertoast.showToast(
+          msg: "Failed to Verify Phone Number: ${e}",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
   }
 }

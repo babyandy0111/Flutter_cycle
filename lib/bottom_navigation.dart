@@ -62,32 +62,22 @@ class _BottomNavigationState extends State<BottomNavigation> {
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person_alt),
         title: ("Contancts"),
-        activeColor: CupertinoColors.destructiveRed,
-        inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.chat_bubble_text),
         title: ("Chats"),
-        activeColor: CupertinoColors.destructiveRed,
-        inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.camera_viewfinder),
         title: ("SID9"),
-        activeColor: CupertinoColors.white,
-        inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.rectangle_stack_person_crop_fill),
         title: ("LifeStyle"),
-        activeColor: CupertinoColors.destructiveRed,
-        inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.settings),
         title: ("iOffice"),
-        activeColor: CupertinoColors.destructiveRed,
-        inactiveColor: CupertinoColors.systemGrey,
       ),
     ];
   }
