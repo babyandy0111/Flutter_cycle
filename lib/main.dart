@@ -25,7 +25,7 @@ void main() async {
   await Firebase.initializeApp();
   await DotEnv.load(fileName: ".env");
 
-  print(DotEnv.env['AWS_KEY']);
+  // print(DotEnv.env['AWS_KEY']);
   // PushNotificationsManager().init();
   runApp(MyApp());
 }
@@ -41,6 +41,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String token;
+
+  @override
+  void initState() {
+    super.initState();
+    SpUtil().getToken().then((value) => token = value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,8 +64,7 @@ class _MyAppState extends State<MyApp> {
           child: child,
         ),
       ),
-      home: SignIn(),
-      // initialRoute: '/',
+      home: (token == "") ? SignIn() : BottomNavigation(),
       routes: routes,
     );
   }

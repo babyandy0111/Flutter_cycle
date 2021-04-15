@@ -1,4 +1,4 @@
-import 'package:flutter_cycle/data/models/response/check-pincode-entity.dart';
+import 'package:flutter_cycle/data/models/response/check_pincode_entity.dart';
 
 import '../../core/http/api_response.dart';
 import '../models/response/user_entity.dart';

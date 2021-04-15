@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_cycle/core/config.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
-import 'package:flutter_cycle/data/models/request/check-pincode-post-entity.dart';
-import 'package:flutter_cycle/data/models/response/check-pincode-entity.dart';
+import 'package:flutter_cycle/data/models/request/check_pincode_post_entity.dart';
+import 'package:flutter_cycle/data/models/response/check_pincode_entity.dart';
 import '../../core/http/api_response.dart';
 import '../../core/http/http_utils.dart';
 import '../models/response/user_entity.dart';

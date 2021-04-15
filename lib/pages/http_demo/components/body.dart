@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/bloc/sticker.dart';
-import 'package:flutter_cycle/data/models/response/home_sticker_packs_entity.dart';
 import '../../../data/services/config.dart';
 import '../../../data/models/response/user_entity.dart';
 import '../../../core/shared_preferences/sp.dart';
@@ -55,11 +53,24 @@ class _BodyState extends State<Body> {
                     String duid = await SpUtil().getDeviceUid();
                     String pin = await SpUtil().getPinCode();
                     int uid = await SpUtil().getUserId();
+                    String phone = await SpUtil().getPhone();
 
                     String localtoken = await SpUtil().getToken();
-                    showSnackbar("local:${duid}/${pin}/${uid}/${localtoken}");
+                    showSnackbar("local:${duid}/${pin}/${uid}/${phone}/${localtoken}");
                   },
                   child: Text("get local token ")),
+              FlatButton(
+                  color: Colors.amber,
+                  onPressed: () async {
+                    await SpUtil().setToken("");
+                    String duid = await SpUtil().getDeviceUid();
+                    String pin = await SpUtil().getPinCode();
+                    int uid = await SpUtil().getUserId();
+                    String phone = await SpUtil().getPhone();
+                    String localtoken = await SpUtil().getToken();
+                    showSnackbar("local:${duid}/${pin}/${uid}/${phone}/${localtoken}");
+                  },
+                  child: Text("clear local token ")),
             ],
           ),
         ),

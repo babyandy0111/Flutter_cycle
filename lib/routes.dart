@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_cycle/layouts/main_layout.dart';
 import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
 import 'package:flutter_cycle/pages/home_sticker_packs/home_sticker_packs.dart';
 import 'package:flutter_cycle/pages/login_success/login_success.dart';
@@ -32,4 +33,5 @@ final Map<String, WidgetBuilder> routes = {
   OtpDemo.routeName: (context) => OtpDemo(),
   MqttDemo.routeName: (context) => MqttDemo(),
   PlatformChannelDemo.routeName: (context) => PlatformChannelDemo(),
+  MainLayout.routeName: (context) => MainLayout(),
 };

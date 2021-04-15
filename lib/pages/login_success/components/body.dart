@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
-import 'package:flutter_cycle/layouts/main-layout.dart';
+import 'package:flutter_cycle/layouts/main_layout.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
@@ -40,7 +40,7 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     _auth.setLanguageCode("zh-tw");
-    verifyPhoneNumber();
+    // verifyPhoneNumber();
   }
 
   @override
@@ -54,14 +54,6 @@ class _BodyState extends State<Body> {
             buildSmsCodeFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
             FormError(errors: errors),
-            // Text(
-            //   "Login Success",
-            //   style: TextStyle(
-            //     fontSize: getProportionateScreenWidth(30),
-            //     fontWeight: FontWeight.bold,
-            //     color: Colors.black,
-            //   ),
-            // ),
             Spacer(),
             SizedBox(
               width: SizeConfig.screenWidth * 0.6,
@@ -71,9 +63,7 @@ class _BodyState extends State<Body> {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
                     bool flag = await signInWithPhoneNumber();
-                    if(flag){
-                      Navigator.pushNamed(context, MainLayout.routeName);
-                    }
+                    if(flag) Navigator.pushNamed(context, MainLayout.routeName);
                   }
                 },
               ),
@@ -111,7 +101,7 @@ class _BodyState extends State<Body> {
         labelText: "sms code",
         hintText: "Enter your sms code",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: Icon(Icons.code),
+        suffixIcon: Icon(Icons.sms),
       ),
     );
   }
@@ -134,6 +124,10 @@ class _BodyState extends State<Body> {
           textColor: Colors.white,
           fontSize: 16.0);
       print("Successfully signed in UID: ${user.uid}");
+
+      // 取token
+
+
       return true;
     } catch (e) {
       Fluttertoast.showToast(
@@ -150,8 +144,7 @@ class _BodyState extends State<Body> {
 
   void verifyPhoneNumber() async {
     //Callback for when the user has already previously signed in with this phone number on this device
-    PhoneVerificationCompleted verificationCompleted =
-        (PhoneAuthCredential phoneAuthCredential) async {
+    PhoneVerificationCompleted verificationCompleted = (PhoneAuthCredential phoneAuthCredential) async {
       await _auth.signInWithCredential(phoneAuthCredential);
       print("Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
       Fluttertoast.showToast(
@@ -164,8 +157,7 @@ class _BodyState extends State<Body> {
     };
 
     //Listens for errors with verification, such as too many attempts
-    PhoneVerificationFailed verificationFailed =
-        (FirebaseAuthException authException) {
+    PhoneVerificationFailed verificationFailed = (FirebaseAuthException authException) {
       Fluttertoast.showToast(
           msg: "Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}",
           toastLength: Toast.LENGTH_LONG,
@@ -177,8 +169,7 @@ class _BodyState extends State<Body> {
     };
 
     //Callback for when the code is sent
-    PhoneCodeSent codeSent =
-        (String verificationId, [int forceResendingToken]) async {
+    PhoneCodeSent codeSent = (String verificationId, [int forceResendingToken]) async {
       print('Please check your phone for the verification code.');
       Fluttertoast.showToast(
           msg: "Please check your phone for the verification code.",
@@ -190,8 +181,7 @@ class _BodyState extends State<Body> {
       _verificationId = verificationId;
     };
 
-    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
-        (String verificationId) {
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
       print("verification code: " + verificationId);
       Fluttertoast.showToast(
           msg: "verification code: " + verificationId,

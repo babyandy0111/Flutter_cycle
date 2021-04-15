@@ -1,15 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
-import 'package:flutter_cycle/data/models/response/check-pincode-entity.dart';
+import 'package:flutter_cycle/data/models/response/check_pincode_entity.dart';
 import 'package:flutter_cycle/data/services/user.dart';
-import 'package:flutter_cycle/layouts/main-layout.dart';
 import 'package:flutter_cycle/pages/login_success/login_success.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
 import 'package:flutter_cycle/widegets/default_button.dart';
-import 'package:flutter_cycle/widegets/form_error.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -21,7 +17,6 @@ class _SignFormState extends State<SignForm> {
   String phone;
   String pincode;
   int userId;
-
 
   final List<String> errors = [];
 
