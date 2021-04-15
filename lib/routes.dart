@@ -24,15 +24,12 @@ final Map<String, WidgetBuilder> routes = {
   BackendDriveUIDemo.routeName:(context) => BackendDriveUIDemo(),
   CreateWtoJson.routeName:(context) => CreateWtoJson(),
   DefaultDemo.routeName:(context) => DefaultDemo(),
-
   SignUp.routeName: (context) => SignUp(),
   SignIn.routeName: (context) => SignIn(),
   LoginSuccess.routeName: (context) => LoginSuccess(),
   ForgotPassword.routeName: (context) => ForgotPassword(),
-
   HomeStickerPacks.routeName: (context) => HomeStickerPacks(),
   OtpDemo.routeName: (context) => OtpDemo(),
   MqttDemo.routeName: (context) => MqttDemo(),
-
   PlatformChannelDemo.routeName: (context) => PlatformChannelDemo(),
 };

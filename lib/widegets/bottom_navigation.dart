@@ -5,6 +5,7 @@ import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
+import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -19,6 +20,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    return getPresistentTabView();
+  }
+
+  Widget getPresistentTabView(){
     return PersistentTabView(
       context,
       controller: _controller,

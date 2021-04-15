@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
-import 'package:flutter_cycle/wideget/socal_card.dart';
+import 'package:flutter_cycle/widegets/socal_card.dart';
 import 'sign_up_form.dart';
 
 class Body extends StatelessWidget {

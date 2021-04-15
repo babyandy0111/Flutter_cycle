@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
-import 'package:flutter_cycle/wideget/custom_surfix_icon.dart';
-import 'package:flutter_cycle/wideget/default_button.dart';
-import 'package:flutter_cycle/wideget/form_error.dart';
-import 'package:flutter_cycle/wideget/no_account_text.dart';
+import 'package:flutter_cycle/widegets/custom_surfix_icon.dart';
+import 'package:flutter_cycle/widegets/default_button.dart';
+import 'package:flutter_cycle/widegets/form_error.dart';
+import 'package:flutter_cycle/widegets/no_account_text.dart';
 
 class Body extends StatelessWidget {
   @override

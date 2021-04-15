@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
-import 'package:flutter_cycle/wideget/default_button.dart';
+import 'package:flutter_cycle/widegets/default_button.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class Body extends StatelessWidget {

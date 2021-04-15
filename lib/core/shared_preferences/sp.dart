@@ -133,6 +133,7 @@ class SpUtil {
       print('Android $release (SDK $sdkInt), $manufacturer $model, (uuid $uuid)');
       // Android 9 (SDK 28), Xiaomi Redmi Note 7
       _prefs.setString('sdk_version', release);
+      setDeviceUid(uuid);
       return _prefs.setString('platform', 'A');
     }
 
@@ -146,6 +147,7 @@ class SpUtil {
       print('$systemName $version, $name $model, uuid $uuid');
       // iOS 13.1, iPhone 11 Pro Max iPhone
       _prefs.setString('sdk_version', version);
+      setDeviceUid(uuid);
       return _prefs.setString('platform', 'I');
     }
 

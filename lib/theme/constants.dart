@@ -26,14 +26,21 @@ const defaultDuration = Duration(milliseconds: 250);
 final RegExp emailValidatorRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 final RegExp phoneValidatorRegExp = RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
 final RegExp smsValidatorRegExp = RegExp(r'^[0-9]');
-const String kEmailNullError = "Please Enter your email";
-const String kInvalidEmailError = "Please Enter Valid Email";
-const String kPassNullError = "Please Enter your password";
-const String kShortPassError = "Password is too short";
+const String kPhoneNullError = "Please Enter your phone number";
+const String kInvalidPhoneError = "Please Enter Valid Phone number";
+const String kPincodeNullError = "Please Enter your pincode";
+const String kShortPincodeError = "pincode is too short";
 const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
+const String kVerifyCodeNullError = "Please Enter your Verify code";
+const String kEmailNullError = "Please Enter your email";
+const String kInvalidEmailError = "Please Enter Valid Email";
+const String kPassNullError = "Please Enter your password";
+const String kShortPassError = "Password is too short";
+const String kNotHasAccount = "this phone is not sing up";
+const String ksmsCodeNullError = "please Enter sms code";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

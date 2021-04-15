@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'pages/default_demo/default_demo.dart';
+import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'routes.dart';
 import 'core/shared_preferences/sp.dart';
 import 'core/http/http_utils.dart';
 import 'core/config.dart';
 import 'theme/theme.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
-import 'bottom_navigation.dart';
+import 'widegets/bottom_navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +15,10 @@ void main() async {
 
   await SpUtil.init();
   await SpUtil().setPlatform();
-  await SpUtil().setDeviceUid("123456");
-  await SpUtil().setPinCode("123456");
-  await SpUtil().setPhone("+886973701001");
-  await SpUtil().setUserId(501);
+  // await SpUtil().setDeviceUid("123456");
+  // await SpUtil().setPinCode("123456");
+  // await SpUtil().setPhone("+886973701001");
+  // await SpUtil().setUserId(501);
   await SpUtil().setAPPVersion(APP_VERSION);
   await SpUtil().setAPPLang(APP_LANG);
 
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
           child: child,
         ),
       ),
-      home: BottomNavigation(),
+      home: SignIn(),
       // initialRoute: '/',
       routes: routes,
     );

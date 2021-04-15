@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/wideget/custom_surfix_icon.dart';
-import 'package:flutter_cycle/wideget/default_button.dart';
-import 'package:flutter_cycle/wideget/form_error.dart';
+import 'package:flutter_cycle/widegets/custom_surfix_icon.dart';
+import 'package:flutter_cycle/widegets/default_button.dart';
+import 'package:flutter_cycle/widegets/form_error.dart';
 import '../../../theme/constants.dart';
 import '../../../theme/size_config.dart';
 
