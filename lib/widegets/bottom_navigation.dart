@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
@@ -17,10 +18,16 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+  String token;
+  @override
+  void initState() {
+    super.initState();
+    SpUtil().getToken().then((value) => token = value);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return getPresistentTabView();
+    return (token == "") ? SignIn() : getPresistentTabView();
   }
 
   Widget getPresistentTabView(){
