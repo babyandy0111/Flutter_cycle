@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/Body.dart';
+import 'widgets/Body.dart';
 
 class SettingsPage extends StatelessWidget {
   static String routeName = "/settings";
