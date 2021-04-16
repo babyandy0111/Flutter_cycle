@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
+import 'package:flutter_cycle/data/models/response/user_entity.dart';
+import 'package:flutter_cycle/data/services/user.dart';
 import 'package:flutter_cycle/layouts/main_layout.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/theme/constants.dart';
@@ -63,7 +65,20 @@ class _BodyState extends State<Body> {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
                     bool flag = await signInWithPhoneNumber();
-                    if(flag) Navigator.pushNamed(context, MainLayout.routeName);
+                    if (flag) {
+                      // 這邊要先拿一下user資料
+                      UserEntity data = await getUser();
+                      if (data.nickname.isNotEmpty) {
+                        Fluttertoast.showToast(
+                            msg: "user name: ${data.nickname}",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.CENTER,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                        Navigator.pushNamed(context, MainLayout.routeName);
+                      }
+                    }
                   }
                 },
               ),
@@ -127,7 +142,6 @@ class _BodyState extends State<Body> {
 
       // 取token
 
-
       return true;
     } catch (e) {
       Fluttertoast.showToast(
@@ -144,11 +158,14 @@ class _BodyState extends State<Body> {
 
   void verifyPhoneNumber() async {
     //Callback for when the user has already previously signed in with this phone number on this device
-    PhoneVerificationCompleted verificationCompleted = (PhoneAuthCredential phoneAuthCredential) async {
+    PhoneVerificationCompleted verificationCompleted =
+        (PhoneAuthCredential phoneAuthCredential) async {
       await _auth.signInWithCredential(phoneAuthCredential);
-      print("Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
+      print(
+          "Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
       Fluttertoast.showToast(
-          msg: "Phone number automatically verified and user signed in: ${_auth.currentUser.uid}",
+          msg:
+              "Phone number automatically verified and user signed in: ${_auth.currentUser.uid}",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
           backgroundColor: Colors.green,
@@ -157,19 +174,23 @@ class _BodyState extends State<Body> {
     };
 
     //Listens for errors with verification, such as too many attempts
-    PhoneVerificationFailed verificationFailed = (FirebaseAuthException authException) {
+    PhoneVerificationFailed verificationFailed =
+        (FirebaseAuthException authException) {
       Fluttertoast.showToast(
-          msg: "Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}",
+          msg:
+              "Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
-      print('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+      print(
+          'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
     };
 
     //Callback for when the code is sent
-    PhoneCodeSent codeSent = (String verificationId, [int forceResendingToken]) async {
+    PhoneCodeSent codeSent =
+        (String verificationId, [int forceResendingToken]) async {
       print('Please check your phone for the verification code.');
       Fluttertoast.showToast(
           msg: "Please check your phone for the verification code.",
@@ -181,7 +202,8 @@ class _BodyState extends State<Body> {
       _verificationId = verificationId;
     };
 
-    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String verificationId) {
       print("verification code: " + verificationId);
       Fluttertoast.showToast(
           msg: "verification code: " + verificationId,

@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     print(token);
-    return (token == null) ? SignIn() : getPresistentTabView();
+    return (token == null || token == "") ? SignIn() : getPresistentTabView();
   }
 
   Widget getPresistentTabView(){

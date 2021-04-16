@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
           child: child,
         ),
       ),
-      home: (token == null) ? SignIn() : BottomNavigation(),
+      home: (token == null || token == "") ? SignIn() : BottomNavigation(),
       routes: routes,
     );
   }
