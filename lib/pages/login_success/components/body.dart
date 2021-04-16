@@ -40,7 +40,7 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     _auth.setLanguageCode("zh-tw");
-    // verifyPhoneNumber();
+    verifyPhoneNumber();
   }
 
   @override
