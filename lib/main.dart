@@ -58,6 +58,7 @@ class _MyAppState extends State<MyApp> {
           child: child,
         ),
       ),
+
       home: (isLogin == null) ? SignIn() : BottomNavigation(),
       routes: routes,
     );

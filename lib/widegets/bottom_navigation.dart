@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/layouts/base_layout.dart';
+import 'package:flutter_cycle/pages/chat/chat.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
@@ -53,7 +54,7 @@ class _BottomNavigationState extends BaseLayoytState<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [DefaultDemo(), HttpDemo(), OtpDemo(), CreateWtoJson(), PushDemo()];
+    return [DefaultDemo(), Chat(), OtpDemo(), CreateWtoJson(), PushDemo()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
