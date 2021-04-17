@@ -8,6 +8,7 @@ import 'package:flutter_cycle/pages/login_success/login_success.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
 import 'package:flutter_cycle/widegets/default_button.dart';
+import 'package:international_phone_input/international_phone_input.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -47,7 +48,8 @@ class _SignFormState extends State<SignForm> {
       key: _formKey,
       child: Column(
         children: [
-          buildPhoneFormField(),
+          buildInternationalCodeFormField(),
+          // buildPhoneFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPinCodeFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
@@ -71,6 +73,10 @@ class _SignFormState extends State<SignForm> {
                 _formKey.currentState.save();
 
                 // 先判斷有無該indocha帳號
+                if (phone == "") {
+                  return;
+                }
+
                 CheckPinCodeEntity data = await checkPinCode(phone, pincode);
                 if (data.status == 2) {
                   addError(error: kNotHasAccount);
@@ -95,6 +101,28 @@ class _SignFormState extends State<SignForm> {
           ),
         ],
       ),
+    );
+  }
+
+  void onPhoneNumberChange(String number, String internationalizedPhoneNumber, String isoCode) {
+    setState(() {
+      if (internationalizedPhoneNumber != "") {
+        phone = internationalizedPhoneNumber;
+      }
+    });
+  }
+
+  Widget buildInternationalCodeFormField() {
+    return InternationalPhoneInput(
+      decoration: InputDecoration(
+        hintText: "Enter your phone",
+      ),
+      onPhoneNumberChange: onPhoneNumberChange,
+      initialPhoneNumber: "",
+      initialSelection: "TW",
+      enabledCountries: ['+886', '+62'],
+      showCountryCodes: true,
+      showCountryFlags: false,
     );
   }
 
