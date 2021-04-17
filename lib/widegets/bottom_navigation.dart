@@ -5,6 +5,7 @@ import 'package:flutter_cycle/pages/chat/chat.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
+import 'package:flutter_cycle/pages/lifestyle/lifestyle.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -54,7 +55,7 @@ class _BottomNavigationState extends BaseLayoytState<BottomNavigation> {
   }
 
   List<Widget> _buildScreens() {
-    return [DefaultDemo(), Chat(), OtpDemo(), CreateWtoJson(), PushDemo()];
+    return [DefaultDemo(), Chat(), OtpDemo(), LifeStyle(), PushDemo()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

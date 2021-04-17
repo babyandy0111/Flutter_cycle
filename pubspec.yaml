@@ -75,6 +75,7 @@ dependencies:
   # intl_phone_field: ^2.0.0
   international_phone_input: ^1.0.4
 
+  flutter_icons: ^1.0.0+1
   #image_picker: ^0.6.1+4
   #esc_pos_utils: ^1.0.0
   #hex: ^0.1.2
