@@ -27,6 +27,7 @@ void main() async {
 
   // print(DotEnv.env['AWS_KEY']);
   // PushNotificationsManager().init();
+
   runApp(MyApp());
 }
 
@@ -41,16 +42,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String token;
-
-  @override
-  void initState() {
-    super.initState();
-    SpUtil().getToken().then((value) => token = value);
-  }
-
   @override
   Widget build(BuildContext context) {
+    var isLogin = SpUtil().getIsLogin();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -64,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           child: child,
         ),
       ),
-      home: (token == null || token == "") ? SignIn() : BottomNavigation(),
+      home: (isLogin == null) ? SignIn() : BottomNavigation(),
       routes: routes,
     );
   }

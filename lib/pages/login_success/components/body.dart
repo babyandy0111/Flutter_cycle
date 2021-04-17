@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/core/config.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 import 'package:flutter_cycle/data/models/response/user_entity.dart';
+import 'package:flutter_cycle/data/services/token.dart';
 import 'package:flutter_cycle/data/services/user.dart';
 import 'package:flutter_cycle/layouts/main_layout.dart';
-import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/theme/constants.dart';
 import 'package:flutter_cycle/theme/size_config.dart';
 import 'package:flutter_cycle/widegets/default_button.dart';
 import 'package:flutter_cycle/widegets/form_error.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -42,7 +42,9 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     _auth.setLanguageCode("zh-tw");
-    verifyPhoneNumber();
+    if (!DebugMode) {
+      verifyPhoneNumber();
+    }
   }
 
   @override
@@ -66,9 +68,13 @@ class _BodyState extends State<Body> {
                     _formKey.currentState.save();
                     bool flag = await signInWithPhoneNumber();
                     if (flag) {
+                      // get & set token
+                      await refreshToken();
+
                       // 這邊要先拿一下user資料
                       UserEntity data = await getUser();
                       if (data.nickname.isNotEmpty) {
+                        await SpUtil().setIsLogin();
                         Fluttertoast.showToast(
                             msg: "user name: ${data.nickname}",
                             toastLength: Toast.LENGTH_LONG,
@@ -122,7 +128,10 @@ class _BodyState extends State<Body> {
   }
 
   Future<bool> signInWithPhoneNumber() async {
-    print(smscode);
+    if (DebugMode) {
+      return true;
+    }
+
     try {
       final AuthCredential credential = PhoneAuthProvider.credential(
         verificationId: _verificationId,

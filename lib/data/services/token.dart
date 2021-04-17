@@ -2,7 +2,7 @@ import '../../core/http/api_response.dart';
 import '../models/response/token_entity.dart';
 import '../repositorys/token_repository.dart';
 
-Future<String> refreshToken(Map<String, Object> p) async {
+Future<String> refreshToken() async {
   ApiResponse<TokenEntity> entity = await TokenRepository.refreshToken();
   var token = entity.data.token;
   // print(entity.data.token);

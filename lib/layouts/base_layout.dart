@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 
 abstract class BaseLayoyt extends StatefulWidget {
   BaseLayoytState baseWidgetState;
+
   @override
   BaseLayoytState createState() {
     baseWidgetState = getState();
@@ -16,13 +16,12 @@ abstract class BaseLayoyt extends StatefulWidget {
 }
 
 abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T> with WidgetsBindingObserver {
-  String token;
+
   @override
   void initState() {
     log("----buildbuild---initState");
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-    SpUtil().getToken().then((value) => token = value);
   }
 
   @override
@@ -58,17 +57,7 @@ abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T> with Widge
 
   Widget setBaseLayout(context) {
     log("----buildbuild---setBaseLayout");
-
-    return Scaffold(
-        body: LayoutBuilder(builder: (context, viewportConstraints) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                CreatePageView(),
-              ],
-            ),
-          );
-        }));
+    return CreatePageView();
   }
 
   Widget CreatePageView();

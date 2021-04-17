@@ -33,6 +33,8 @@ const RETRY_S = 5;
 const APP_VERSION = '2.10.0';
 const APP_LANG = 'en';
 
+const DebugMode = true;
+
 /// 全局配置
 class Config {
 

@@ -61,6 +61,22 @@ class SpUtil {
     return _prefs.setString('token', token);
   }
 
+  Future<bool> removeToken(token) async {
+    return _prefs.remove('token');
+  }
+
+  getIsLogin() {
+    return _prefs.getString('islogin');
+  }
+
+  Future<bool> setIsLogin() async {
+    return _prefs.setString('islogin', "1");
+  }
+
+  Future<bool> removeIsLogin(islogin) async {
+    return _prefs.remove('islogin');
+  }
+
   Future<bool> setUserId(user_id) async {
     return _prefs.setInt('user_id', user_id);
   }
@@ -155,11 +171,7 @@ class SpUtil {
   }
 
   Future<String> refreshToken() async {
-    TokenPostEntity p = TokenPostEntity();
-    p.pincode =  _prefs.getString("pincode");
-    p.deviceUid = _prefs.getString("device_uid");
-    p.userId = _prefs.getInt("user_id");
-    await tokenService.refreshToken(p.toJson()).then((value) {
+    await tokenService.refreshToken().then((value) {
       setToken(value);
     });
   }

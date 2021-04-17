@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/layouts/base_layout.dart';
+import 'package:flutter_cycle/main.dart';
+import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import '../../../data/services/config.dart';
 import '../../../data/models/response/user_entity.dart';
 import '../../../core/shared_preferences/sp.dart';
 import '../../../data/services/user.dart';
 
-class Body extends StatefulWidget {
+class Body extends BaseLayoyt {
   @override
-  _BodyState createState() => _BodyState();
+  _BodyState getState() => _BodyState();
 }
 
-class _BodyState extends State<Body> {
+class _BodyState extends BaseLayoytState<Body> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void showSnackbar(String message) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget CreatePageView() {
     return Scaffold(
       key: _scaffoldKey,
       body: Container(
@@ -54,7 +62,6 @@ class _BodyState extends State<Body> {
                     String pin = await SpUtil().getPinCode();
                     int uid = await SpUtil().getUserId();
                     String phone = await SpUtil().getPhone();
-
                     String localtoken = await SpUtil().getToken();
                     showSnackbar("local:${duid}/${pin}/${uid}/${phone}/${localtoken}");
                   },
@@ -62,23 +69,14 @@ class _BodyState extends State<Body> {
               FlatButton(
                   color: Colors.amber,
                   onPressed: () async {
-                    await SpUtil().setToken("");
-                    String duid = await SpUtil().getDeviceUid();
-                    String pin = await SpUtil().getPinCode();
-                    int uid = await SpUtil().getUserId();
-                    String phone = await SpUtil().getPhone();
-                    String localtoken = await SpUtil().getToken();
-                    showSnackbar("local:${duid}/${pin}/${uid}/${phone}/${localtoken}");
+                    await SpUtil().removeIsLogin("islogin");
+                    Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (BuildContext ctx) => MyApp()));
                   },
-                  child: Text("clear local token ")),
+                  child: Text("logout")),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void showSnackbar(String message) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(message)));
   }
 }

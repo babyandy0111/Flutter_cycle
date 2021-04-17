@@ -1,37 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/core/shared_preferences/sp.dart';
+import 'package:flutter_cycle/layouts/base_layout.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'package:flutter_cycle/pages/default_demo/default_demo.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
-import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-class BottomNavigation extends StatefulWidget {
-  BottomNavigation({Key key}) : super(key: key);
 
+class BottomNavigation extends BaseLayoyt {
   @override
-  _BottomNavigationState createState() => _BottomNavigationState();
+  _BottomNavigationState getState() => _BottomNavigationState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationState extends BaseLayoytState<BottomNavigation> {
   PersistentTabController _controller = PersistentTabController(initialIndex: 0);
-  String token;
-  @override
-  void initState() {
-    super.initState();
-    SpUtil().getToken().then((value) => token = value);
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    print(token);
-    return (token == null || token == "") ? SignIn() : getPresistentTabView();
-  }
-
-  Widget getPresistentTabView(){
+  Widget getPresistentTabView() {
     return PersistentTabView(
       context,
       controller: _controller,
@@ -93,5 +79,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
         title: ("iOffice"),
       ),
     ];
+  }
+
+  @override
+  Widget CreatePageView() {
+    return getPresistentTabView();
   }
 }

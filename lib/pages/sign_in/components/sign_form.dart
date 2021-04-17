@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 import 'package:flutter_cycle/data/models/response/check_pincode_entity.dart';
+import 'package:flutter_cycle/data/models/response/token_entity.dart';
+import 'package:flutter_cycle/data/services/token.dart';
 import 'package:flutter_cycle/data/services/user.dart';
 import 'package:flutter_cycle/pages/login_success/login_success.dart';
 import 'package:flutter_cycle/theme/constants.dart';
@@ -70,12 +72,10 @@ class _SignFormState extends State<SignForm> {
 
                 // 先判斷有無該indocha帳號
                 CheckPinCodeEntity data = await checkPinCode(phone, pincode);
-                if (data == null) {
+                if (data.status == 2) {
                   addError(error: kNotHasAccount);
                   return;
                 }
-
-                userId = data.userId;
 
                 // 如果有該帳號後
                 // 清掉error 訊息
@@ -84,7 +84,7 @@ class _SignFormState extends State<SignForm> {
                 });
 
                 // 設定該帳號的一些值
-                await SpUtil().setUserId(userId);
+                await SpUtil().setUserId(data.userId);
                 await SpUtil().setPinCode(pincode);
                 await SpUtil().setPhone(phone);
 
