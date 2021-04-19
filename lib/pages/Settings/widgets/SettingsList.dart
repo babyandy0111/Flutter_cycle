@@ -7,6 +7,7 @@ import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 
 File imageFile;
+String networkImgUrl;
 
 class SettingsList extends StatefulWidget {
   ChannelSettingsEntity data;
@@ -26,6 +27,10 @@ class _SettingsListState extends State<SettingsList> {
   }
 
   @override
+  initState() {
+    super.initState();
+    networkImgUrl = widget.data.data[widget.index]?.imageUrl ?? '';
+  }
   Widget build(BuildContext context) {
 
     SizeConfig().init(context);
@@ -45,10 +50,7 @@ class _SettingsListState extends State<SettingsList> {
       children: [
         Column(
           children: [
-            AvatarImg(),
-            // AvatarImg(networkImage && imageFile == null
-            //     ? 'https://assets.indochat.net/${data.data[index].imageUrl}'
-            //     : imageFile),
+            AvatarImg(networkImgUrl: networkImgUrl),
             TextButton(
               onPressed: () => {_getFromGallery()},
               child: Text('Change Photo'),
@@ -177,13 +179,19 @@ class _SettingsListState extends State<SettingsList> {
 
 
 class AvatarImg extends StatelessWidget {
+  String networkImgUrl;
+
+  AvatarImg({this.networkImgUrl}) : super();
 
   @override
   Widget build(BuildContext context) {
-    return imageFile == null ? CircleAvatar(
+    return imageFile == null && networkImgUrl == null ? CircleAvatar(
       radius: 66,
       backgroundColor: primaryAccentColor,
       foregroundColor: primaryAccentColor,
+    ) : imageFile == null && networkImgUrl != null ? CircleAvatar(
+      radius: 66,
+      backgroundImage: NetworkImage('https://assets.indochat.net/${this.networkImgUrl}'),
     ) : CircleAvatar(
       radius: 66,
       backgroundImage: FileImage(imageFile),
