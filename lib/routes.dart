@@ -12,6 +12,5 @@ final Map<String, WidgetBuilder> routes = {
   MainLayout.routeName: (context) => MainLayout(),
   HomePage.routeName: (context) => HomePage(),
   LoginPage.routeName: (context) => LoginPage(),
-  SettingsPage.routeName: (context) => SettingsPage(),
   CreateChannelPage.routeName: (context) => CreateChannelPage(),
 };
