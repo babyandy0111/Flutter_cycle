@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/Body.dart';
+import 'widgets/Body.dart';
 
 class CreateChannelPage extends StatelessWidget {
   static String routeName = "/create_channel";
