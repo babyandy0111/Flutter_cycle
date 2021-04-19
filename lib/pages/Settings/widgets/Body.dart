@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:indochat_officialaccount/bloc/channel_settings.dart';
 import 'package:indochat_officialaccount/data/models/response/ChannelSettingsEntity.dart';
 
-import 'package:indochat_officialaccount/layouts/BaseLayoyt.dart';
+import 'package:indochat_officialaccount/layouts/BaseLayout.dart';
 import 'package:indochat_officialaccount/widgets/BlocComWidget.dart';
 import 'package:indochat_officialaccount/pages/Settings/widgets/SettingsList.dart';
 
-class Body extends BaseLayoyt {
+class Body extends BaseLayout {
   final int channelId;
 
   Body(this.channelId) : super();
@@ -15,7 +15,7 @@ class Body extends BaseLayoyt {
   BodyState getState() => BodyState();
 }
 
-class BodyState extends BaseLayoytState<Body> {
+class BodyState extends BaseLayoutState<Body> {
 
   @override
   initState() {

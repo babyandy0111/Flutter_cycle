@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:indochat_officialaccount/layouts/BaseLayoyt.dart';
+import 'package:indochat_officialaccount/layouts/BaseLayout.dart';
 import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'MessageBubble.dart';
 
 
 ///繼承BaseWidget
-class Body extends BaseLayoyt {
+class Body extends BaseLayout {
   @override
   BodyState getState() => BodyState();
 }
 
-class BodyState extends BaseLayoytState<Body> {
+class BodyState extends BaseLayoutState<Body> {
 
   @override
   void initState() {
