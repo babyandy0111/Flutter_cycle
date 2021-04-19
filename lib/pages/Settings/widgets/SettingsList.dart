@@ -6,9 +6,9 @@ import 'package:indochat_officialaccount/data/models/response/ChannelSettingsEnt
 import 'package:indochat_officialaccount/theme/size_config.dart';
 import 'package:indochat_officialaccount/theme/official_theme.dart';
 
+File imageFile;
+
 class SettingsList extends StatefulWidget {
-  String imageFile;
-  bool networkImage;
   ChannelSettingsEntity data;
   int index;
 
@@ -18,11 +18,15 @@ class SettingsList extends StatefulWidget {
 }
 
 class _SettingsListState extends State<SettingsList> {
+
+  void _setImageFile(path) {
+    setState(() {
+      imageFile = path;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // if (data.data[index].imageUrl != null) {
-    //   networkImage = true;
-    // }
 
     SizeConfig().init(context);
 
@@ -33,8 +37,7 @@ class _SettingsListState extends State<SettingsList> {
         maxHeight: 1800,
       );
       if (pickedFile != null) {
-        // imageFile = File(pickedFile.path);
-        widget.imageFile = pickedFile.path;
+        _setImageFile(File(pickedFile.path));
       }
     }
 
@@ -42,7 +45,7 @@ class _SettingsListState extends State<SettingsList> {
       children: [
         Column(
           children: [
-            AvatarImg(widget.imageFile, widget.networkImage),
+            AvatarImg(),
             // AvatarImg(networkImage && imageFile == null
             //     ? 'https://assets.indochat.net/${data.data[index].imageUrl}'
             //     : imageFile),
@@ -172,21 +175,18 @@ class _SettingsListState extends State<SettingsList> {
   }
 }
 
-class AvatarImg extends StatelessWidget {
-  var imageFile;
-  var networkImage;
 
-  AvatarImg(imageFile, networkImage) : super();
+class AvatarImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('imageFile: ${SettingsList().imageFile}');
-    return CircleAvatar(
+    return imageFile == null ? CircleAvatar(
       radius: 66,
       backgroundColor: primaryAccentColor,
       foregroundColor: primaryAccentColor,
-      child: this.imageFile == null ? null : Image.network(this.imageFile),
-      backgroundImage: this.imageFile == null ? null : NetworkImage(this.imageFile),
+    ) : CircleAvatar(
+      radius: 66,
+      backgroundImage: FileImage(imageFile),
     );
   }
 }
