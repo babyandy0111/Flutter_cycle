@@ -4,18 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indochat_officialaccount/widgets/AppBarWidget.dart';
 
-abstract class BaseLayoyt extends StatefulWidget {
-  BaseLayoytState baseWidgetState;
+abstract class BaseLayout extends StatefulWidget {
+  BaseLayoutState baseWidgetState;
   @override
-  BaseLayoytState createState() {
+  BaseLayoutState createState() {
     baseWidgetState = getState();
     return baseWidgetState;
   }
 
-  BaseLayoytState getState();
+  BaseLayoutState getState();
 }
 
-abstract class BaseLayoytState<T extends BaseLayoyt> extends State<T>
+abstract class BaseLayoutState<T extends BaseLayout> extends State<T>
     with WidgetsBindingObserver {
   String appBarTitle = "";
 

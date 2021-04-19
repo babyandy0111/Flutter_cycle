@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:indochat_officialaccount/bloc/channel.dart';
 import 'package:indochat_officialaccount/data/models/response/ChannelListEntity.dart';
-import 'package:indochat_officialaccount/layouts/BaseLayoyt.dart';
+import 'package:indochat_officialaccount/layouts/BaseLayout.dart';
 import 'package:indochat_officialaccount/pages/Channel/widgets/SearchBar.dart';
 import 'package:indochat_officialaccount/widgets/BlocComWidget.dart';
 
@@ -10,13 +10,13 @@ import 'ChannelList.dart';
 
 
 ///繼承BaseWidget
-class Body extends BaseLayoyt {
+class Body extends BaseLayout {
   @override
   BodyState getState() => BodyState();
 }
 
 ///繼承BaseWidgetState
-class BodyState extends BaseLayoytState<Body> {
+class BodyState extends BaseLayoutState<Body> {
   final TextEditingController searchController = TextEditingController();
 
   @override
