@@ -15,11 +15,11 @@ class SettingsList extends StatefulWidget {
 
   @override
   _SettingsListState createState() => _SettingsListState();
+
   SettingsList(this.data, this.index) : super();
 }
 
 class _SettingsListState extends State<SettingsList> {
-
   void _setImageFile(path) {
     setState(() {
       imageFile = path;
@@ -31,8 +31,8 @@ class _SettingsListState extends State<SettingsList> {
     super.initState();
     networkImgUrl = widget.data.data[widget.index]?.imageUrl ?? '';
   }
-  Widget build(BuildContext context) {
 
+  Widget build(BuildContext context) {
     SizeConfig().init(context);
 
     _getFromGallery() async {
@@ -50,7 +50,7 @@ class _SettingsListState extends State<SettingsList> {
       children: [
         Column(
           children: [
-            AvatarImg(networkImgUrl: networkImgUrl),
+            AvatarImg(),
             TextButton(
               onPressed: () => {_getFromGallery()},
               child: Text('Change Photo'),
@@ -177,24 +177,26 @@ class _SettingsListState extends State<SettingsList> {
   }
 }
 
-
 class AvatarImg extends StatelessWidget {
-  String networkImgUrl;
-
-  AvatarImg({this.networkImgUrl}) : super();
+  AvatarImg() : super();
 
   @override
   Widget build(BuildContext context) {
-    return imageFile == null && networkImgUrl == null ? CircleAvatar(
-      radius: 66,
-      backgroundColor: primaryAccentColor,
-      foregroundColor: primaryAccentColor,
-    ) : imageFile == null && networkImgUrl != null ? CircleAvatar(
-      radius: 66,
-      backgroundImage: NetworkImage('https://assets.indochat.net/${this.networkImgUrl}'),
-    ) : CircleAvatar(
-      radius: 66,
-      backgroundImage: FileImage(imageFile),
-    );
+    return imageFile == null && networkImgUrl == null
+        ? CircleAvatar(
+            radius: 66,
+            backgroundColor: primaryAccentColor,
+            foregroundColor: primaryAccentColor,
+          )
+        : imageFile == null && networkImgUrl != null
+            ? CircleAvatar(
+                radius: 66,
+                backgroundImage: NetworkImage(
+                    'https://assets.indochat.net/${networkImgUrl}'),
+              )
+            : CircleAvatar(
+                radius: 66,
+                backgroundImage: FileImage(imageFile),
+              );
   }
 }
