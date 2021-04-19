@@ -178,7 +178,6 @@ class _SettingsListState extends State<SettingsList> {
 }
 
 class AvatarImg extends StatelessWidget {
-  AvatarImg() : super();
 
   @override
   Widget build(BuildContext context) {
