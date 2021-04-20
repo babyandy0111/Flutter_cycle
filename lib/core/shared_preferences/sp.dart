@@ -46,11 +46,7 @@ class SpUtil {
   }
 
   Future<String> getToken() async {
-    if (_prefs.getString('token') == null) {
-      return await refreshToken();
-    } else {
-      return _prefs.getString('token');
-    }
+    return _prefs.getString('token');
   }
 
   Future<String> getDeviceToken() async {
@@ -168,11 +164,5 @@ class SpUtil {
     }
 
     return _prefs.setString('platform', '');
-  }
-
-  Future<String> refreshToken() async {
-    await tokenService.refreshToken().then((value) {
-      setToken(value);
-    });
   }
 }

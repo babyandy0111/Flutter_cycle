@@ -22,8 +22,10 @@ class RefreshTokenInterceptor extends Interceptor {
   Future onError(DioError err) async {
     var extra = RetryOptions.fromExtra(err.request) ?? this.options;
     var shouldRetry = extra.retries > 0 && await options.retryEvaluator(err);
+    int userid = await SpUtil().getUserId();
 
-    if (shouldRetry) {
+    print(userid);
+    if (shouldRetry && userid != null) {
       if (extra.retryInterval.inMilliseconds > 0) {
         await Future.delayed(extra.retryInterval);
       }
