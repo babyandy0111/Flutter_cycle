@@ -1,14 +1,15 @@
+import 'package:flutter_cycle/core/shared_preferences/sp.dart';
+
 import '../../core/http/api_response.dart';
 import '../models/response/token_entity.dart';
 import '../repositorys/token_repository.dart';
 
-Future<String> refreshToken() async {
+Future<TokenEntity> refreshToken() async {
   ApiResponse<TokenEntity> entity = await TokenRepository.refreshToken();
-  var token = entity.data.token;
-  // print(entity.data.token);
-  // print(entity.data.expire_at);
-  if (token != null) {
-    return token;
+
+  if (entity.data.token != null) {
+    await SpUtil().setToken(entity.data.token);
   }
-  return null;
+
+  return entity.data;
 }
