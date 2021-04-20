@@ -9,6 +9,7 @@ import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/platform_channel_demo/platform_channel_demo.dart';
 import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
+import 'package:flutter_cycle/pages/sql_demo/sql_demo.dart';
 import 'pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
 import 'pages/default_demo/default_demo.dart';
 import 'pages/http_demo/http_demo.dart';
@@ -34,4 +35,5 @@ final Map<String, WidgetBuilder> routes = {
   MqttDemo.routeName: (context) => MqttDemo(),
   PlatformChannelDemo.routeName: (context) => PlatformChannelDemo(),
   MainLayout.routeName: (context) => MainLayout(),
+  SqlDemo.routeName: (context) => SqlDemo(),
 };

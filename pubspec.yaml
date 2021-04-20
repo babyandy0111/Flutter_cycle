@@ -81,6 +81,8 @@ dependencies:
   #hex: ^0.1.2
   #gbk_codec: ^0.3.2
   #image: ^2.1.4
+  sqflite: ^2.0.0+3
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:

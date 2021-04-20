@@ -11,6 +11,7 @@ import 'package:flutter_cycle/pages/platform_channel_demo/platform_channel_demo.
 import 'package:flutter_cycle/pages/push_demo/push_demo.dart';
 import 'package:flutter_cycle/pages/sign_in/sign_in.dart';
 import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
+import 'package:flutter_cycle/pages/sql_demo/sql_demo.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class Body extends StatefulWidget {
@@ -109,6 +110,13 @@ class _BodyState extends State<Body> {
                   // Navigator.pushNamed(context, PlatformChannelDemo.routeName);
                 },
                 child: Text("native")),
+            FlatButton(
+                color: Colors.amber,
+                onPressed: () {
+                  pushNewScreen(context, screen: SqlDemo());
+                  // Navigator.pushNamed(context, PlatformChannelDemo.routeName);
+                },
+                child: Text("sql")),
           ],
         ),
       ),
