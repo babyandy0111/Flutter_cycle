@@ -74,18 +74,23 @@ Widget channelList(BuildContext context, ChannelListEntity data) {
                       ),
                     ),
                   ),
-                  secondaryActions: <Widget>[
-                    IconSlideAction(
-                      color: Color.fromRGBO(128, 128, 128, 1),
-                      icon: Icons.settings,
-                      onTap: () => {},
-                    ),
-                    IconSlideAction(
-                      color: primaryColor,
-                      icon: Icons.link_rounded,
-                      onTap: () => {},
-                    ),
-                  ],
+
+
+                  // 往右滑有複製跟設定按鈕
+                  // secondaryActions: <Widget>[
+                  //   IconSlideAction(
+                  //     color: Color.fromRGBO(128, 128, 128, 1),
+                  //     icon: Icons.settings,
+                  //     onTap: () => {},
+                  //   ),
+                  //   IconSlideAction(
+                  //     color: primaryColor,
+                  //     icon: Icons.link_rounded,
+                  //     onTap: () => {},
+                  //   ),
+                  // ],
+
+
                 ),
               ],
             );

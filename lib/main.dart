@@ -16,6 +16,7 @@ void main() async {
   await SpUtil().setPinCode("123456");
   await SpUtil().setPhone("+886973701001");
   await SpUtil().setUserId(501);
+  await SpUtil().setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjQ5NzM4NjgyLCJpYXQiOjE2MTgyMDI2ODIsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.p_CT_bLZdkW67KlMcYDSHpDeP9dZiOU_VQwRNcw3OoM");
   await SpUtil().setAPPVersion(APP_VERSION);
   await SpUtil().setAPPLang(APP_LANG);
 

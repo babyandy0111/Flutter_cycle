@@ -6,8 +6,9 @@ class MessagePage extends StatelessWidget {
   static String routeName = "/message";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Body(),
-    );
+    return Body();
+    // return Scaffold(
+    //   body: Body(),
+    // );
   }
 }
