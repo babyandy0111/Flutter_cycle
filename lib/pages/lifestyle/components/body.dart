@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/widegets/bloc_common_widget.dart';
 import 'package:flutter_cycle/pages/lifestyle/components/postlist.dart';
 
 import 'package:flutter_cycle/pages/lifestyle/components/post.dart';
@@ -35,7 +36,15 @@ class _BodyState extends State<Body> {
                   if (snapshot.hasData && snapshot.data.posts.length > 0) {
                     return PostList(context, data: snapshot.data);
                   }
-                  return PostList(context);
+                  if (snapshot.hasData && snapshot.data.posts.length == 0) {
+                    return noData();
+                  }
+
+                  if (snapshot.hasError) {
+                    return hasError(snapshot.error);
+                  }
+
+                  return Loading();
                 })
             ),
           ],

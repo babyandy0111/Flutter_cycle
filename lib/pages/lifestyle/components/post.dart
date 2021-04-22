@@ -1,8 +1,4 @@
 class Post {
-  final String userImage;
-  final String username;
-  final String postImage;
-  final String caption;
   final List<String> thumbnail;
   final String avatarUrl;
   final int likeCount;
@@ -11,10 +7,6 @@ class Post {
   final String createdAt;
 
   Post({
-    this.userImage,
-    this.username,
-    this.postImage,
-    this.caption,
     this.thumbnail,
     this.avatarUrl,
     this.likeCount,
