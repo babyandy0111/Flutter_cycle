@@ -25,6 +25,7 @@ const int RECEIVE_TIMEOUT = 30000;
 
 const IM_BASE_URL = 'https://api.indochat.net';
 const STICKER_BASE_URL = 'https://sticker.indochat.net';
+const LIFESTYLE_BASE_URL = 'https://lifestyle.indochat.net';
 const TOKEN_BASE_URL = 'https://auth-api.indochat.net';
 const MQTT_URL = 'mqx.indochat.net';
 const RETRY_API_NUM = 2;
