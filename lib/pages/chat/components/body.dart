@@ -7,6 +7,13 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+
+  @override
+  void initState() {
+    super.initState();
+    // homeStickerPacksBloc..getHomeStickerPacks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
