@@ -29,16 +29,22 @@ class LifestylePostsEntity {
 }
 
 class Posts {
+  List<String> _thumbnail;
   String _avatarUrl;
 
   Posts({
+    List<String> thumbnail,
     String avatarUrl,
   }) {
+    this._thumbnail = thumbnail;
     this._avatarUrl = avatarUrl;
   }
 
   String get avatarUrl => _avatarUrl;
   set avatarUrl(String avatarUrl) => _avatarUrl = avatarUrl;
+
+  List<String> get thumbnail => _thumbnail;
+  set thumbnail(List<String> thumbnail) => _thumbnail = thumbnail;
 
   Posts.fromJson(Map<String, dynamic> json) {
     // avatar_url
@@ -47,13 +53,21 @@ class Posts {
     // like_count
     // abstract
     // created_at
+    _thumbnail = new List<String>();
+    json['thumbnail'].forEach((v) {
+      _thumbnail.add(v);
+    });
+
     _avatarUrl = json['avatar_url'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    if(this._thumbnail != null) {
+      data['thumbnail'] = this._thumbnail.toList();
+    }
+    // data['thumbnail'] = this._thumbnail;
     data['avatar_url'] = this._avatarUrl;
     return data;
   }
 }
-

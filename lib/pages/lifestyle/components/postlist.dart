@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/pages/lifestyle/components/post.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_cycle/data/models/response/lifestyle_posts_entity.dart';
 
 List<Post> posts = [
   Post(
@@ -54,11 +56,12 @@ List<Post> posts = [
       caption: "Consequatur nihil aliquid omnis consequatur."),
 ];
 
-Widget PostList(BuildContext context,) {
+Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
+
   return ListView.builder(
     shrinkWrap: true,
     physics: NeverScrollableScrollPhysics(),
-    itemCount: posts.length,
+    itemCount: data != null ? data.posts.length : posts.length,
     itemBuilder: (ctx, i) {
       return Container(
         color: Colors.white,
@@ -77,16 +80,16 @@ Widget PostList(BuildContext context,) {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: Image(
-                          image: AssetImage("assets/images/nick-fury.jpg"),
+                          image: data != null ? NetworkImage("${data.posts[i].avatarUrl}") : AssetImage("assets/images/nick-fury.jpg"),
                           width: 40,
                           height: 40,
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(posts[i].username),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
+                      // Text(posts[i].username),
                     ],
                   ),
                   IconButton(
@@ -98,7 +101,7 @@ Widget PostList(BuildContext context,) {
             ),
 
             FadeInImage(
-              image: NetworkImage(posts[i].postImage),
+              image: NetworkImage(data.posts != null ? data.posts[i].thumbnail[0] : posts[i].postImage),
               placeholder: AssetImage("assets/images/placeholder.png"),
               width: MediaQuery
                   .of(context)
@@ -185,34 +188,34 @@ Widget PostList(BuildContext context,) {
             ),
 
             // caption
-            Container(
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              margin: EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 5,
-              ),
-              child: RichText(
-                softWrap: true,
-                overflow: TextOverflow.visible,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: posts[i].username,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: " ${posts[i].caption}",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   width: MediaQuery
+            //       .of(context)
+            //       .size
+            //       .width,
+            //   margin: EdgeInsets.symmetric(
+            //     horizontal: 14,
+            //     vertical: 5,
+            //   ),
+            //   child: RichText(
+            //     softWrap: true,
+            //     overflow: TextOverflow.visible,
+            //     text: TextSpan(
+            //       children: [
+            //         TextSpan(
+            //           text: posts[i].username,
+            //           style: TextStyle(
+            //               fontWeight: FontWeight.bold,
+            //               color: Colors.black),
+            //         ),
+            //         TextSpan(
+            //           text: " ${posts[i].caption}",
+            //           style: TextStyle(color: Colors.black),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
             // post date
             Container(
