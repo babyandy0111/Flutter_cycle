@@ -61,7 +61,7 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
   return ListView.builder(
     shrinkWrap: true,
     physics: NeverScrollableScrollPhysics(),
-    itemCount: data != null ? data.posts.length : posts.length,
+    itemCount: data != null && data.posts != null ? data.posts.length : posts.length,
     itemBuilder: (ctx, i) {
       return Container(
         color: Colors.white,
@@ -80,7 +80,7 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: Image(
-                          image: data != null ? NetworkImage("${data.posts[i].avatarUrl}") : AssetImage("assets/images/nick-fury.jpg"),
+                          image: data != null && data.posts != null ? NetworkImage("${data.posts[i].avatarUrl}") : AssetImage("assets/images/nick-fury.jpg"),
                           width: 40,
                           height: 40,
                           fit: BoxFit.cover,
@@ -101,7 +101,7 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
             ),
 
             FadeInImage(
-              image: NetworkImage(data.posts != null ? data.posts[i].thumbnail[0] : posts[i].postImage),
+              image: NetworkImage(data != null && data.posts != null ? data.posts[i].thumbnail[0] : posts[i].postImage),
               placeholder: AssetImage("assets/images/placeholder.png"),
               width: MediaQuery
                   .of(context)
@@ -152,32 +152,32 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
                       text: "Liked By ",
                       style: TextStyle(color: Colors.black),
                     ),
+                    // TextSpan(
+                    //   text: "Sigmund,",
+                    //   style: TextStyle(
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.black),
+                    // ),
+                    // TextSpan(
+                    //   text: " Yessenia,",
+                    //   style: TextStyle(
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.black),
+                    // ),
+                    // TextSpan(
+                    //   text: " Dayana",
+                    //   style: TextStyle(
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.black),
+                    // ),
+                    // TextSpan(
+                    //   text: " and",
+                    //   style: TextStyle(
+                    //     color: Colors.black,
+                    //   ),
+                    // ),
                     TextSpan(
-                      text: "Sigmund,",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: " Yessenia,",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: " Dayana",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: " and",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " 1263 others",
+                      text: data != null && data.posts != null && data.posts[i].likeCount > 0 ? " ${data.posts[i].likeCount} others" : '',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
@@ -188,34 +188,34 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
             ),
 
             // caption
-            // Container(
-            //   width: MediaQuery
-            //       .of(context)
-            //       .size
-            //       .width,
-            //   margin: EdgeInsets.symmetric(
-            //     horizontal: 14,
-            //     vertical: 5,
-            //   ),
-            //   child: RichText(
-            //     softWrap: true,
-            //     overflow: TextOverflow.visible,
-            //     text: TextSpan(
-            //       children: [
-            //         TextSpan(
-            //           text: posts[i].username,
-            //           style: TextStyle(
-            //               fontWeight: FontWeight.bold,
-            //               color: Colors.black),
-            //         ),
-            //         TextSpan(
-            //           text: " ${posts[i].caption}",
-            //           style: TextStyle(color: Colors.black),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            Container(
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
+              margin: EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 5,
+              ),
+              child: RichText(
+                softWrap: true,
+                overflow: TextOverflow.visible,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: data != null && data.posts != null ? data.posts[i].nickname : posts[i].username,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    TextSpan(
+                      text: " ${data != null && data.posts != null ? data.posts[i].abstract : posts[i].caption}",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ),
+            ),
 
             // post date
             Container(
@@ -224,7 +224,7 @@ Widget PostList(BuildContext context, { LifestylePostsEntity data }) {
               ),
               alignment: Alignment.topLeft,
               child: Text(
-                "Febuary 2020",
+                '${data != null && data.posts != null ? data.posts[i].createdAt : "Feb 20"}',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: Colors.grey,
