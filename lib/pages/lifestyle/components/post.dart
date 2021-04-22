@@ -1,17 +1,9 @@
-class Post {
-  final List<String> thumbnail;
-  final String avatarUrl;
-  final int likeCount;
-  final String nickname;
-  final String abstract;
-  final String createdAt;
+import 'package:flutter/material.dart';
 
-  Post({
-    this.thumbnail,
-    this.avatarUrl,
-    this.likeCount,
-    this.nickname,
-    this.abstract,
-    this.createdAt,
-  });
+Widget Post(BuildContext context, data) {
+  return FadeInImage(
+    image: data.length > 0 ? NetworkImage(data[0]) : AssetImage("assets/images/placeholder.png"),
+    placeholder: AssetImage("assets/images/placeholder.png"),
+    width: MediaQuery.of(context).size.width,
+  );
 }

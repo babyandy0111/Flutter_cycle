@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_cycle/data/models/response/lifestyle_posts_entity.dart';
+import 'post.dart';
 
 Widget PostList(BuildContext context, {LifestylePostsEntity data}) {
   return ListView.builder(
@@ -47,11 +48,7 @@ Widget PostList(BuildContext context, {LifestylePostsEntity data}) {
               ),
             ),
 
-            FadeInImage(
-              image: data.posts[i].thumbnail.length > 0 ? NetworkImage(data.posts[i].thumbnail[0]) : AssetImage("assets/images/placeholder.png"),
-              placeholder: AssetImage("assets/images/placeholder.png"),
-              width: MediaQuery.of(context).size.width,
-            ),
+            Post(context, data.posts[i].thumbnail),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
