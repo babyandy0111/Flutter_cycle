@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/widegets/bloc_common_widget.dart';
-import 'package:flutter_cycle/pages/lifestyle/components/postlist.dart';
-
-import 'package:flutter_cycle/pages/lifestyle/components/post.dart';
-import 'package:flutter_cycle/pages/lifestyle/components/story.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_cycle/bloc/lifestyle.dart';
 import 'package:flutter_cycle/data/models/response/lifestyle_posts_entity.dart';
+import 'package:flutter_cycle/widegets/bloc_common_widget.dart';
+import 'package:flutter_cycle/pages/lifestyle/components/post_list.dart';
 
 class Body extends StatefulWidget {
   @override

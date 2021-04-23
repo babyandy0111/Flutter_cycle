@@ -71,12 +71,6 @@ class Posts {
   set createdAt(String createdAt) => _createdAt = createdAt;
 
   Posts.fromJson(Map<String, dynamic> json) {
-    // avatar_url
-    // nickname
-    // thumbnail
-    // like_count
-    // abstract
-    // created_at
     _thumbnail = new List<String>();
     json['thumbnail'].forEach((v) {
       _thumbnail.add(v);
