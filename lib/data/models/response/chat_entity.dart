@@ -1,77 +1,61 @@
-// class TokenEntity {
-//   final String expire_at;
-//   final String token;
+// To parse this JSON data, do
 //
-//   TokenEntity(this.expire_at, this.token);
-//
-//   TokenEntity.fromJson(Map<String, dynamic> json)
-//       : expire_at = json['expire_at'],
-//         token = json['token'];
-//
-//   Map<String, dynamic> toJson() => {
-//         'expire_at': expire_at,
-//         'token': token,
-//       };
-// }
+//     final groupChannelsEntity = groupChannelsEntityFromJson(jsonString);
 
+import 'dart:convert';
 
-class chatEntity {
-  final String expire_at;
-  final String token;
+GroupChannelsEntity groupChannelsEntityFromJson(String str) => GroupChannelsEntity.fromJson(json.decode(str));
 
-  List _channels;
-  String _avatarUrl;
-  String _createdAt;
-  int _id;
-  String _name;
-  String _topic;
-  List _userIds;
+String groupChannelsEntityToJson(GroupChannelsEntity data) => json.encode(data.toJson());
 
+class GroupChannelsEntity {
+  GroupChannelsEntity({
+    this.channels,
+  });
 
-  // chatEntity(
-  //     {
-  //       String avatarUrl,
-  //       String createdAt,
-  //       int id,
-  //       String name,
-  //       String topic,
-  //       List userIds,
-  //     }
-  // ){
-  //   this._avatarUrl = avatarUrl;
-  //   this._createdAt = createdAt;
-  //   this._id = id;
-  //   this._name = name;
-  //   this._topic = topic;
-  //   this._userIds = userIds;
-  //
-  // }
+  List<Channel> channels;
 
-
-
-
-  chatEntity.fromJson(Map<String, dynamic> json)
-      : expire_at = json['expire_at'],
-        token = json['token'];
+  factory GroupChannelsEntity.fromJson(Map<String, dynamic> json) => GroupChannelsEntity(
+    channels: List<Channel>.from(json["channels"].map((x) => Channel.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        'expire_at': expire_at,
-        'token': token,
-      };
+    "channels": List<dynamic>.from(channels.map((x) => x.toJson())),
+  };
 }
 
+class Channel {
+  Channel({
+    this.avatarUrl,
+    this.createdAt,
+    this.id,
+    this.name,
+    this.topic,
+    this.userIds,
+  });
 
-// {
-// "channels": [
-// {
-// "avatar_url": "string",
-// "created_at": "string",
-// "id": 0,
-// "name": "string",
-// "topic": "string",
-// "user_ids": [
-// 0
-// ]
-// }
-// ]
-// }
+  String avatarUrl;
+  String createdAt;
+  int id;
+  String name;
+  String topic;
+  List<int> userIds;
+
+  factory Channel.fromJson(Map<String, dynamic> json) => Channel(
+    avatarUrl: json["avatar_url"],
+    createdAt: json["created_at"],
+    id: json["id"],
+    name: json["name"],
+    topic: json["topic"],
+    userIds: List<int>.from(json["user_ids"].map((x) => x)),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "avatar_url": avatarUrl,
+    "created_at": createdAt,
+    "id": id,
+    "name": name,
+    "topic": topic,
+    "user_ids": List<dynamic>.from(userIds.map((x) => x)),
+  };
+}
