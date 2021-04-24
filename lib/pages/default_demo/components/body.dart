@@ -5,6 +5,7 @@ import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_
 import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
 import 'package:flutter_cycle/pages/home_sticker_packs/home_sticker_packs.dart';
 import 'package:flutter_cycle/pages/http_demo/http_demo.dart';
+import 'package:flutter_cycle/pages/media_picker/media_picker.dart';
 import 'package:flutter_cycle/pages/mqtt_demo/mqtt_demo.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/platform_channel_demo/platform_channel_demo.dart';
@@ -117,6 +118,12 @@ class _BodyState extends State<Body> {
                   // Navigator.pushNamed(context, PlatformChannelDemo.routeName);
                 },
                 child: Text("sql")),
+            FlatButton(
+                color: Colors.amber,
+                onPressed: () async {
+                  pushNewScreen(context, screen: MediaPicker());
+                },
+                child: Text("picker")),
           ],
         ),
       ),

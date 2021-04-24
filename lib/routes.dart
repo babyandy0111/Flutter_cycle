@@ -4,6 +4,7 @@ import 'package:flutter_cycle/layouts/main_layout.dart';
 import 'package:flutter_cycle/pages/forgot_password/forgot_password.dart';
 import 'package:flutter_cycle/pages/home_sticker_packs/home_sticker_packs.dart';
 import 'package:flutter_cycle/pages/login_success/login_success.dart';
+import 'package:flutter_cycle/pages/media_picker/media_picker.dart';
 import 'package:flutter_cycle/pages/mqtt_demo/mqtt_demo.dart';
 import 'package:flutter_cycle/pages/otp/otp.dart';
 import 'package:flutter_cycle/pages/platform_channel_demo/platform_channel_demo.dart';
@@ -36,4 +37,5 @@ final Map<String, WidgetBuilder> routes = {
   PlatformChannelDemo.routeName: (context) => PlatformChannelDemo(),
   MainLayout.routeName: (context) => MainLayout(),
   SqlDemo.routeName: (context) => SqlDemo(),
+  MediaPicker.routeName: (context) => MediaPicker(),
 };

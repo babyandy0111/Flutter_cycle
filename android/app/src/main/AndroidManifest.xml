@@ -2,6 +2,7 @@
     package="www.shihjie.com.tw.flutter_cycle">
    <application
         android:label="flutter_cycle"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

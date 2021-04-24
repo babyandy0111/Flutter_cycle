@@ -58,6 +58,10 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.7)
     - Protobuf (>= 3.9.2, ~> 3.9)
   - Flutter (1.0.0)
+  - flutter_ijkplayer (0.0.1):
+    - Flutter
+    - FlutterIJK (~> 0.1.0)
+  - FlutterIJK (0.1.1)
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
@@ -93,6 +97,9 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - photo_manager (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - PromisesObjC (1.2.12)
   - Protobuf (3.14.0)
   - Reachability (3.2)
@@ -112,8 +119,10 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - flutter_ijkplayer (from `.symlinks/plugins/flutter_ijkplayer/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - libphonenumber (from `.symlinks/plugins/libphonenumber/ios`)
+  - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sms_autofill (from `.symlinks/plugins/sms_autofill/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
@@ -127,6 +136,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FlutterIJK
     - FMDB
     - GoogleDataTransport
     - GoogleUtilities
@@ -151,10 +161,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  flutter_ijkplayer:
+    :path: ".symlinks/plugins/flutter_ijkplayer/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
   libphonenumber:
     :path: ".symlinks/plugins/libphonenumber/ios"
+  photo_manager:
+    :path: ".symlinks/plugins/photo_manager/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   sms_autofill:
@@ -176,6 +190,8 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: bd3ffc24367f901a43c063b36c640b345a4a5dd1
   FirebaseMessaging: 5eca4ef173de76253352511aafef774caa1cba2a
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_ijkplayer: ef9006131553deb6d8ae6d7fbd3bcbf93b135930
+  FlutterIJK: f3c0ead9ca31b93d993d46dda53156fdc7b22d2c
   fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
@@ -184,6 +200,7 @@ SPEC CHECKSUMS:
   libphonenumber: bd14d5abfc5939ab0b0767234e2d8e2593af258e
   libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  photo_manager: a8db3597a3b44e17ecb331fa099731c99b849496
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: 0cde852566359049847168e51bd1c690e0f70056
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
