@@ -15,14 +15,8 @@ void main() async {
 
   await SpUtil.init();
   await SpUtil().setPlatform();
-  // 這邊是Andy帳號
-  // await SpUtil().setDeviceUid("34AC2FF4-83B5-4C94-B0F7-8CAC503E4A54");
-  // await SpUtil().setPinCode("740111");
-  // await SpUtil().setPhone("+628710000002");
-  // await SpUtil().setUserId(3);
   await SpUtil().setAPPVersion(APP_VERSION);
   await SpUtil().setAPPLang(APP_LANG);
-
   await Firebase.initializeApp();
   await DotEnv.load(fileName: ".env");
 

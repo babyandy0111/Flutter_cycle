@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/core/shared_preferences/sp.dart';
 import 'package:flutter_cycle/pages/backend_drive_ui_demo/backend_driven_ui.dart';
 import 'package:flutter_cycle/pages/box_demo/box_demo.dart';
 import 'package:flutter_cycle/pages/create_widget_to_json_demo/create_widget_to_json_demo.dart';
@@ -15,6 +16,8 @@ import 'package:flutter_cycle/pages/sign_up/sign_up.dart';
 import 'package:flutter_cycle/pages/sql_demo/sql_demo.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
+import '../../../main.dart';
+
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
@@ -30,10 +33,9 @@ class _BodyState extends State<Body> {
             FlatButton(
                 color: Colors.amber,
                 onPressed: () async {
-                  pushNewScreen(context, screen: BoxDemo());
-                  // Navigator.pushNamed(context, BoxDemo.routeName);
+                  await SpUtil().setTestAccount();
                 },
-                child: Text("Box Demo")),
+                child: Text("Change Account to Andy")),
             FlatButton(
                 color: Colors.amber,
                 onPressed: () async {
@@ -124,6 +126,13 @@ class _BodyState extends State<Body> {
                   pushNewScreen(context, screen: MediaPicker());
                 },
                 child: Text("picker")),
+            FlatButton(
+                color: Colors.amber,
+                onPressed: () async {
+                  await SpUtil().logout();
+                  Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (BuildContext ctx) => MyApp()));
+                },
+                child: Text("logout")),
           ],
         ),
       ),

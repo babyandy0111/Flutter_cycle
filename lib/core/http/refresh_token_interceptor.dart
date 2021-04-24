@@ -35,19 +35,19 @@ class RefreshTokenInterceptor extends Interceptor {
       RequestOptions ops = err.response.request;
 
       // 這裡好像可以不需要, 先拿掉
-      // if (oldtoken != ops.headers["Bearer"]) {
-      //   ops.headers["Bearer"] = oldtoken;
-      //   //repeat
-      //   return dio.request(
-      //     err.request.path,
-      //     cancelToken: err.request.cancelToken,
-      //     data: err.request.data,
-      //     onReceiveProgress: err.request.onReceiveProgress,
-      //     onSendProgress: err.request.onSendProgress,
-      //     queryParameters: err.request.queryParameters,
-      //     options: err.request,
-      //   );
-      // }
+      if (oldtoken != ops.headers["Bearer"]) {
+        ops.headers["Bearer"] = oldtoken;
+        //repeat
+        return dio.request(
+          err.request.path,
+          cancelToken: err.request.cancelToken,
+          data: err.request.data,
+          onReceiveProgress: err.request.onReceiveProgress,
+          onSendProgress: err.request.onSendProgress,
+          queryParameters: err.request.queryParameters,
+          options: err.request,
+        );
+      }
 
       if (err.response?.statusCode == 401) {
         print("鎖");

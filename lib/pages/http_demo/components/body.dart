@@ -50,9 +50,14 @@ class _BodyState extends BaseLayoytState<Body> {
                   child: Text("set local of error token")),
               FlatButton(
                   color: Colors.amber,
-                  onPressed: () {
+                  onPressed: () async {
                     String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5IjoiSUQiLCJkZXZpY2VfdWlkIjoiMTIzNDU2IiwiZXhwIjoxNjE2ODI4MjU0LCJpYXQiOjE2MTQyMzYyNTQsImlzcyI6IkluZG9DaGF0IiwicGhvbmUiOiIrODg2OTczNzAxMDAxIiwidXNlcl9pZCI6IjUwMSJ9.SvtmZFk4iKLyR-36zSj9PBTCwo3IGzHxgSgOb1BPpMk';
-                    SpUtil().setToken(token).then((value) => showSnackbar("set local ok token: " + value.toString()));
+                    await SpUtil().setToken(token);
+                    await SpUtil().setDeviceUid("123456");
+                    await SpUtil().setPinCode("123456");
+                    await SpUtil().setPhone("+886973701001");
+                    await SpUtil().setUserId(501);
+                    await SpUtil().setIsLogin();
                   },
                   child: Text("set local of ok token")),
               FlatButton(
@@ -66,13 +71,6 @@ class _BodyState extends BaseLayoytState<Body> {
                     showSnackbar("local:${duid}/${pin}/${uid}/${phone}/${localtoken}");
                   },
                   child: Text("get local token ")),
-              FlatButton(
-                  color: Colors.amber,
-                  onPressed: () async {
-                    await SpUtil().removeIsLogin("islogin");
-                    Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (BuildContext ctx) => MyApp()));
-                  },
-                  child: Text("logout")),
             ],
           ),
         ),

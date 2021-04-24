@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
+import 'package:flutter_cycle/pages/media_picker/components/asset_thumbnail_body.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class Body extends StatefulWidget {
@@ -8,107 +8,38 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<Widget> _mediaList = [];
-  int currentPage = 0;
-  int lastPage;
-  IjkMediaController controller = IjkMediaController();
+  List<AssetEntity> assets = [];
 
   @override
   void initState() {
+    _fetchAssets();
     super.initState();
-    _fetchNewMedia();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
+  _fetchAssets() async {
+    // Set onlyAll to true, to fetch only the 'Recent' album
+    // which contains all the photos/videos in the storage
+    final albums = await PhotoManager.getAssetPathList(onlyAll: true);
+    final recentAlbum = albums.first;
+
+    // Now that we got the album, fetch all the assets it contains
+    final recentAssets = await recentAlbum.getAssetListRange(
+      start: 0, // start at index 0
+      end: 1000000, // end at a very big index (to get all the assets)
+    );
+
+    // Update the state and notify UI
+    setState(() => assets = recentAssets);
   }
 
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<ScrollNotification>(
-      onNotification: (ScrollNotification scroll) {
-        _handleScrollEvent(scroll);
-        return;
+    return GridView.builder(
+      itemCount: assets.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemBuilder: (BuildContext context, int index) {
+        return AssetThumbnailBody(asset: assets[index]);
       },
-      child: GridView.builder(
-          itemCount: _mediaList.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          itemBuilder: (BuildContext context, int index) {
-            return _mediaList[index];
-          },
-      ),
     );
-  }
-
-  _handleScrollEvent(ScrollNotification scroll) {
-    if (scroll.metrics.pixels / scroll.metrics.maxScrollExtent > 0.33) {
-      if (currentPage != lastPage) {
-        _fetchNewMedia();
-      }
-    }
-  }
-
-  _fetchNewMedia() async {
-    lastPage = currentPage;
-    var result = await PhotoManager.requestPermission();
-    if (result) {
-      List<AssetPathEntity> albums =
-          await PhotoManager.getAssetPathList(onlyAll: true);
-      print(albums);
-
-      List<AssetEntity> media =
-          await albums[0].getAssetListPaged(currentPage, 60);
-      print(media);
-
-      // List<AssetEntity> photos = await albums[0].getAssetListPaged(0, 20);
-      // print(photos);
-
-      AssetEntity entity = media[0];
-
-      List<Widget> temp = [];
-      for (var asset in media) {
-        temp.add(
-          FutureBuilder(
-            future: asset.thumbDataWithSize(200, 200),
-            builder: (BuildContext context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-
-                return Stack(
-                  children: <Widget>[
-                    Positioned.fill(
-                      child: Image.memory(
-                        snapshot.data,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    if (asset.type == AssetType.video)
-                      // controller.setPhotoManagerDataSource(asset.getMediaUrl());
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 5, bottom: 5),
-                          child: Icon(
-                            Icons.videocam,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                  ],
-                );
-              }
-              return Container();
-            },
-          ),
-        );
-      }
-      setState(() {
-        _mediaList.addAll(temp);
-        currentPage++;
-      });
-    } else {
-      /// if result is fail, you can call `PhotoManager.openSetting();`  to open android/ios applicaton's setting to get permission
-    }
   }
 }
