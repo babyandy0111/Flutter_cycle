@@ -8,6 +8,7 @@ import 'package:flutter_cycle/data/models/response/chat_entity.dart';
 class ChatRepository {
   static Future<ApiResponse<GroupChannelsEntity>> getChatList() async {
     String path = IM_BASE_URL + '/v1/users/${await SpUtil().getUserId()}/group-channels';
+
     try {
       final response = await HttpUtils.get(path);
       var data = GroupChannelsEntity.fromJson(response);
