@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cycle/bloc/chat.dart';
+import 'package:flutter_cycle/data/models/response/chat_entity.dart';
 import 'message_model.dart';
 
 class Body extends StatefulWidget {
@@ -8,9 +10,39 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   @override
+  void initState() {
+    super.initState();
+    chatBloc..getChatList();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return StreamBuilder<GroupChannelsEntity>(
+      stream: chatBloc.subject.stream,
+      builder: (context, AsyncSnapshot<GroupChannelsEntity> snapshot) {
+        if (snapshot.hasData && snapshot.data.channels.length > 0) {
+          return _hasData(snapshot.data);
+        }
+
+        if (snapshot.hasData && snapshot.data.channels.length == 0) {
+          // return _noData();
+          print(123);
+          return Container();
+        }
+
+        if (snapshot.hasError) {
+          // return _hasError(snapshot.error);
+          return Container();
+        }
+        // return _Loading();
+        return Container();
+      },
+    );
+  }
+
+  Widget _hasData(GroupChannelsEntity data) {
     return ListView.builder(
-      itemCount: chats.length,
+      itemCount: data.channels.length,
       itemBuilder: (BuildContext context, int index) {
         final Message chat = chats[index];
         return GestureDetector(
@@ -26,30 +58,30 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.all(2),
                   decoration: chat.unread
                       ? BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                    border: Border.all(
-                      width: 2,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    // shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                      ),
-                    ],
-                  )
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                          border: Border.all(
+                            width: 2,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          // shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                            ),
+                          ],
+                        )
                       : BoxDecoration(
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                      ),
-                    ],
-                  ),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                            ),
+                          ],
+                        ),
                   child: CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage(chat.sender.imageUrl),
@@ -76,17 +108,17 @@ class _BodyState extends State<Body> {
                               ),
                               chat.sender.isOnline
                                   ? Container(
-                                margin: const EdgeInsets.only(left: 5),
-                                width: 7,
-                                height: 7,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              )
+                                      margin: const EdgeInsets.only(left: 5),
+                                      width: 7,
+                                      height: 7,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Theme.of(context).primaryColor,
+                                      ),
+                                    )
                                   : Container(
-                                child: null,
-                              ),
+                                      child: null,
+                                    ),
                             ],
                           ),
                           Text(
@@ -124,5 +156,4 @@ class _BodyState extends State<Body> {
       },
     );
   }
-
 }
