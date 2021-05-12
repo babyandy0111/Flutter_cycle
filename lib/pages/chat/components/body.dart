@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cycle/bloc/chat.dart';
-import 'package:flutter_cycle/data/models/response/chat_entity.dart';
+import 'package:flutter_cycle/data/models/response/Group_channel_entity.dart';
 import 'message_model.dart';
 
 class Body extends StatefulWidget {

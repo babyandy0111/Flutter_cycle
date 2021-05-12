@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cycle/data/models/response/chat_entity.dart';
+import 'package:flutter_cycle/data/models/response/Group_channel_entity.dart';
 import 'package:flutter_cycle/data/models/response/home_sticker_packs_entity.dart';
 import 'package:flutter_cycle/data/repositorys/chat_repository.dart';
 import 'package:flutter_cycle/data/repositorys/sticker_repository.dart';
